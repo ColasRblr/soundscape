@@ -1,5 +1,44 @@
 controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+  resource:
+    path: ../src/Controller/
+    namespace: App\Controller
+  type: attribute
+
+home:
+  path: "/app_home"
+  controller: App\Controller\HomeController::index
+
+register:
+  path: "/app_register"
+  controller: App\Controller\RegisterController::register
+
+login:
+  path: "/app_login"
+  controller: App\Controller\SecurityController::login
+
+category:
+  path: "/category"
+  controller: App\Controller\CategoryController::index
+
+song:
+  path: "/song"
+  controller: App\Controller\SongController::index
+
+favorite:
+  path: "/favorite"
+  controller: App\Controller\FavoriteController::index
+
+user:
+  path: "/user"
+  controller: App\Controller\UserController::index
+# get_songs_by_category:
+#   path: "/get-songs-by-category"
+#   controller: App\Controller\SongController::getSongsByCategory
+#   methods: ["POST"]
+
+# player:
+#   path: /player/{id}/{category_id}
+#   controller: App\Controller\PlayerController::showSong
+#   requirements:
+#     id: \d+
+#     category_id: \d+
