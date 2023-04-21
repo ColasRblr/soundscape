@@ -10,10 +10,10 @@ let categoryId = url.split("/")[5];
 let songId = url.split("/")[4];
 
 // Récupération de toutes les chansons de la même catégorie
-function getSongsByCategory(categoryId, songId) {
+function getSongsByCategory(categoryId) {
   $.ajax({
-    url: "/get-songs-by-category",
-    type: "POST",
+    url: "/category/" + categoryId + "/getsongs",
+    type: "GET",
     data: {
       category_id: categoryId,
     },
@@ -56,7 +56,7 @@ function loadSong(index) {
 
   if (currentSong) {
     // Charger la chanson dans le lecteur audio
-    $("#my-player").attr("src", currentSong.path_song);
+    $("#my-player").attr("src", currentSong.url);
 
     // Mettre à jour le titre de la chanson
     $("#song-title").text(currentSong.title);
@@ -121,6 +121,6 @@ audio.addEventListener("play", function () {
 
 audio.addEventListener("pause", function () {
   disc.classList.remove("rotate");
-  headshell.classList.remove("move"); 
+  headshell.classList.remove("move");
   headshell.classList.add("reset");
 });

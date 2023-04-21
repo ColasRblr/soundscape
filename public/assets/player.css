@@ -104,8 +104,8 @@ flex-direction: column;
 
 .headshell {
     width:15%;
-    top: 17%;
-    left : 37%;
+    top: 19%;
+    left : 38%;
 }
 
 @keyframes move-headshell {
@@ -137,6 +137,15 @@ align-items: center;
     justify-content: space-around;
 }
 }
+/* MEDIA QUERIES */
+@media screen and (min-width:760px){
 
+    
+    .headshell {
+        width:16%;
+        top: 25%;
+        left : 36%;
+    }
+}    
 
 

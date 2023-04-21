@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 #[Route('/song')]
 class SongController extends AbstractController
@@ -34,7 +35,7 @@ class SongController extends AbstractController
             return $this->redirectToRoute('app_song_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('song/new.html.twig', [
+        return $this->render('song/new.html.twig', [
             'song' => $song,
             'form' => $form,
         ]);
@@ -60,7 +61,7 @@ class SongController extends AbstractController
             return $this->redirectToRoute('app_song_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('song/edit.html.twig', [
+        return $this->render('song/edit.html.twig', [
             'song' => $song,
             'form' => $form,
         ]);
@@ -69,10 +70,29 @@ class SongController extends AbstractController
     #[Route('/{id}', name: 'app_song_delete', methods: ['POST'])]
     public function delete(Request $request, Song $song, SongRepository $songRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$song->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $song->getId(), $request->request->get('_token'))) {
             $songRepository->remove($song, true);
         }
 
         return $this->redirectToRoute('app_song_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    // SOUNDSCAPE METHODS 
+
+    public function showSongById(SongRepository $songRepository, $id)
+    {
+        $song = $songRepository->find($id);
+
+        // Créer un tableau associatif avec les données de la chanson
+        $songData = [
+            'image' => $song->getImage(),
+            'title' => $song->getTitle(),
+            'artist' => $song->getArtist(),
+            'url' => $song->getUrl(),
+        ];
+
+        // Retourner les données de la chanson au format JSON
+        return $this->json($songData);
+    }
 }
+
