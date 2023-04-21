@@ -16,9 +16,19 @@ class CategoryController extends AbstractController
     #[Route('/', name: 'app_category_index', methods: ['GET'])]
     public function index(CategoryRepository $categoryRepository): Response
     {
-        return $this->render('category/index.html.twig', [
-            'categories' => $categoryRepository->findAll(),
-        ]);
+        $cate = $categoryRepository->findAll();
+
+        // Construction du tableau à partir des données récupérées
+        $myData = [];
+        foreach ($cate as $cat) {
+            $myData[] = [
+                "categoryId" => $cat->getId(),
+                "categoryPath" => $cat->getImage(),
+                "categoryName" => $cat->getName(),
+                "categoryAlt" => $cat->getName(),
+            ];
+        }
+        return $this->json($myData);
     }
 
     #[Route('/new', name: 'app_category_new', methods: ['GET', 'POST'])]
@@ -34,7 +44,7 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('category/new.html.twig', [
+        return $this->render('category/new.html.twig', [
             'category' => $category,
             'form' => $form,
         ]);
@@ -60,7 +70,7 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('category/edit.html.twig', [
+        return $this->render('category/edit.html.twig', [
             'category' => $category,
             'form' => $form,
         ]);
@@ -69,10 +79,28 @@ class CategoryController extends AbstractController
     #[Route('/{id}', name: 'app_category_delete', methods: ['POST'])]
     public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->request->get('_token'))) {
             $categoryRepository->remove($category, true);
         }
 
         return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    // SOUNDSCAPE METHODS 
+
+    #[Route('/{id}/getsongs', name: 'get_songs_by_category', methods: ['GET'])]
+    public function getSongsByCategory(Category $category): Response
+    {
+        $songs = $category->getSongs();
+        $data = array();
+        foreach ($songs as $song) {
+            $data[] = array(
+                'id' => $song->getId(),
+                'title' => $song->getTitle(),
+                'artist' => $song->getArtist(),
+            );
+        }
+        dump($songs); // Vérifiez si la liste de chansons est vide ou non
+        return $this->json($data);
     }
 }

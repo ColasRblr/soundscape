@@ -1,16 +1,9 @@
-html {
-  height: 100vh;
-
-}
-
 body {
   margin: 0;
   background-image: url(/img/wood-mobile-bg.jpg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
- 
-
 }
 
 header {
@@ -36,6 +29,7 @@ h1 {
   color: white;
   font-size: 40px;
 }
+
 h2 {
   font-family: Asap;
   text-transform: uppercase;
@@ -46,6 +40,7 @@ h2 {
   width: 100vw;
   text-align: center;
 }
+
 #containerh2 {
   background: url(/img/disc.png) no-repeat center;
   background-size: contain;
@@ -74,8 +69,8 @@ h5 {
   font-weight: bold;
   font-family: Asap;
   margin: 1em;
-
 }
+
 h6 {
   font-family: Asap;
   color: white;
@@ -97,4 +92,15 @@ button {
   border: none;
   background-color: black;
   color: white;
+}
+
+
+/* MEDIA QUERIES */
+@media screen and (min-width:800px){
+  h4 {
+    font-size: 25px;
+  }
+  h5 {
+    font-size: 25px;
+  }
 }
