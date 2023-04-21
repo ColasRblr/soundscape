@@ -1,0 +1,142 @@
+#playerSection {
+display: flex;
+flex-direction: column;
+}
+
+#my-player {
+    width: 75%;
+}
+
+#previous-song-btn, #next-song-btn{
+    color: black;
+    font-size: 45px;
+    padding:none;
+}
+
+#previous-page-btn{
+    color:black;
+    font-size: 40px;
+    font-weight: 900;
+}
+
+#animDisc {
+    display: flex;
+    margin-left: 2em;
+}
+
+.headshell {
+    position: absolute;
+    width: 24%;
+    top: 15%;
+    left : 67%;
+}
+
+.move {
+    animation: move-headshell 2s forwards;
+}
+
+@keyframes move-headshell {
+    from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(19deg);
+      }
+      }
+
+.reset {
+    animation: reset-headshell 1.5s forwards;
+    }
+
+@keyframes reset-headshell {
+    from {
+        transform: rotate(10deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.disc {
+    position: relative;
+    width: 80%;
+}
+
+.rotate {
+    animation: rotate-disc 2s linear infinite;
+    animation-delay: 1.5s;
+}
+
+@keyframes rotate-disc {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+#player-song-infos{
+    display: flex;
+    margin: 2em;
+}
+
+#album-image{
+    width: 70%;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width:760px){
+
+#playerSection {
+    display: flex;
+    flex-direction: row;
+}
+
+#animDisc {
+    width:50vw;
+    display: flex;
+}
+
+#songandPlayer{
+    width:50vw;
+}
+
+.headshell {
+    width:15%;
+    top: 17%;
+    left : 37%;
+}
+
+@keyframes move-headshell {
+    0% {
+        transform: rotate(0deg);
+    }
+      
+    100% {
+        transform: rotate(21deg);
+    }
+}
+
+#album-image{
+    width: 45%;
+}
+
+.player-wrapper {
+display: flex;
+align-items: center;
+}
+
+#my-player {
+    width: 75%;
+    margin: 0.3em;
+}
+
+#player-song-infos{
+    display: flex;
+    justify-content: space-around;
+}
+}
+
+
+

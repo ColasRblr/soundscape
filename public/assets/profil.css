@@ -1,0 +1,32 @@
+#profilForm {
+  margin-left: 5vw;
+  margin-top: 10vh;
+  text-align: -webkit-center;
+}
+
+#containerProfilForm {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3vh;
+  width: 40vw;
+}
+.profilFormElement {
+  text-align: start;
+}
+#bottomForm {
+  margin-left: 50px;
+}
+.navbar {
+  background-color: none;
+}
+
+.formProfilInformations {
+  background-color: white;
+  border-radius: 20px;
+  padding: 5px;
+  /* font-size: 30px; */
+  width: 50vw;
+}
+#containerProfil {
+  margin-left: 25vw;
+}
