@@ -17,7 +17,7 @@ class SongType extends AbstractType
             ->add('url')
             ->add('category')
             ->add('user')
-        ;
+            ->add('image');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
