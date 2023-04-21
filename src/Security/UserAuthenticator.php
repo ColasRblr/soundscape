@@ -50,7 +50,7 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
         }
         if (in_array('ROLE_ADMIN', $user->getRoles())) {
             // Redirect admin users to the admin dashboard
-            return new RedirectResponse($this->urlGenerator->generate('admin'));
+            return new RedirectResponse($this->urlGenerator->generate('app_home'));
         } else {
             // Redirect regular users to the homepage
             return new RedirectResponse($this->urlGenerator->generate('app_home'));
