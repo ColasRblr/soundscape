@@ -10,8 +10,8 @@
 			<div class="swiper-wrapper">
 				{% for data in myData %}
 					<div class="swiper-slide" data-id="{{ data.categoryId }}">
-						<img src="{{ asset('/img/categories/' ~ data.categoryPath) }}" alt="{{ data.categoryAlt }}">
-						<h1>{{ data.categoryName }}</h1>
+						<img src="{{ asset('/img/categories/' ~ data.categoryPath) }}" alt="{{ data.categoryAlt }}" id="homeCategoryImage">
+						<h1 id="homeCategoryName">{{ data.categoryName }}</h1>
 					</div>
 				{% endfor %}
 			</div>

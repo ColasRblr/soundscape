@@ -11,8 +11,15 @@ header {
   justify-content: flex-end;
 }
 
+
+#previous-page-btn{
+  color:black;
+  font-size: 30px;
+  font-weight: 900;
+}
+
 #logo {
-  width: 250px;
+  width: 120px;
 }
 
 footer {
@@ -21,13 +28,14 @@ footer {
   height: 10vh;
   position: fixed;
   bottom: 0;
+  margin-top:1em;
 }
 
 h1 {
   font-family: Asap;
   text-transform: uppercase;
   color: white;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 h2 {
@@ -58,17 +66,15 @@ h3 {
 }
 
 h4 {
-  font-size: 35px;
+  font-size: 20px;
   font-family: Asap;
   font-weight: bold;
   text-transform: uppercase;
-  margin: 1em;
 }
 h5 {
-  font-size: 35px;
+  font-size: 18px;
   font-weight: bold;
   font-family: Asap;
-  margin: 1em;
 }
 
 h6 {
@@ -96,11 +102,33 @@ button {
 
 
 /* MEDIA QUERIES */
-@media screen and (min-width:800px){
+@media only screen and (min-width:768px){
+  #logo {
+    width: 180px;
+  }
   h4 {
     font-size: 25px;
   }
   h5 {
     font-size: 25px;
   }
+  #previous-page-btn{
+
+    font-size: 45px;
+
+  }
+  
+}
+@media only screen and (min-width:1024px){
+  #logo {
+    width: 200px;
+  }
+  h4 {
+    font-size: 30px;
+  }
+  h5 {
+    font-size: 28px;
+  }
+
+  
 }
