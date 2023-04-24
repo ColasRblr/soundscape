@@ -1,6 +1,7 @@
 var swiper = new Swiper(".swiper-container", {
   effect: "coverflow",
   grabCursor: true,
+  // width: "100%",
   slidesPerView: 2,
   spaceBetween: 5,
   centeredSlides: true,
@@ -24,6 +25,7 @@ var swiper = new Swiper(".swiper-container", {
 slideChange.call(swiper);
 
 // Définition de la fonction slideChange
+
 function slideChange() {
   var category_id = this.slides[this.activeIndex].getAttribute("data-id");
   var songList = document.querySelector("#home-song-list");
@@ -35,17 +37,44 @@ function slideChange() {
       songList.innerHTML = "";
       response.forEach(function (song) {
         var li = document.createElement("li");
+        li.classList.add("homeSongLi");
         var a = document.createElement("a");
-        var btn = document.createElement("button");
         a.setAttribute("href", "/player/" + song.id + "/" + category_id);
         a.classList.add("homeSong");
-        a.innerHTML = "<h4 id ='home-song-artist'> " + song.artist + "</h4><h5 id ='home-song-title'>" + song.title + "</h5>";
-        btn.classList.add("home-favorite-btn");
+        a.innerHTML =
+          "<h4 id ='home-song-artist'> " +
+          song.artist +
+          "</h4><h5 id ='home-song-title'>" +
+          song.title +
+          "</h5>";
         li.appendChild(a);
-        li.appendChild(btn);
         songList.appendChild(li);
+        if (isAuthenticated) {
+          var favbtn = document.createElement("a");
+          var img = document.createElement("img");
+          li.appendChild(favbtn);
+          favbtn.appendChild(img);
+          img.setAttribute("id", "home-favorite-btn");
+          favbtn.classList.add("home-container-btn");
+          favbtn.setAttribute("href", "/favorite/newFavorite/" + song.id);
+          // Effectuer une requête AJAX pour vérifier si la chanson est dans les favoris de l'utilisateur
+          $.ajax({
+            url: "/favorite/isFavorite/" + song.id,
+            success: function (response) {
+              if (response == "true") {
+                // La chanson est déjà dans les favoris, afficher le cœur rempli
+                img.setAttribute("src", "/img/favorite.png");
+              } else {
+                // La chanson n'est pas dans les favoris, afficher le cœur vide
+                img.setAttribute("src", "/img/emptyHeart.png");
+              }
+            },
+          });
+        }
       });
       songList.classList.remove("hidden"); // Afficher la liste des chansons
     },
   });
+
+  
 }

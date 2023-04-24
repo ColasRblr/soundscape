@@ -24,8 +24,14 @@
 					</h4>
 					<h5 id="song-title">{{ song.title }}
 					</h5>
-
 				</div>
+				{% if app.user %}
+					<a class="home-container-btn" href="{{ path('app_new_favorite', {'id': song.id}) }}"></a>
+					<script>
+						var isAuthenticated = true;
+					</script>
+				{% endif %}
+
 			</div>
 
 			<div class="player-wrapper">
@@ -36,7 +42,5 @@
 				<i class="bi bi-arrow-right-circle-fill" id="next-song-btn"></i>
 			</div>
 		</div>
-
 	</section>
-
 {% endblock %}

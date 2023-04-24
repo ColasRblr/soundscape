@@ -18,5 +18,12 @@
 		</div>
 
 		<ul id="home-song-list"></ul>
+
+		{% if app.user %}
+			<script>
+				var isAuthenticated = true;
+			</script>
+		{% endif %}
+		
 	</section>
 {% endblock %}

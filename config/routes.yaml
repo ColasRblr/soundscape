@@ -33,6 +33,11 @@ favorite:
   path: "/favorite"
   controller: App\Controller\FavoriteController::index
 
+app_new_favorite:
+  path : "favorite/newFavorite/{id}"
+  controller: App\Controller\FavoriteController::newFavorite
+  methods: ["GET"]
+
 user:
   path: "/user"
   controller: App\Controller\UserController::index

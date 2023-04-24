@@ -35,24 +35,30 @@
 
 }
 
-ul {
-  list-style: none;
-}
-
-li > a {
+.homeSongLi{
+  width: 100%;
   display: flex;
-  text-decoration: none;
-  color: black;
-  margin-bottom : 1em;
-
+  justify-content: space-between;
 }
 
 .homeSong {
   display: flex;
+  width:70%;
   justify-content: space-between;
   text-decoration: none;
-  color:black
+  color:black;
+  align-items:center;
 }
+
+.home-container-btn{
+display: flex;
+align-items: center;
+}
+
+#home-favorite-btn{
+  width:20px;
+}
+
 
 #swiperAndList {
   display: flex;
@@ -63,6 +69,7 @@ li > a {
 .hidden {
   display: none;
 }
+
 
 /* MEDIA QUERIES */
 

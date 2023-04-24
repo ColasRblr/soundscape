@@ -89,6 +89,7 @@ class SongController extends AbstractController
             'title' => $song->getTitle(),
             'artist' => $song->getArtist(),
             'url' => $song->getUrl(),
+            'id' => $song->getId()
         ];
 
         // Retourner les données de la chanson au format JSON
