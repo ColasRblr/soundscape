@@ -3,6 +3,11 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
+ 
+<a id="previous-page-btn" href="/app_home">
+    <img src="img/arrow1.png" alt="Flèche de retour" />
+</a>
+
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>

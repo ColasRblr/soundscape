@@ -3,16 +3,81 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+<a id="previous-page-btn" href="/app_home">
+    <img src="img/arrow2.png" alt="Flèche de retour" />
+</a>
 
+<form method="post">
+    <div style="position: relative;">
+        <img src="{{ asset('img/disc.png') }}" alt="Register Icon" style="width: 150px; height: 150px;">
+        <h2 style="position: absolute; top: 85%; left: 50%; transform: translate(-50%, -50%) rotate(deg);">Register</h2>
+    </div>
+    
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.first_name) }}
-        {{ form_row(registrationForm.last_name) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(registrationForm) }}
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_row(registrationForm.lastname, {
+                'attr': {
+                    'class': 'form-control',
+                    'placeholder': 'Nom'
+                }
+            }) }}
+        </div>
+        <div class="col-md-12">
+            {{ form_row(registrationForm.firstname, {
+                'attr': {
+                    'class': 'form-control',
+                    'placeholder': 'Prénom'
+                }
+            }) }}
+        </div>
+        <div class="col-md-12">
+            {{ form_row(registrationForm.email, {
+                'attr': {
+                    'class': 'form-control',
+                    'placeholder': 'Adresse email'
+                }
+            }) }}
+        </div>
+        <div class="col-md-12">
+            {{ form_row(registrationForm.plainPassword, {
+                'label': 'Mot de passe',
+                'attr': {
+                    'class': 'form-control',
+                    'placeholder': 'Mot de passe'
+                }
+            }) }} 
+        </div>
+        <div class="col-md-12 d-flex justify-content-between">
+        <div>
+            <button type="submit" id="btn-register" class="btn btn-primary">S'inscrire</button>
+        </div>
+        <div>
+            <button type="submit" id="bnt-cancel" class="btn btn-secondary">Annuler</button>
+        </div>
+        
+        
+        
+        
+    </div>
+{{ form_end(registrationForm) }}
+
+    {# {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.lastname) }}
+        {{ form_row(registrationForm.firstname) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
+            label: 'Mot de passe'
+        }) }} #}
 
-        <button type="submit" class="btn">Register</button>
+       
+
+
+
     {{ form_end(registrationForm) }}
+</form>
 {% endblock %}
+
