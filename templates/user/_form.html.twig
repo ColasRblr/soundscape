@@ -1,4 +1,23 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div id="containerProfil">
+	<div class="form-group">
+		{{ form_label(form.firstName) }}
+		{{ form_widget(form.firstName, {'attr': {'class': 'form-control'}}) }}
+	</div>
+	<div class="form-group">
+		{{ form_label(form.lastName) }}
+		{{ form_widget(form.lastName, {'attr': {'class': 'form-control'}}) }}
+	</div>
+	<div class="form-group">
+		{{ form_label(form.email) }}
+		{{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+	</div>
+	<div class="form-group">
+		{{ form_label(form.password) }}
+		{{ form_widget(form.password, {'attr': {'class': 'form-control', 'type': 'password', 'id': 'form_password'}}) }}
+	</div>
+</div>
+<div id="btnValidateEditProfil">
+	<button class="button">{{ button_label|default('Save') }}</button>
+</div>
 {{ form_end(form) }}
