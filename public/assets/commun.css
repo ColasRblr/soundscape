@@ -1,4 +1,3 @@
-
 body {
   margin: 0;
   background-image: url(/img/wood-mobile-bg.jpg);
@@ -12,24 +11,14 @@ header {
   justify-content: flex-end;
 }
 
-
-#previous-page-btn{
-  color:black;
+#previous-page-btn {
+  color: black;
   font-size: 30px;
   font-weight: 900;
 }
 
 #logo {
   width: 120px;
-}
-
-footer {
-  background-color: black;
-  width: 100vw;
-  height: 10vh;
-  position: fixed;
-  bottom: 0;
-  margin-top:1em;
 }
 
 h1 {
@@ -43,11 +32,12 @@ h2 {
   font-family: Asap;
   text-transform: uppercase;
   color: white;
-  font-size: 25px;
+  font-size: 20px;
   position: absolute;
   top: 73%;
   width: 100vw;
   text-align: center;
+  padding-top: 1vh;
 }
 
 #containerh2 {
@@ -78,7 +68,6 @@ h5 {
   font-family: Asap;
 
   margin: 1em;
-
 }
 
 h6 {
@@ -104,28 +93,33 @@ button {
   color: white;
 }
 
+#navbarDesktop {
+  display: none;
+}
+
+td {
+  border: none;
+}
 
 /* FOOTER */
 
 @media screen and (min-width: 1024px) {
-  footer {
-    background-color: black;
-    width: 100vw;
-    height: 10vh;
-    position: fixed;
-    bottom: 0;
-  }
-
-  #btnNavBarFavorite {
+  #btnNavBar {
     display: none;
   }
+
   #navbarDesktop {
-    height: 100vh;
     display: flex;
     justify-content: space-around;
     gap: 20px;
     color: white;
     margin-top: 2vh;
+    background-color: black;
+    width: 100vw;
+    height: 10vh;
+    position: fixed;
+    bottom: 0;
+    align-items: center;
   }
 
   a {
@@ -139,28 +133,7 @@ button {
   .navbar {
     display: none !important;
   }
-}
 
-
-/* MEDIA QUERIES */
-@media only screen and (min-width:768px){
-  #logo {
-    width: 180px;
-  }
-  h4 {
-    font-size: 25px;
-  }
-  h5 {
-    font-size: 25px;
-  }
-  #previous-page-btn{
-
-    font-size: 45px;
-
-  }
-  
-}
-@media only screen and (min-width:1024px){
   #logo {
     width: 200px;
   }
@@ -170,6 +143,20 @@ button {
   h5 {
     font-size: 28px;
   }
+}
 
-  
+/* MEDIA QUERIES */
+@media only screen and (min-width: 768px) {
+  #logo {
+    width: 180px;
+  }
+  h4 {
+    font-size: 25px;
+  }
+  h5 {
+    font-size: 25px;
+  }
+  #previous-page-btn {
+    font-size: 45px;
+  }
 }

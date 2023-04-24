@@ -4,41 +4,42 @@
 {% endblock %}
 
 {% block body %}
-<div id="containerh2">
-	<h2>Ma playlist</h2>
-</div>
-<a id="previous-page-btn" href="/app_home">
-	<i class="bi bi-arrow-left"></i>
-</a>
-<table class="table">
+	<div id="containerh2">
+		<h2>Ma playlist</h2>
+	</div>
+	<a id="previous-page-btn" href="/app_home">
+		<i class="bi bi-arrow-left"></i>
+	</a>
+	<table class="table">
 
-	<tbody>
-		{% for favorite in favorites %}
-			<tr>
-				<td>
-					<img id="favoriteImage" src="{{ asset('img/albums/' ~ favorite.image) }} ">
-				</td>
-				<td>
-					<h4>{{favorite.artist}}</h4>
-				</td>
-				<td>
-					<h5>{{favorite.title}}</h5>
-				</td>
-
-			</tr>
-		</h5>
-	</tbody>
-</td>
-<td>
-	{# <a href="{{ path('/player/{id}/{category_id}') }}" class="btn">
-				<i class="bi bi-play-fill"></i>
-			</a> #}
-</td>
-<td>
-	<form method="post" action="{{ path('app_favorite_delete', {'id': favorite.id}) }}" onsubmit="return confirm('Etes-vous sur de vouloir retirer cette musique de vos favoris ?');">
-		<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ favorite.id) }}">
-		<button class="btn">
-			<i class="bi bi-trash-fill"></i>
-		</button>
-	</form>
-</td></tr></tbody></tbody></td>{% endfor %}</div></table>{% endblock %}
+		<tbody>
+			{% for favorite in favorites %}
+				<tr id="favoriteList">
+					<td>
+						<img id="favoriteImage" src="{{ asset('img/albums/' ~ favorite.image) }} ">
+					</td>
+					<td>
+						<h4>{{favorite.artist}}</h4>
+					</td>
+					<td>
+						<h5>{{favorite.title}}</h5>
+					</td>
+					<td>
+						{# {{ path('/player/' ~ song.id '/' ~ category_id }} #}
+						<a href="{{ path('app_favorite_player', {'song_id': song_id, 'category_id': category_id}) }}" class="btn">
+							<i class="bi bi-play-fill"></i>
+						</a>
+					</td>
+					<td>
+						<form method="post" action="{{ path('app_favorite_delete', {'id': favorite.id}) }}" onsubmit="return confirm('Etes-vous sur de vouloir retirer cette musique de vos favoris ?');">
+							<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ favorite.id) }}">
+							<button class="btn">
+								<i class="bi bi-trash-fill"></i>
+							</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		{% endfor %}
+	</table>
+{% endblock %}

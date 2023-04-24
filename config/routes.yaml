@@ -30,7 +30,7 @@ song:
   controller: App\Controller\SongController::index
 
 favorite:
-  path: "user/favorite"
+  path: "/favorite"
   controller: App\Controller\FavoriteController::index
 
 user:
@@ -43,3 +43,8 @@ player:
   requirements:
     id: \d+
     category_id: \d+
+
+app_favorite_show:
+  path: /favorites/{id}/show
+  controller: App\Controller\FavoriteController::show
+  methods: ["POST"]

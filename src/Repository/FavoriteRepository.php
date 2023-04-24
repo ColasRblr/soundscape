@@ -52,6 +52,18 @@ class FavoriteRepository extends ServiceEntityRepository
         return $qb->getResult();
     }
 
+    public function findByCategoryId($user)
+    {
+        $qb = $this->createQueryBuilder('f')
+            ->select('f.id, s.id, c.id')
+            ->join('f.song', 's')
+            ->join('s.category', 'c')
+            ->WHERE('f.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery();
+
+        return $qb->getResult();
+    }
     //    /**
     //     * @return Favorite[] Returns an array of Favorite objects
     //     */

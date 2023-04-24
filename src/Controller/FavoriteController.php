@@ -79,4 +79,16 @@ class FavoriteController extends AbstractController
 
         return $this->redirectToRoute('app_favorite_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/{id}', name: 'app_favorite_player', methods: ['POST'])]
+    public function favoritePlayer(FavoriteRepository $favoriteRepository, Security $security): Response
+    {
+        $user = $security->getUser();
+
+        return $this->render('favorite/index.html.twig', [
+            'favorites' => $favoriteRepository->findByCategoryId($user),
+        ]);
+
+        return $this->redirectToRoute('app_favorite_index', [], Response::HTTP_SEE_OTHER);
+    }
 }
