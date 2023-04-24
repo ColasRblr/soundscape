@@ -4,14 +4,17 @@ namespace App\Controller;
 
 use App\Entity\Favorite;
 use App\Form\FavoriteType;
+use App\Repository\SongRepository;
 use App\Repository\FavoriteRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('user/favorite')]
+#[Route('/favorite')]
 class FavoriteController extends AbstractController
 {
     #[Route('/', name: 'app_favorite_index', methods: ['GET'])]
@@ -22,25 +25,6 @@ class FavoriteController extends AbstractController
 
         return $this->render('favorite/index.html.twig', [
             'favorites' => $favoriteRepository->findByFavoriteUserId($user),
-        ]);
-    }
-
-    #[Route('/new', name: 'app_favorite_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, FavoriteRepository $favoriteRepository): Response
-    {
-        $favorite = new Favorite();
-        $form = $this->createForm(FavoriteType::class, $favorite);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $favoriteRepository->save($favorite, true);
-
-            return $this->redirectToRoute('app_favorite_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('favorite/new.html.twig', [
-            'favorite' => $favorite,
-            'form' => $form,
         ]);
     }
 
@@ -90,5 +74,46 @@ class FavoriteController extends AbstractController
         ]);
 
         return $this->redirectToRoute('app_favorite_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    // SOUNDSCAPE METHODS
+
+    #[Route('/newFavorite/{id}', name: 'app_new_favorite')]
+    public function newFavorite(Security $security, FavoriteRepository $favoriteRepository, SongRepository $songRepository, $id, Request $request): Response
+    {
+        // Récupérer l'utilisateur connecté
+        $user = $security->getUser();
+        $song = $songRepository->find($id);
+
+        // Vérifier si la chanson est déjà dans les favoris de l'utilisateur
+        $favorite = $favoriteRepository->findOneBy(['user' => $user, 'song' => $song]);
+
+        // Si la chanson est déjà dans les favoris, la supprimer
+        if ($favorite) {
+            $favoriteRepository->remove($favorite, true);
+        } else {
+            // Sinon, ajouter la chanson aux favoris
+            $favorite = new Favorite();
+            $favorite->setSong($song);
+            $favorite->setUser($user);
+            $favoriteRepository->save($favorite, true);
+        }
+        // Rediriger l'utilisateur vers sa page d'origine
+        $referer = $request->headers->get('referer');
+        return new RedirectResponse($referer);
+    }
+
+    #[Route('/isFavorite/{id}', name: 'app_is_favorite')]
+    public function isFavorite(SongRepository $songRepository, Security $security, FavoriteRepository $favoriteRepository, $id): JsonResponse
+    {
+        $user = $security->getUser();
+        $song = $songRepository->find($id);
+        $favorite = $favoriteRepository->findOneBy(['user' => $user, 'song' => $song]);
+
+        if ($favorite) {
+            return new JsonResponse("true");
+        } else {
+            return new JsonResponse("false");
+        }
     }
 }

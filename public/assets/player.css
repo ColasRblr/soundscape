@@ -76,6 +76,7 @@ flex-direction: column ;
 
 #songandPlayer{
     height:28vh;
+    padding:none;
 }
 
 #player-song-infos{
@@ -136,6 +137,7 @@ flex-direction: column ;
 #songandPlayer{
     display:flex;
     flex-direction: column;
+    width:45vw;
     height:50vh;
     justify-content: center;
     align-items: space-between;
@@ -146,7 +148,7 @@ flex-direction: column ;
     justify-content: space-around;
     margin-left: 2em;
     margin-bottom: 1em;
-    height : 20vh;
+    height : 30vh;
 }
 
 #album-image{
