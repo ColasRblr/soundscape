@@ -30,7 +30,7 @@ song:
   controller: App\Controller\SongController::index
 
 favorite:
-  path: "/favorite"
+  path: "user/favorite"
   controller: App\Controller\FavoriteController::index
 
 user:

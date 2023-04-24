@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   background-image: url(/img/wood-mobile-bg.jpg);
@@ -75,6 +76,9 @@ h5 {
   font-size: 18px;
   font-weight: bold;
   font-family: Asap;
+
+  margin: 1em;
+
 }
 
 h6 {
@@ -98,6 +102,43 @@ button {
   border: none;
   background-color: black;
   color: white;
+}
+
+
+/* FOOTER */
+
+@media screen and (min-width: 1024px) {
+  footer {
+    background-color: black;
+    width: 100vw;
+    height: 10vh;
+    position: fixed;
+    bottom: 0;
+  }
+
+  #btnNavBarFavorite {
+    display: none;
+  }
+  #navbarDesktop {
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    color: white;
+    margin-top: 2vh;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+  }
+  #linksNavbarDesktop {
+    display: flex;
+  }
+  .navbar {
+    display: none !important;
+  }
 }
 
 
