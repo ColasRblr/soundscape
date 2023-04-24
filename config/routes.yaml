@@ -6,7 +6,7 @@ controllers:
 
 home:
   path: "/app_home"
-  controller: App\Controller\HomeController::index
+  controller: App\Controller\HomeController::homeIndex
 
 register:
   path: "/app_register"
@@ -20,6 +20,11 @@ category:
   path: "/category"
   controller: App\Controller\CategoryController::index
 
+get_songs_by_category:
+  path: /category/{id}/getsongs
+  controller: App\Controller\CategoryController::getSongsByCategory
+  methods: ["GET"]
+
 song:
   path: "/song"
   controller: App\Controller\SongController::index
@@ -31,14 +36,10 @@ favorite:
 user:
   path: "/user"
   controller: App\Controller\UserController::index
-# get_songs_by_category:
-#   path: "/get-songs-by-category"
-#   controller: App\Controller\SongController::getSongsByCategory
-#   methods: ["POST"]
 
-# player:
-#   path: /player/{id}/{category_id}
-#   controller: App\Controller\PlayerController::showSong
-#   requirements:
-#     id: \d+
-#     category_id: \d+
+player:
+  path: /player/{id}/{category_id}
+  controller: App\Controller\PlayerController::showSong
+  requirements:
+    id: \d+
+    category_id: \d+

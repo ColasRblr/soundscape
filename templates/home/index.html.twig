@@ -1,20 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Hello HomeController!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	<section id="swiperAndList">
+		<div class="swiper-container" data-mydata="{{ myData|json_encode|raw }}">
+			<div class="swiper-wrapper">
+				{% for data in myData %}
+					<div class="swiper-slide" data-id="{{ data.categoryId }}">
+						<img src="{{ asset('/img/categories/' ~ data.categoryPath) }}" alt="{{ data.categoryAlt }}" id="homeCategoryImage">
+						<h1 id="homeCategoryName">{{ data.categoryName }}</h1>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/colas-r/Documents/exos_simplon/briefs/soundscape/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/colas-r/Documents/exos_simplon/briefs/soundscape/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+		<ul id="song-list"></ul>
+	</section>
+{% endblock %}
+{% block footer %}
+
+	<nav class="navbar navbar-dark fixed-bottom">
+		<div class="container-fluid">
+			<button class="navbar-toggler bottom-0 end-0 bg-black " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
+					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body text-light">
+					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+						<li class="nav-item">
+							<a class="nav-link" aria-current="page" href="#">Admin</a>
+						</li>
+						<li>
+							<a class="nav-link" aria-current="page" href="#">Inscription</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Connexion</a>
+						</li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</nav>
 {% endblock %}
