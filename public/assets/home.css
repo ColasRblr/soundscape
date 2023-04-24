@@ -29,24 +29,17 @@
   left: 20%;
 }
 
-#song-list {
+#home-song-list {
   height: 40vh;
   margin-right: 1em;
-}
-
-ul {
-  list-style: none;
-}
-
-li > a {
-display: flex;
-text-decoration: none;
-color:black
+  margin-bottom : 1em;
 }
 
 .homeSong{
   display: flex;
   justify-content: space-between;
+  text-decoration: none;
+  color:black
 }
 
 #swiperAndList {
@@ -60,8 +53,39 @@ color:black
 }
 
 /* MEDIA QUERIES */
-@media screen and (min-width:800px){
+@media screen and (min-width:760px){
+
   .swiper-container {
     height: 50%;
+    margin-bottom: 2em;
   }
+  
+}
+
+@media screen and (min-width:830px){
+
+  #homeCategoryImage {
+    width:70%;
+  }
+
+}
+
+@media screen and (min-width:1024px){
+
+  #homeCategoryImage {
+    width:60%;
+  }
+
+  #homeCategoryName {
+    left: 33%;
+  }
+
+  #home-song-artist {
+    font-size:26px;
+  }
+
+  #home-song-title {
+    font-size:23px;
+  }
+
 }

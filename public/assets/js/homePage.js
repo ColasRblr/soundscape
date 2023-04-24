@@ -28,7 +28,7 @@ slideChange.call(swiper);
 
 function slideChange() {
   var category_id = this.slides[this.activeIndex].getAttribute("data-id");
-  var songList = document.querySelector("#song-list");
+  var songList = document.querySelector("#home-song-list");
   songList.classList.add("hidden"); // Masquer la liste des chansons
 
   $.ajax({
@@ -40,7 +40,7 @@ function slideChange() {
         var a = document.createElement("a");
         a.setAttribute("href", "/player/" + song.id + "/" + category_id);
         a.classList.add("homeSong");
-        a.innerHTML = "<h4>" + song.artist + "</h4><h5>" + song.title + "</h5>";
+        a.innerHTML = "<h4 id ='home-song-artist'> " + song.artist + "</h4><h5 id ='home-song-title'>" + song.title + "</h5>";
         li.appendChild(a);
         songList.appendChild(li);
       });
