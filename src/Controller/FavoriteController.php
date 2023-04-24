@@ -9,15 +9,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
-#[Route('/favorite')]
+#[Route('user/favorite')]
 class FavoriteController extends AbstractController
 {
     #[Route('/', name: 'app_favorite_index', methods: ['GET'])]
-    public function index(FavoriteRepository $favoriteRepository): Response
+    public function index(FavoriteRepository $favoriteRepository, Security $security): Response
     {
+
+        $user = $security->getUser();
+
         return $this->render('favorite/index.html.twig', [
-            'favorites' => $favoriteRepository->findAll(),
+            'favorites' => $favoriteRepository->findByFavoriteUserId($user),
         ]);
     }
 
@@ -69,7 +73,7 @@ class FavoriteController extends AbstractController
     #[Route('/{id}', name: 'app_favorite_delete', methods: ['POST'])]
     public function delete(Request $request, Favorite $favorite, FavoriteRepository $favoriteRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$favorite->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $favorite->getId(), $request->request->get('_token'))) {
             $favoriteRepository->remove($favorite, true);
         }
 

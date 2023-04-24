@@ -1,11 +1,12 @@
+#swiperAndList  {
+  height: 80vh;
+}
+
 .swiper-container {
   width:auto;
-  overflow: hidden;
-  height: 40%;
-  margin-bottom: 2em;
-}
-.swiper-wrapper {
-  height: 100%;
+  overflow-x: hidden;
+  height: 40vh;
+  margin-bottom: 1.5em;
 }
 
 .swiper-slide {
@@ -13,32 +14,78 @@
   height: 100%;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
-.swiper-slide > img {
+#homeCategoryImage{
   width:100%;
   height: 80%;
   position: relative;
 }
 
-.swiper-slide > h1 {
+#homeCategoryName {
   position: absolute;
-  top: 80%;
-  left: 38%;
+  top: 72%;
+  left: 20%;
 }
 
-ul {
-  list-style: none;
+#home-song-list {
+  height: 40vh;
+  margin-right: 1em;
+  margin-bottom : 1em;
 }
 
-li > a {
-display: flex;
-text-decoration: none;
-color:black
+.homeSong{
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  color:black
 }
 
 #swiperAndList {
   display: flex;
   flex-direction: column;
   height: 80vh;
+}
+
+.hidden {
+  display: none;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width:760px){
+
+  .swiper-container {
+    height: 50%;
+    margin-bottom: 2em;
+  }
+  
+}
+
+@media screen and (min-width:830px){
+
+  #homeCategoryImage {
+    width:70%;
+  }
+
+}
+
+@media screen and (min-width:1024px){
+
+  #homeCategoryImage {
+    width:60%;
+  }
+
+  #homeCategoryName {
+    left: 33%;
+  }
+
+  #home-song-artist {
+    font-size:26px;
+  }
+
+  #home-song-title {
+    font-size:23px;
+  }
+
 }
