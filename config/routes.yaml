@@ -43,8 +43,7 @@ player:
   requirements:
     id: \d+
     category_id: \d+
-
-app_favorite_show:
-  path: /favorites/{id}/show
-  controller: App\Controller\FavoriteController::show
-  methods: ["POST"]
+# app_favorite_player:
+#   path: /favorite/{id}/{category_id}
+#   controller: App\Controller\FavoriteController::show
+#   methods: ["GET"]

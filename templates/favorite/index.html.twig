@@ -7,9 +7,9 @@
 	<div id="containerh2">
 		<h2>Ma playlist</h2>
 	</div>
-	<a id="previous-page-btn" href="/app_home">
-		<i class="bi bi-arrow-left"></i>
-	</a>
+	{# <a id="previous-page-btn" href="/app_home">
+											<i class="bi bi-arrow-left"></i>
+										</a> #}
 	<table class="table">
 
 		<tbody>
@@ -26,7 +26,7 @@
 					</td>
 					<td>
 						{# {{ path('/player/' ~ song.id '/' ~ category_id }} #}
-						<a href="{{ path('app_favorite_player', {'song_id': song_id, 'category_id': category_id}) }}" class="btn">
+						<a href="{{ path('app_favorite_player', {'id': song.id, 'category_id': category.id}) }}" class="btn">
 							<i class="bi bi-play-fill"></i>
 						</a>
 					</td>
