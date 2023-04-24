@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Favorite;
+use App\Entity\Song;
+use App\Entity\Category;
 use App\Form\FavoriteType;
 use App\Repository\FavoriteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,10 +12,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
+use Doctrine\ORM\EntityManagerInterface;
 
-#[Route('user/favorite')]
+#[Route('/favorite')]
 class FavoriteController extends AbstractController
 {
+
     #[Route('/', name: 'app_favorite_index', methods: ['GET'])]
     public function index(FavoriteRepository $favoriteRepository, Security $security): Response
     {
@@ -80,15 +84,27 @@ class FavoriteController extends AbstractController
         return $this->redirectToRoute('app_favorite_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/{id}', name: 'app_favorite_player', methods: ['POST'])]
-    public function favoritePlayer(FavoriteRepository $favoriteRepository, Security $security): Response
-    {
-        $user = $security->getUser();
+    // #[Route('/{id}/{category_id}', name: 'app_favorite_player', methods: ['POST'])]
+    // public function favoritePlayer(int $id, int $category_id, FavoriteRepository $favoriteRepository, Security $security): Response
+    // {
+    //     $user = $security->getUser();
 
-        return $this->render('favorite/index.html.twig', [
-            'favorites' => $favoriteRepository->findByCategoryId($user),
-        ]);
+    //     $song = $this->entityManager->getRepository(Song::class)->find($id);
+    //     $category = $this->entityManager->getRepository(Category::class)->find($category_id);
 
-        return $this->redirectToRoute('app_favorite_index', [], Response::HTTP_SEE_OTHER);
-    }
+    //     // Vérifier si la chanson et la catégorie existent
+    //     if (!$song || !$category) {
+    //         throw $this->createNotFoundException('La chanson ou la catégorie n\'existe pas.');
+    //     }
+
+    //     // Récupérer les favoris associés à la chanson et la catégorie
+    //     $favorites = $favoriteRepository->findBySongAndCategory($song, $category, $user);
+
+    //     return $this->render('player/player.html.twig', [
+    //         'song' => $song,
+    //         'category_id' => $category_id
+    //     ]);
+
+    //     // return $this->redirectToRoute('app_favorite_index', [], Response::HTTP_SEE_OTHER);
+    // }
 }

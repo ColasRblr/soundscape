@@ -16,9 +16,6 @@
 #bottomForm {
   margin-left: 50px;
 }
-.navbar {
-  background-color: none;
-}
 
 .formProfilInformations {
   background-color: white;
@@ -35,14 +32,27 @@
 .form-control {
   width: 50vw;
 }
+
 #btnValidateEditProfil {
   text-align: center;
-  margin-bottom: 5vh;
+  margin-bottom: 5px;
 }
+
 #btnDeleteProfil {
   text-align: center;
 }
 
+#btnUpdateProfil {
+  text-align: center;
+}
+
+#btnDeleteProfil {
+  width: 50vw;
+}
+
+#formDelete {
+  text-align: center;
+}
 /* @media only screen and (max-width: 768px) {
   footer {
     background-color: black;
