@@ -5,5 +5,13 @@
 }
 
 #favoriteImage {
-  width: 150px;
+  width: 50px;
+}
+
+#favoriteList {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
