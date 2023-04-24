@@ -15,6 +15,7 @@ header {
   color: black;
   font-size: 30px;
   font-weight: 900;
+  margin-left: 3vw;
 }
 
 #logo {
@@ -86,7 +87,7 @@ input {
 }
 
 button {
-  width: 15vw;
+  width: 20vw;
   border-radius: 20px;
   border: none;
   background-color: black;
@@ -101,7 +102,11 @@ td {
   border: none;
 }
 
-/* FOOTER */
+a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
 
 @media screen and (min-width: 1024px) {
   #btnNavBar {
@@ -116,20 +121,21 @@ td {
     margin-top: 2vh;
     background-color: black;
     width: 100vw;
-    height: 10vh;
+    height: 8vh;
     position: fixed;
     bottom: 0;
     align-items: center;
   }
 
-  a {
-    text-decoration: none;
-    color: white;
-    cursor: pointer;
-  }
-  #linksNavbarDesktop {
+  .linksNavbarDesktop {
     display: flex;
+    font-size: 10px;
   }
+
+  a {
+    font-size: 15px;
+  }
+
   .navbar {
     display: none !important;
   }

@@ -8,9 +8,6 @@
 		<h2>Mon profil</h2>
 	</div>
 
-	{# <a id="previous-page-btn" href="/app_user_index">
-			<i class="bi bi-arrow-left"></i>
-		</a> #}
 
 	<div id="containerProfil">
 
@@ -32,7 +29,9 @@
 		</div>
 	</div>
 
-	<td>
-		<a href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
-	</td>
-</tr>{% endblock %}
+	<div id="btnUpdateProfil">
+
+		<a href="{{ path('app_user_edit', {'id': user.id}) }}" id="btnValidateModifyProfil">Modifier</a>
+
+	</div>
+{% endblock %}

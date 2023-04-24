@@ -3,16 +3,16 @@
 	<nav id="navbarMobile" class="navbar body-tertiary fixed-bottom">
 		<div class="container-fluid ">
 			<a class="navbar-brand" href="#"></a>
-			<button id="btnNavBar" class="navbar-toggler bottom-0 end-0 text-dark rounded-circle" style="width:70px; height: 70px;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+			<button id="btnNavBar" class="navbar-toggler bottom-0 end-0 text-dark rounded-circle me-3 mb-3" style="width:70px; height: 70px;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon " style="width:35px; height: 35px;"></span>
 			</button>
-			<div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+			<div class="offcanvas offcanvas-end text-bg-dark" style="width:200px" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
 				<div class="offcanvas-header">
 					<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
 					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 				</div>
-				<div class="offcanvas-body  d-block">
-					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+				<div class="offcanvas-body d-block">
+					<ul class="navbar-nav flex-grow-1 pe-3" style="text-align:right">
 
 						{% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
 							<li class="nav-item">
