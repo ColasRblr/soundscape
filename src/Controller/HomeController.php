@@ -2,21 +2,19 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CategoryRepository;
 use App\Controller\CategoryController;
 
-
+#[Route('/home')]
 class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'app_home')]
-    public function homeIndex(
-        CategoryRepository $categoryRepository,
-        CategoryController $categoryController,
-
-    ): Response {
+    #[Route('/', name: 'app_home')]
+    public function homeIndex(CategoryRepository $categoryRepository, CategoryController $categoryController): Response
+    {
         // Récupération de toutes les catégories de la table
 
         $request = $categoryController->index($categoryRepository);
