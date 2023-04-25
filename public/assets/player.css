@@ -1,6 +1,6 @@
 #playerSection {
 display: flex;
-flex-direction: column;
+flex-direction: column ;
 }
 
 #my-player {
@@ -9,26 +9,29 @@ flex-direction: column;
 
 #previous-song-btn, #next-song-btn{
     color: black;
-    font-size: 45px;
+    font-size: 30px;
     padding:none;
-}
-
-#previous-page-btn{
-    color:black;
-    font-size: 40px;
-    font-weight: 900;
 }
 
 #animDisc {
     display: flex;
-    margin-left: 2em;
+    height: 32vh ;
+    width : 90vw ;
+    margin: 0 1em;
+}
+
+.disc {
+    position: relative;
+   margin-left : 2.5em;
+    width: 210px;
+    height: 210px;
 }
 
 .headshell {
     position: absolute;
     width: 24%;
-    top: 15%;
-    left : 67%;
+    top: 24%;
+    left : 60%;
 }
 
 .move {
@@ -40,7 +43,7 @@ flex-direction: column;
         transform: rotate(0deg);
       }
       to {
-        transform: rotate(19deg);
+        transform: rotate(27deg);
       }
       }
 
@@ -50,16 +53,11 @@ flex-direction: column;
 
 @keyframes reset-headshell {
     from {
-        transform: rotate(10deg);
+        transform: rotate(27deg);
     }
     to {
         transform: rotate(0deg);
     }
-}
-
-.disc {
-    position: relative;
-    width: 80%;
 }
 
 .rotate {
@@ -76,55 +74,87 @@ flex-direction: column;
     }
   }
 
+#songandPlayer{
+    height:28vh;
+    padding:none;
+}
+
 #player-song-infos{
     display: flex;
-    margin: 2em;
+    justify-content: center;
+    margin: 1em;
+    height : 18vh;
 }
 
 #album-image{
-    width: 70%;
+    width:100px;
+    height:100px;
+    margin-left : 3em;
+}
+
+.player-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.3em;
+    }
+    
+#song-artist {
+    margin: 0 1em;
+}
+
+#song-title {
+    margin-left : 1em;
+    margin-top : 0.5em;
 }
 
 /* MEDIA QUERIES */
-@media screen and (min-width:760px){
+@media only screen and (min-width:760px){
 
 #playerSection {
-    display: flex;
     flex-direction: row;
 }
 
 #animDisc {
-    width:50vw;
+    width:45vw;
+    height : 45vh;
     display: flex;
+    align-items: center;
 }
 
-#songandPlayer{
-    width:50vw;
+.disc {
+    width : 300px;
+    height : 300px;
+    margin-left: 0;
 }
 
 .headshell {
     width:15%;
-    top: 17%;
-    left : 37%;
+    top: 28%;
+    left :39%;
 }
 
-@keyframes move-headshell {
-    0% {
-        transform: rotate(0deg);
-    }
-      
-    100% {
-        transform: rotate(21deg);
-    }
+#songandPlayer{
+    display:flex;
+    flex-direction: column;
+    width:45vw;
+    height:50vh;
+    justify-content: center;
+    align-items: space-between;
+}
+
+#player-song-infos{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 2em;
+    margin-bottom: 1em;
+    height : 30vh;
 }
 
 #album-image{
-    width: 45%;
-}
-
-.player-wrapper {
-display: flex;
-align-items: center;
+    width:150px;
+    height:150px; 
+   margin-left : 1em;
 }
 
 #my-player {
@@ -132,11 +162,100 @@ align-items: center;
     margin: 0.3em;
 }
 
-#player-song-infos{
-    display: flex;
-    justify-content: space-around;
 }
+
+@media screen and (min-width:820px){
+
+    .headshell {
+        width:15%;
+        top: 25%;
+        left :36%;
+    }
+
 }
+
+@media screen and (min-width:1024px){
+
+    .disc {
+        width : 400px;
+        height : 400px;
+    }
+
+    .headshell {
+        width:15%;
+        top: 25%;
+        left :38%;
+    }
+
+    @keyframes move-headshell {
+        0% {
+            transform: rotate(0deg);
+        }
+          
+        100% {
+            transform: rotate(25deg);
+        }
+    }
+
+    #animDisc, #songandPlayer {
+        height : 60vh;
+    }
+     
+}
+
+@media screen and (min-width:1124px){
+
+    .headshell {
+        left :33%;
+    }
+
+}
+
+@media screen and (min-width:1224px){
+
+    .headshell {
+        width:13%;
+        left: 28%;
+    }
+     
+}
+
+@media screen and (min-width:1440px){
+
+    .disc {
+        width : 450px;
+        height : 450px;
+    }
+
+    .headshell {
+        width:12%;
+        top: 31%;
+        left: 30%;
+      
+    }
+
+    @keyframes move-headshell {
+        0% {
+            transform: rotate(0deg);
+        }
+          
+        100% {
+            transform: rotate(25deg);
+        }
+    }
+
+    #animDisc, #songandPlayer {
+        height : 70vh;
+    }
+    
+    #album-image {
+        width: 180px;
+        height: 180px;
+    }
+     
+}
+
+    
 
 
 

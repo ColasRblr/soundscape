@@ -10,10 +10,10 @@ let categoryId = url.split("/")[5];
 let songId = url.split("/")[4];
 
 // Récupération de toutes les chansons de la même catégorie
-function getSongsByCategory(categoryId, songId) {
+function getSongsByCategory(categoryId) {
   $.ajax({
-    url: "/get-songs-by-category",
-    type: "POST",
+    url: "/category/" + categoryId + "/getsongs",
+    type: "GET",
     data: {
       category_id: categoryId,
     },
@@ -56,7 +56,7 @@ function loadSong(index) {
 
   if (currentSong) {
     // Charger la chanson dans le lecteur audio
-    $("#my-player").attr("src", currentSong.path_song);
+    $("#my-player").attr("src", currentSong.url);
 
     // Mettre à jour le titre de la chanson
     $("#song-title").text(currentSong.title);
@@ -121,6 +121,30 @@ audio.addEventListener("play", function () {
 
 audio.addEventListener("pause", function () {
   disc.classList.remove("rotate");
-  headshell.classList.remove("move"); 
+  headshell.classList.remove("move");
   headshell.classList.add("reset");
 });
+
+// Afficher coeur vide ou rempli selon si chanson dans favori de l'utilisateur
+window.onload = function () {
+  // Récupérer l'élément du bouton de favori et l'ID de la chanson
+  var favoriteBtn = document.querySelector(".home-container-btn");
+
+  // Effectuer une requête AJAX pour vérifier si la chanson est déjà dans les favoris
+  $.ajax({
+    url: "/favorite/isFavorite/" + songId,
+    success: function (response) {
+      var img = document.createElement("img");
+      favoriteBtn.appendChild(img);
+      img.setAttribute("id", "home-favorite-btn");
+      if (response == "true") {
+        // La chanson est déjà dans les favoris, afficher le cœur rempli
+        img.setAttribute("src", "/img/favorite.png");
+      } else {
+        // La chanson n'est pas dans les favoris, afficher le cœur vide
+        img.setAttribute("src", "/img/emptyHeart.png");
+      }
+    },
+  });
+};
+

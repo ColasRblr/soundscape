@@ -4,7 +4,7 @@
     margin-bottom: 20px;
   } */
   
-  button {
+  /* button {
     margin-top: 50px;
   }
 
@@ -23,13 +23,13 @@
   background-color: black;
   color: white;
   margin: 1rem;
-}
+} */
 
-  #disque-container {
+  /* #disque-container {
     position: relative;
   }
-  
-  h2 {
+   */
+  /* h2 {
     font-family: Asap;
     text-transform: uppercase;
     color: white;
@@ -42,8 +42,8 @@
     left: 50%;
     transform: translate(-50%, -50%); 
   }
-  
-  #containerh2 {
+   */
+  /* #containerh2 {
     background: url(img/disc.png) no-repeat center;
     background-size: contain;
     height: 20vh;
@@ -55,28 +55,28 @@
     position: relative;
     top: -20px;
   }
-  
-  #disque-container {
+   */
+  /* #disque-container {
     position: absolute;
     top: 38%;
     left: 0;
     right: 0;
     margin: -10vh auto 0;
     transform: translateY(-50%);
-  }
+  } */
   
-  form {
+  /* form {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    margin-top: 10px; /* Réduit la marge supérieure de 20px */
+    margin-top: 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
-    top: calc(20vh - 5vh - 25px); /* Modifie la valeur de 'top' pour le déplacer plus haut */
-  }
+    top: calc(20vh - 5vh - 25px); 
+  } */
   
   
   

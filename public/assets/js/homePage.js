@@ -27,29 +27,54 @@ slideChange.call(swiper);
 // Définition de la fonction slideChange
 
 function slideChange() {
-  // Récupérer l'ID de la catégorie de la nouvelle slide
-  var category_id = this.slides[this.activeIndex].getAttribute("data-id"); // Envoyer l'ID de la catégorie au contrôleur Symfony via AJAX
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/get-songs-by-category");
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhr.responseType = "json";
-  xhr.onreadystatechange = function () {
-    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-      var response = this.response;
-      // Mettre à jour la liste de chansons avec les nouvelles chansons
-      var songList = document.querySelector("#song-list");
+  var category_id = this.slides[this.activeIndex].getAttribute("data-id");
+  var songList = document.querySelector("#home-song-list");
+  songList.classList.add("hidden"); // Masquer la liste des chansons
+
+  $.ajax({
+    url: "/category/" + category_id + "/getsongs",
+    success: function (response) {
       songList.innerHTML = "";
       response.forEach(function (song) {
         var li = document.createElement("li");
+        li.classList.add("homeSongLi");
         var a = document.createElement("a");
         a.setAttribute("href", "/player/" + song.id + "/" + category_id);
-        // Ajouter l'URL en tant que data-url
-        a.innerHTML = "<h4>" + song.artist + "</h4><h5>" + song.title + "</h5>";
+        a.classList.add("homeSong");
+        a.innerHTML =
+          "<h4 id ='home-song-artist'> " +
+          song.artist +
+          "</h4><h5 id ='home-song-title'>" +
+          song.title +
+          "</h5>";
         li.appendChild(a);
-        li.setAttribute("data-category-id", category_id);
         songList.appendChild(li);
+        if (isAuthenticated) {
+          var favbtn = document.createElement("a");
+          var img = document.createElement("img");
+          li.appendChild(favbtn);
+          favbtn.appendChild(img);
+          img.setAttribute("id", "home-favorite-btn");
+          favbtn.classList.add("home-container-btn");
+          favbtn.setAttribute("href", "/favorite/newFavorite/" + song.id);
+          // Effectuer une requête AJAX pour vérifier si la chanson est dans les favoris de l'utilisateur
+          $.ajax({
+            url: "/favorite/isFavorite/" + song.id,
+            success: function (response) {
+              if (response == "true") {
+                // La chanson est déjà dans les favoris, afficher le cœur rempli
+                img.setAttribute("src", "/img/favorite.png");
+              } else {
+                // La chanson n'est pas dans les favoris, afficher le cœur vide
+                img.setAttribute("src", "/img/emptyHeart.png");
+              }
+            },
+          });
+        }
       });
-    }
-  };
-  xhr.send("category_id=" + category_id);
+      songList.classList.remove("hidden"); // Afficher la liste des chansons
+    },
+  });
+
+  
 }
