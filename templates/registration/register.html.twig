@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Register{% endblock %}
 
 {% block body %}
 <a id="previous-page-btn" href="/app_home">
-    <img src="img/arrow2.png" alt="Flèche de retour" />
+    <i class="bi bi-arrow-left"></i>
 </a>
 
 <form method="post">
@@ -18,7 +19,7 @@
         {{ form_errors(registrationForm) }}
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6 mb-3">
             {{ form_row(registrationForm.lastname, {
                 'attr': {
                     'class': 'form-control',
@@ -26,7 +27,7 @@
                 }
             }) }}
         </div>
-        <div class="col-md-12">
+        <div class="col-md-6 mb-3">
             {{ form_row(registrationForm.firstname, {
                 'attr': {
                     'class': 'form-control',
@@ -34,7 +35,7 @@
                 }
             }) }}
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 mb-3">
             {{ form_row(registrationForm.email, {
                 'attr': {
                     'class': 'form-control',
@@ -42,7 +43,7 @@
                 }
             }) }}
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 mb-3">
             {{ form_row(registrationForm.plainPassword, {
                 'label': 'Mot de passe',
                 'attr': {
@@ -51,33 +52,13 @@
                 }
             }) }} 
         </div>
-        <div class="col-md-12 d-flex justify-content-between">
-        <div>
-            <button type="submit" id="btn-register" class="btn btn-primary">S'inscrire</button>
+        <div class="col-md-12 mb-3">
+            <div class="d-flex justify-content-between">
+                <button type="submit" id="btn-register" class="btn btn-primary">S'inscrire</button>
+                <button type="submit" id="bnt-cancel" class="btn btn-secondary">Annuler</button>
+            </div>
         </div>
-        <div>
-            <button type="submit" id="bnt-cancel" class="btn btn-secondary">Annuler</button>
-        </div>
-        
-        
-        
-        
     </div>
-{{ form_end(registrationForm) }}
-
-    {# {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.lastname) }}
-        {{ form_row(registrationForm.firstname) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Mot de passe'
-        }) }} #}
-
-       
-
-
-
     {{ form_end(registrationForm) }}
 </form>
 {% endblock %}
-

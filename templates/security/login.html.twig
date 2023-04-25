@@ -4,44 +4,59 @@
 
 {% block body %}
  
+
 <a id="previous-page-btn" href="/app_home">
-    <img src="img/arrow1.png" alt="Flèche de retour" />
+    <i class="bi bi-arrow-left"></i>
 </a>
 
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+{% if app.user %}
+    <div class="mb-3">
+        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+    </div>
+{% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
-
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+<div class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal">CONNEXION</h1>
     <label for="inputEmail">Email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
     <label for="inputPassword">Password</label>
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
     <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+           value="{{ csrf_token('authenticate') }}">
+           <button class="btn btn-lg btn-black btn-block" type="submit">
+            Connectez-vous
+        </button>
+        
+       
+</div>
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
+<style>
+    .h3{
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .btn-black {
+                background-color: #000;
+                color: #fff;
+            }
+    .form-signin {
+        max-width: 400px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .form-signin label {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    .form-signin input[type="email"],
+    .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+</style>
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
 {% endblock %}
