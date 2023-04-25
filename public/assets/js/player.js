@@ -124,3 +124,27 @@ audio.addEventListener("pause", function () {
   headshell.classList.remove("move");
   headshell.classList.add("reset");
 });
+
+// Afficher coeur vide ou rempli selon si chanson dans favori de l'utilisateur
+window.onload = function () {
+  // Récupérer l'élément du bouton de favori et l'ID de la chanson
+  var favoriteBtn = document.querySelector(".home-container-btn");
+
+  // Effectuer une requête AJAX pour vérifier si la chanson est déjà dans les favoris
+  $.ajax({
+    url: "/favorite/isFavorite/" + songId,
+    success: function (response) {
+      var img = document.createElement("img");
+      favoriteBtn.appendChild(img);
+      img.setAttribute("id", "home-favorite-btn");
+      if (response == "true") {
+        // La chanson est déjà dans les favoris, afficher le cœur rempli
+        img.setAttribute("src", "/img/favorite.png");
+      } else {
+        // La chanson n'est pas dans les favoris, afficher le cœur vide
+        img.setAttribute("src", "/img/emptyHeart.png");
+      }
+    },
+  });
+};
+
