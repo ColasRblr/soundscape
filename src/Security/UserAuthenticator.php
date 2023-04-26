@@ -14,6 +14,7 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
+use Symfony\Component\HttpFoundation\Cookie;
 
 class UserAuthenticator extends AbstractLoginFormAuthenticator
 {
@@ -50,7 +51,7 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
         }
         if (in_array('ROLE_ADMIN', $user->getRoles())) {
             // Redirect admin users to the admin dashboard
-            return new RedirectResponse($this->urlGenerator->generate('admin'));
+            return new RedirectResponse($this->urlGenerator->generate('app_admin'));
         } else {
             // Redirect regular users to the homepage
             return new RedirectResponse($this->urlGenerator->generate('app_home'));

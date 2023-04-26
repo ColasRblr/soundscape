@@ -1,0 +1,17 @@
+#containerFavorite {
+  margin-top: 10vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+#favoriteImage {
+  width: 50px;
+}
+
+#favoriteList {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}

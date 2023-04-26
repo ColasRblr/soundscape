@@ -1,33 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Favorite index{% endblock %}
+{% block title %}Favorite index
+{% endblock %}
 
 {% block body %}
-    <h1>Favorite index</h1>
+	<div id="containerh2">
+		<h2>Ma playlist</h2>
+	</div>
+	{# <a id="previous-page-btn" href="/app_home">
+											<i class="bi bi-arrow-left"></i>
+										</a> #}
+	<table class="table">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for favorite in favorites %}
-            <tr>
-                <td>{{ favorite.id }}</td>
-                <td>
-                    <a href="{{ path('app_favorite_show', {'id': favorite.id}) }}">show</a>
-                    <a href="{{ path('app_favorite_edit', {'id': favorite.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="2">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_favorite_new') }}">Create new</a>
+		<tbody>
+			{% for favorite in favorites %}
+				<tr id="favoriteList">
+					<td>
+						<img id="favoriteImage" src="{{ asset('img/albums/' ~ favorite.image) }} ">
+					</td>
+					<td>
+						<h4>{{favorite.artist}}</h4>
+					</td>
+					<td>
+						<h5>{{favorite.title}}</h5>
+					</td>
+					<td>
+						{# {{ path('/player/' ~ song.id '/' ~ category_id }} #}
+						<a href="{{ path('app_favorite_player', {'id': song.id, 'category_id': category.id}) }}" class="btn">
+							<i class="bi bi-play-fill"></i>
+						</a>
+					</td>
+					<td>
+						<form method="post" action="{{ path('app_favorite_delete', {'id': favorite.id}) }}" onsubmit="return confirm('Etes-vous sur de vouloir retirer cette musique de vos favoris ?');">
+							<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ favorite.id) }}">
+							<button class="btn">
+								<i class="bi bi-trash-fill"></i>
+							</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		{% endfor %}
+	</table>
 {% endblock %}

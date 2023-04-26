@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Player!
+{% endblock %}
+
+{% block body %}
+	<section id="playerSection">
+
+		<a id="previous-page-btn" href="/">
+			<i class="bi bi-arrow-left"></i>
+		</a>
+
+		<div id="animDisc">
+			<img src="{{ asset('img/disc.png') }}" alt="Disc" class="disc">
+			<img src="{{ asset('img/headshell.png') }}" alt="Headshell" class="headshell">
+		</div>
+
+		<div id="songandPlayer">
+			<div id="player-song-infos">
+				<img src="{{ asset('img/albums/' ~ song.image) }}" alt="album_img" id="album-image">
+				<div>
+					<h4 id="song-artist">
+						{{ song.artist }}
+					</h4>
+					<h5 id="song-title">{{ song.title }}
+					</h5>
+				</div>
+				{% if app.user %}
+					<a class="home-container-btn" href="{{ path('app_new_favorite', {'id': song.id}) }}"></a>
+					<script>
+						var isAuthenticated = true;
+					</script>
+				{% endif %}
+
+			</div>
+
+			<div class="player-wrapper">
+				<i class="bi bi-arrow-left-circle-fill" id="previous-song-btn"></i>
+				<audio id="my-player" controls>
+					<source src="{{ song.url }}">
+				</audio>
+				<i class="bi bi-arrow-right-circle-fill" id="next-song-btn"></i>
+			</div>
+		</div>
+	</section>
+{% endblock %}
