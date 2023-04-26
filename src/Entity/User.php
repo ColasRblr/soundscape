@@ -2,6 +2,9 @@
 
 namespace App\Entity;
 
+use App\Entity\Category;
+use App\Form\CategoryType;
+use App\Repository\CategoryRepository;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -161,7 +164,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             $this->categories->add($category);
             $category->setUser($this);
         }
-
         return $this;
     }
 

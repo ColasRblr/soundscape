@@ -5,7 +5,7 @@ controllers:
   type: attribute
 
 home:
-  path: "/app_home"
+  path: "/"
   controller: App\Controller\HomeController::homeIndex
 
 register:
@@ -34,7 +34,7 @@ favorite:
   controller: App\Controller\FavoriteController::index
 
 app_new_favorite:
-  path : "favorite/newFavorite/{id}"
+  path: "favorite/newFavorite/{id}"
   controller: App\Controller\FavoriteController::newFavorite
   methods: ["GET"]
 
@@ -48,7 +48,35 @@ player:
   requirements:
     id: \d+
     category_id: \d+
+
 # app_favorite_player:
 #   path: /favorite/{id}/{category_id}
 #   controller: App\Controller\FavoriteController::show
 #   methods: ["GET"]
+
+
+admin:
+  path: "/admin"
+  controller: App\Controller\HomeController::admin_index
+
+editCategory:
+  path: "/category/{id}/edit"
+  controller: App\Controller\CategoryController::edit
+
+deleteCategory:
+  path: "/category/{id}/delete"
+  controller: App\Controller\CategoryController::delete
+
+adminSong:
+  path: "/home/admin_song"
+  controller: App\Controller\SongController::adminSongPage
+
+# editSong:
+#   path: "/song/{id}/edit"
+#   controller: App\Controller\SongController::edit
+
+#  deleteSong:
+#    path: "/song/{id}/delete"
+#    controller: App\Controller\SongController::delete
+
+

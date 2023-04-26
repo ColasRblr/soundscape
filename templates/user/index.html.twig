@@ -8,30 +8,29 @@
 		<h2>Mon profil</h2>
 	</div>
 
+
     <a href="{{ path('app_user_new') }}">Create new</a>
 	<div id="containerProfil">
 
-		<div class="elementsProfil">
-			<label>Nom</label>
-			<p class="formProfilInformations">{{ user.firstName }}</p>
-		</div>
-		<div class="elementsProfil">
-			<label>Prénom</label>
-			<p class=" formProfilInformations">{{ user.lastName }}</p>
-		</div>
-		<div class="elementsProfil">
-			<label>Email</label>
-			<p class="formProfilInformations">{{ user.email }}</p>
-		</div>
-		<div class="elementsProfil">
-			<label>Mot de passe</label>
-			<p class="formProfilInformations">{{ user.password }}</p>
-		</div>
-	</div>
+	<div id="containerPageProfil">
+		<div id="containerProfil">
 
-	<div id="btnUpdateProfil">
+			<div class="elementsProfil">
+				<label>Nom</label>
+				<p class="formProfilInformations">{{ user.firstName }}</p>
 
-		<a href="{{ path('app_user_edit', {'id': user.id}) }}" id="btnValidateModifyProfil">Modifier</a>
+				<label>Prénom</label>
+				<p class=" formProfilInformations">{{ user.lastName }}</p>
 
+				<label>Email</label>
+				<p class="formProfilInformations">{{ user.email }}</p>
+			</div>
+		</div>
+
+		<div id="btnUpdateProfil">
+			<button>
+				<a href="{{ path('app_user_edit', {'id': user.id}) }}" id="btnValidateModifyProfil">Modifier</a>
+			</button>
+		</div>
 	</div>
 {% endblock %}
