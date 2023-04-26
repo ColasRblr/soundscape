@@ -18,6 +18,16 @@ header {
   margin-left: 3vw;
 }
 
+
+/* footer {
+  background-color: black;
+  width: 100vw;
+  height: 10vh;
+  position: fixed;
+  bottom: 0;
+} */
+
+
 #logo {
   width: 90px;
   float: right;

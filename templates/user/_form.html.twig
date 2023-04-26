@@ -21,3 +21,7 @@
 	<button class="button">{{ button_label|default('Save') }}</button>
 </div>
 {{ form_end(form) }}
+{% for user in users %}
+    <p>{{ user.name }}</p>
+{% endfor %}
+
