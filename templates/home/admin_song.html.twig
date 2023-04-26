@@ -9,6 +9,13 @@
 </style>
 
 <div class="example-wrapper">
+   {% for data in myData %}
+                    <div class="swiper-slide" data-id="{{ data.categoryId }}">
+                        <img src="{{ asset('/img/categories/' ~ data.categoryPath) }}" alt="{{ data.categoryAlt }}" id="homeCategoryImage">
+                        <h1 id="homeCategoryName">{{ data.categoryName }}</h1>
+                    </div>
+                {% endfor %}
+
     <div class="admin_title">
         <h1>Titre Category</h1>
         {{ include('category/show.html.twig') }}
