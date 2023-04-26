@@ -19,8 +19,9 @@
             <i class="fa fa-heart" style="font-size:36px"></i>
         </div>
         <div class="admin_category">
-            <h3>CATEGORIES</h3>
-            <a href="{{ path('app_category_new') }}"><i class="fa fa-plus" id="admin_plus_icon" style="font-size:36px"></i></a>
+            {# <h3>CATEGORIES</h3> #}
+            <a href="{{ path('app_category_new') }}">
+            <i class="fa fa-plus" id="admin_plus_icon" style="font-size:36px"></i></a>
         </div>
 
         {{ include('category/show.html.twig') }}

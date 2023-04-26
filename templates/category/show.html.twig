@@ -6,20 +6,23 @@
 
 {% block body %}
 
-	<div class="swiper-container"
-      data-mydata="{{ myData|json_encode|raw }}" 
-     >
+	<div class="swiper-container" data-mydata="{{ myData|json_encode|raw }}" >     
+
 			 {% for data in myData %} 
 				<div class="show_category">
 					<div class="swiper-slide" data-id="{{ data.categoryId }}">
-						 <a href="{{ path('app_song_index') }}"><img src="{{ asset('/img/categories/' ~ data.categoryPath) }}" alt="{{ data.categoryAlt }}" width="350px" height="250px" id="admin_show_song"></a> 
+
+                        <a href="/category/{{data.categoryId}}/getsongs">
+                        {# <a href="{{ path('app_song_index')}}"> #}
+                         {# <a href="{{ path('app_song_by_category_index', {{data.categoryId}}) }}"> #}
+                         <img src="{{ asset('/img/categories/' ~ data.categoryPath) }}" alt="{{ data.categoryAlt }}" width="350px" height="250px" id="admin_show_song"></a> 
 						 <h1>{{ data.categoryName }}</h1>
 
 					</div>
 					<div class="admin_one_category">
-						{# <a href="{{ path('app_category_edit') }}"> #}
+						<a href="/category/{{data.categoryId}}/edit') }}"> 
                         <i class="fa fa-pencil" id="show_pen" style="font-size:36px"></i></a> 
-						{# <a href="{{ path('app_category_delete') }}">  #}
+						<a href="/category/{{data.categoryId}}/delete') }}"> 
 						<i class="fa fa-trash-o" id="show_trash" style="font-size:36px"></i></a>
 					</div>
 				</div>

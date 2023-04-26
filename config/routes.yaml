@@ -48,8 +48,35 @@ player:
   requirements:
     id: \d+
     category_id: \d+
+<<<<<<< HEAD
     
 # app_favorite_player:
 #   path: /favorite/{id}/{category_id}
 #   controller: App\Controller\FavoriteController::show
 #   methods: ["GET"]
+=======
+
+admin:
+  path: "/home/admin_index"
+  controller: App\Controller\HomeController::admin_index
+
+editCategory:
+  path: "/category/{id}/edit"
+  controller: App\Controller\CategoryController::edit
+
+deleteCategory:
+  path: "/category/{id}/delete"
+  controller: App\Controller\CategoryController::delete
+
+adminSong:
+  path: "/category/{id}/getsongs"
+  controller: App\Controller\HomeController::index
+
+# editSong:
+#   path: "/category/{id}/edit"
+#   controller: App\Controller\SongController::edit
+
+# deleteSong:
+#   path: "/category/{id}/delete"
+#   controller: App\Controller\SongController::delete
+>>>>>>> 8a40832 (delete edit and add not working)

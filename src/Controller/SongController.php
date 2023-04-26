@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+
 #[Route('/song')]
 class SongController extends AbstractController
 {
@@ -23,6 +24,19 @@ class SongController extends AbstractController
             // 'category' => $categoryRepository->findCategoryId(),
         ]);
     }
+
+    #[Route('/category/{categoryId}', name: 'app_song_by_category_index', methods: ['GET'])]
+    public function songByCategory(int $categoryId, SongRepository $songRepository, CategoryRepository $categoryRepository): Response
+    {
+        $category = $categoryRepository->find($categoryId);
+        $songs = $songRepository->findBy(['category' => $category]);
+    
+        return $this->render('song/index.html.twig', [
+            'songs' => $songs,
+            'category' => $category,
+        ]);
+    }
+    
 
     #[Route('/new', name: 'app_song_new', methods: ['GET', 'POST'])]
     public function new(Request $request, SongRepository $songRepository): Response
@@ -43,6 +57,7 @@ class SongController extends AbstractController
         ]);
     }
 
+    ////////////////////
     #[Route('/{id}', name: 'app_song_show', methods: ['GET'])]
     public function show(Song $song): Response
     {
@@ -51,13 +66,30 @@ class SongController extends AbstractController
         ]);
     }
 
-    #[Route('/{category_id}', name: 'app_song_show_by_category', methods: ['GET'])]
-    public function show_by_category(Song $song): Response
-    {
-        return $this->render('song/show.html.twig', [
-            'song' => $song,
-        ]);
-    }
+    // #[Route('/', name: 'app_song_index', methods: ['GET'])]
+    // public function showSongByCategoryId(SongRepository $songRepository, $category_id)
+    // {
+    //     $song = $songRepository->find($category_id);
+
+    //     // Créer un tableau associatif avec les données de la chanson
+    //     $songData = [
+    //         'image' => $song->getImage(),
+    //         'title' => $song->getTitle(),
+    //         'artist' => $song->getArtist(),
+    //         'url' => $song->getUrl(),
+    //     ];
+
+    //     // Retourner les données de la chanson au format JSON
+    //     return $this->json($songData);
+    // }
+
+    // #[Route('/{category_id}', name: 'app_song_show_by_category', methods: ['GET'])]
+    // public function show_by_category(Song $song): Response
+    // {
+    //     return $this->render('song/show.html.twig', [
+    //         'song' => $song,
+    //     ]);
+    // }
 
     #[Route('/{id}/edit', name: 'app_song_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Song $song, SongRepository $songRepository): Response
