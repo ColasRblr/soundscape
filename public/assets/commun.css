@@ -20,6 +20,7 @@ header {
 
 #logo {
   width: 90px;
+  float:right;
 }
 
 h1 {
@@ -67,8 +68,6 @@ h5 {
   font-size: 18px;
   font-weight: bold;
   font-family: Asap;
-
-  margin: 1em;
 }
 
 h6 {
@@ -163,12 +162,14 @@ a {
   .navbar {
     display: none !important;
   }
-
+  #favorite-btn{
+    width:40px;
+  }
 
   h4 {
-    font-size: 30px;
+    font-size: 25px;
   }
   h5 {
-    font-size: 28px;
+    font-size: 23px;
   }
 }
