@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Song;
 use App\Form\SongType;
 use App\Repository\SongRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,6 +20,7 @@ class SongController extends AbstractController
     {
         return $this->render('song/index.html.twig', [
             'songs' => $songRepository->findAll(),
+            // 'category' => $categoryRepository->findCategoryId(),
         ]);
     }
 
@@ -43,6 +45,14 @@ class SongController extends AbstractController
 
     #[Route('/{id}', name: 'app_song_show', methods: ['GET'])]
     public function show(Song $song): Response
+    {
+        return $this->render('song/show.html.twig', [
+            'song' => $song,
+        ]);
+    }
+
+    #[Route('/{category_id}', name: 'app_song_show_by_category', methods: ['GET'])]
+    public function show_by_category(Song $song): Response
     {
         return $this->render('song/show.html.twig', [
             'song' => $song,
