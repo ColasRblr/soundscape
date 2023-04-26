@@ -78,8 +78,9 @@ h6 {
 }
 
 label {
-  font-size: 25px;
+  font-size: 20px;
   font-family: Asap;
+  font-weight: bold;
 }
 input {
   border-radius: 10px;
@@ -108,8 +109,8 @@ a {
   cursor: pointer;
 }
 
-#favorite-btn{
-  width:20px;
+#favorite-btn {
+  width: 20px;
 }
 
 /* MEDIA QUERIES */
@@ -126,13 +127,16 @@ a {
   #previous-page-btn {
     font-size: 45px;
   }
-  #favorite-btn{
-    width:30px;
+  #favorite-btn {
+    width: 30px;
   }
-  
 }
 
 @media screen and (min-width: 1024px) {
+  #logo {
+    width: 120px;
+  }
+
   #btnNavBar {
     display: none;
   }
@@ -141,11 +145,11 @@ a {
     display: flex;
     justify-content: space-around;
     gap: 20px;
-    color: white;
-    margin-top: 2vh;
-    background-color: black;
     width: 100vw;
-    height: 8vh;
+    height: 5vh;
+    color: white;
+    margin-top: 5vh;
+    background-color: black;
     position: fixed;
     bottom: 0;
     align-items: center;
@@ -163,7 +167,6 @@ a {
   .navbar {
     display: none !important;
   }
-
 
   h4 {
     font-size: 30px;

@@ -25,8 +25,11 @@
 }
 #containerProfil {
   margin-left: 25vw;
-  /* margin-top: 5vh; */
   margin-bottom: 4vh;
+}
+
+#containerPageProfil {
+  padding-bottom: 5vh;
 }
 
 .form-control {
@@ -38,45 +41,32 @@
   margin-bottom: 5px;
 }
 
-#btnDeleteProfil {
-  text-align: center;
-}
-
 #btnUpdateProfil {
   text-align: center;
 }
 
 #btnDeleteProfil {
   width: 50vw;
+  text-align: center;
 }
 
 #formDelete {
   text-align: center;
 }
-/* @media only screen and (max-width: 768px) {
-  footer {
-    background-color: black;
-    width: 100vw;
-    height: 10vh;
-    position: fixed;
-    bottom: 0;
+@media only screen and (min-width: 768px) {
+  #btnDeleteProfil {
+    width: 30vw;
   }
-} */
+}
 
-/* @media only screen and (min-width: 1024px) {
-  footer {
-    background-color: black;
-    width: 100vw;
-    height: 8vh;
-    position: fixed;
-    bottom: 0;
-    margin-top: 10vh;
-   
-  }
-
+@media only screen and (min-width: 1024px) {
   .offcanvas-body {
     align-self: center;
   }
   .nav-item {
     font-size: 20px;
-  } */
+  }
+  #btnDeleteProfil {
+    width: 40vw;
+  }
+}
