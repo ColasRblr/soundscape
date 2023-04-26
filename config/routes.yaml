@@ -57,7 +57,7 @@ player:
 =======
 
 admin:
-  path: "/home/admin_index"
+  path: "/admin"
   controller: App\Controller\HomeController::admin_index
 
 editCategory:
@@ -73,10 +73,14 @@ adminSong:
   controller: App\Controller\HomeController::index
 
 # editSong:
-#   path: "/category/{id}/edit"
+#   path: "/song/{id}/edit"
 #   controller: App\Controller\SongController::edit
 
 # deleteSong:
+
 #   path: "/category/{id}/delete"
 #   controller: App\Controller\SongController::delete
->>>>>>> 8a40832 (delete edit and add not working)
+
+#   path: "/song/{id}/delete"
+#   controller: App\Controller\SongController::delete
+
