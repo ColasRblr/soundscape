@@ -137,7 +137,7 @@ class SongController extends AbstractController
         // Retourner les données de la chanson au format JSON
         return $this->json($songData);
     }
-    #[Route('/', name: 'admin_song')]
+    #[Route('/home/admin_song', name: 'admin_song')]
     public function adminSongPage(
         CategoryRepository $categoryRepository,
         CategoryController $categoryController,
@@ -148,7 +148,7 @@ class SongController extends AbstractController
         $request = $categoryController->getSongsByCategory($categoryRepository);
         $response = $request->getContent();
         $myData = json_decode($response);
-        // var_dump($cate);
+        var_dump($myData);
 
         return $this->render('home/admin_song.html.twig', [
          'myData' => $myData

@@ -7,9 +7,8 @@
 {% block body %}
 
 	<div class="swiper-container" data-mydata="{{ myData|json_encode|raw }}" >     
-
 			 {% for data in myData %} 
-				<div class="show_category">
+				<div class="show_category">                    
 					<div class="swiper-slide" data-id="{{ data.categoryId }}">
 
                         <a href="/song/app_admin_song">
@@ -29,6 +28,5 @@
 			 {% endfor %} 
 	</div>
 
-
-    {{ include('category/_delete_form.html.twig') }}
+    {# {{ include('category/edit.html.twig') }} #}
 {% endblock %}
