@@ -38,6 +38,8 @@ class CategoryController extends AbstractController
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
+        $idCategory = $request->get('id_category');
+
         if ($form->isSubmitted() && $form->isValid()) {
             $categoryRepository->save($category, true);
 
@@ -47,18 +49,19 @@ class CategoryController extends AbstractController
         return $this->render('category/new.html.twig', [
             'category' => $category,
             'form' => $form,
+            'id_category' => $idCategory,
         ]);
     }
 
-    #[Route('/{id}', name: 'app_category_show', methods: ['GET'])]
-    public function show(Category $category): Response
-    {
-        return $this->render('category/show.html.twig', [
-            'category' => $category,
-        ]);
-    }
+    // #[Route('/admin', name: 'app_category_show', methods: ['GET'])]
+    // public function show(Category $category): Response
+    // {
+    //     return $this->render('category/show.html.twig', [
+    //         'category' => $category,
+    //     ]);
+    // }
 
-    #[Route('/{id}/edit', name: 'app_category_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'app_category_edit', methods: ['GET'])]
     public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
         $form = $this->createForm(CategoryType::class, $category);
@@ -76,7 +79,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_category_delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'app_category_delete', methods: ['POST'])]
     public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->request->get('_token'))) {
@@ -87,9 +90,8 @@ class CategoryController extends AbstractController
     }
 
     // SOUNDSCAPE METHODS 
-
     #[Route('/{id}/getsongs', name: 'get_songs_by_category', methods: ['GET'])]
-    public function getSongsByCategory(Category $category): Response
+    public function getSongsByCategory(Category $category,CategoryController $categoryController,CategoryRepository $categoryRepository,): Response
     {
         $songs = $category->getSongs();
         $data = array();
@@ -100,7 +102,9 @@ class CategoryController extends AbstractController
                 'artist' => $song->getArtist(),
             );
         }
+
         dump($songs); // Vérifiez si la liste de chansons est vide ou non
         return $this->json($data);
     }
+
 }
