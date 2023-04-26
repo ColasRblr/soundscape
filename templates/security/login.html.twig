@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Log in!{% endblock %}
+{% block styles %}
 
 {% block body %}
  
@@ -9,7 +10,7 @@
     <i class="bi bi-arrow-left"></i>
 </a>
 
-{% if app.user %}
+{# {% if app.user %}
     <div class="mb-3">
         You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
     </div>
@@ -29,34 +30,167 @@
         </button>
         
        
+</div> #}
+
+<div class="container disc-image">
+    <img src="/img/disc.png" alt="disque vinyle">
+    <div class="h2">CONNEXION</div>
+  </div>
+  
+
+<form class="form-inline">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
+        <label for="adresse" class="sr-only">Adresse mail :</label>
+        <input type="text" class="form-control" id="adresse" placeholder="Adresse mail">
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <label for="password" class="sr-only">Mot de passe :</label>
+        <input type="password" class="form-control" id="password" placeholder="">
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <button type="submit" class="btn id="valider"  btn-primary">Valider</button>
+    </div>
 </div>
+</form>    
+<footer>
+    <div class="left-link">
+      <a href="/app_register">INSCRIPTION</a>
+    </div>
+    <div class="right-link">
+      <a href="#">CONNEXION</a>
+    </div>
+  </footer>
+
+
 
 <style>
-    .h3{
-        font-size: 25px;
-        font-weight: bold;
+    .h2{
+            font-weight: bold;
+            color: white;
+            font-size: 20px;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+      
+        form {
+            margin-bottom: 10px; 
+            margin: 0 auto;
+        }
+        
+        label {
+            font-size: 25px;
+            font-weight: bold;
+        }
+       
+        .form-group input {
+            width: 300px;
+            height: 50px;
+        }
+        
+
+        .btn {
+            background: black;
+            color: white;
+            margin: 15px;
+            width: 130px;
+            border-radius: 50px;
+            height: 30px;
+            padding: 2px;
+        }
+        
+        @media only screen and (max-width: 767px){
+    .disc-image {
+        display: none;
     }
-    .btn-black {
-                background-color: #000;
-                color: #fff;
-            }
-    .form-signin {
-        max-width: 400px;
-        margin: 0 auto;
-        text-align: center;
+    
+}
+
+
+
+
+
+        
+/* MEDIA QUERIES */
+@media only screen and (min-width: 768px){
+
+.container {
+position: relative;
+text-align: center; 
+}
+
+.disc-image img {
+width: 20%; 
+}
+
+.h2 {
+position: absolute;
+top: 83%;
+left: 50%;
+transform: translate(-50%, -50%);
+font-weight: bold;
+color: white;
+font-size: 18px;
+text-align: center;
+}
+
+.form-group input {
+        width: 850px;
+        height: 55px;
     }
-    .form-signin label {
-        margin-top: 10px;
-        margin-bottom: 5px;
+    
+    .btn {
+        background: black;
+        color: white;
+        margin: 15px;
+        width: 410px;
+        border-radius: 50px;
+        height: 33px;
+        padding: 2px;
+        margin-top: 25px;
+       line-height:center;
     }
-    .form-signin input[type="email"],
-    .form-signin input[type="password"] {
-        font-size: 16px;
-        height: auto;
-        padding: 10px;
-        margin-bottom: 10px;
-        font-weight: bold;
-    }
+
+/* footer {
+background-color: black;
+width: 100vw;
+height: 10vh;
+position: fixed;
+bottom: 0;
+margin-top: 25px;
+
+}  */
+footer {
+background-color: black;
+height: 50px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 20px;
+}
+
+.left-link a {
+color: white;
+text-decoration: none;
+margin: 600px;
+font-weight: bold;
+line-height:center;
+margin-left: 600px;
+}
+
+.right-link a {
+color: white;
+text-decoration: none;
+margin: 250px;
+font-weight: bold;
+line-height:center;
+margin-right: 300px;
+padding: 5px;
+
+}
+}
 </style>
+{% endblock %}
 
 {% endblock %}

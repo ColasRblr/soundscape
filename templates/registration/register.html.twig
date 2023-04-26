@@ -92,9 +92,10 @@
             height: 33px;
             padding: 2px;
             margin-top: 25px;
+           line-height:center;
         }
 
-footer {
+/* footer {
   background-color: black;
   width: 100vw;
   height: 10vh;
@@ -102,22 +103,41 @@ footer {
   bottom: 0;
     margin-top: 25px;
   
-} 
-
-
+}  */
+footer {
+    background-color: black;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .left-link a {
+    color: white;
+    text-decoration: none;
+    margin: 600px;
+    font-weight: bold;
+    line-height:center;
+    margin-left: 600px;
+  }
+  
+  .right-link a {
+    color: white;
+    text-decoration: none;
+    margin: 250px;
+    font-weight: bold;
+    line-height:center;
+    margin-right: 300px;
+    padding: 5px;
+    
+  }
 }
-
-
-
-
-        
-
-    </style>
+</style>
 
 <a id="previous-page-btn" href="/app_home">
     <i class="bi bi-arrow-left"></i>
 </a>
-
 
 {# <div class="h2">INSCRIPTION</div>
 <div class="disc-image">
@@ -132,7 +152,6 @@ footer {
 <form class="form-inline">
     <div class="d-flex flex-column justify-content-center align-items-center">
         <form class="form-inline">
-            <!-- form elements here -->
     <div class="form-group mx-sm-3 mb-2">
         <label for="nom" class="sr-only">Nom :</label>
         <input type="text" class="form-control" id="nom" placeholder="Nom">
@@ -154,7 +173,15 @@ footer {
         <button type="button" class="btn  id="annuler" btn-secondary">Annuler</button>
     </div>
 </div>
-</form>
+</form>    
+<footer>
+    <div class="left-link">
+      <a href="#">INSCRIPTION</a>
+    </div>
+    <div class="right-link">
+      <a href="/app_login">CONNEXION</a>
+    </div>
+  </footer>
 
 {% endblock %}
 
