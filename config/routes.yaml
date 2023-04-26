@@ -34,7 +34,7 @@ favorite:
   controller: App\Controller\FavoriteController::index
 
 app_new_favorite:
-  path : "favorite/newFavorite/{id}"
+  path: "favorite/newFavorite/{id}"
   controller: App\Controller\FavoriteController::newFavorite
   methods: ["GET"]
 
@@ -49,7 +49,6 @@ player:
     id: \d+
     category_id: \d+
 
-    
 # app_favorite_player:
 #   path: /favorite/{id}/{category_id}
 #   controller: App\Controller\FavoriteController::show
@@ -79,4 +78,5 @@ adminSong:
 #  deleteSong:
 #    path: "/song/{id}/delete"
 #    controller: App\Controller\SongController::delete
+
 
