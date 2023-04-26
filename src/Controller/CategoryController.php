@@ -107,21 +107,4 @@ class CategoryController extends AbstractController
         return $this->json($data);
     }
 
-    #[Route('/{id}/songsation', name: 'get_ok_by_category', methods: ['GET'])]
-    public function songIndex(
-        CategoryRepository $categoryRepository,
-        CategoryController $categoryController,
-
-    ): Response {
-        // Récupération de toutes les catégories de la table
-
-        $request = $categoryController->getSongsByCategory($data);
-        $response = $request->getContent();
-        $myData = json_decode($response);
-        // var_dump($cate);
-
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController', 'myData' => $myData
-        ]);
-    }
 }

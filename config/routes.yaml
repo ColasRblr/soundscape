@@ -69,8 +69,8 @@ deleteCategory:
   controller: App\Controller\CategoryController::delete
 
 adminSong:
-  path: "/category/{id}/getsongs"
-  controller: App\Controller\HomeController::index
+  path: "/home/admin_song"
+  controller: App\Controller\SongController::adminSongPage
 
 # editSong:
 #   path: "/song/{id}/edit"

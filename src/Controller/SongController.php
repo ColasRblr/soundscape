@@ -137,7 +137,7 @@ class SongController extends AbstractController
         // Retourner les données de la chanson au format JSON
         return $this->json($songData);
     }
-    #[Route('/', name: 'app_admin_song')]
+    #[Route('/', name: 'admin_song')]
     public function adminSongPage(
         CategoryRepository $categoryRepository,
         CategoryController $categoryController,
