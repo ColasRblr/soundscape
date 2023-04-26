@@ -25,6 +25,7 @@ header {
 
 #headerLogo {
   width: 100vw;
+  float:right;
 }
 
 h1 {
@@ -176,17 +177,24 @@ a {
     display: none !important;
   }
 
+  #favorite-btn{
+    width:40px;
+  }
+
+
   h4 {
     font-size: 25px;
   }
   h5 {
     font-size: 23px;
+
   }
   #previous-page-btn {
     font-size: 25px;
   }
   h2 {
     font-size: 20px;
+
   }
   #containerh2 {
     margin-top: -100px;
