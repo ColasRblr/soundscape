@@ -11,14 +11,14 @@ use App\Controller\CategoryController;
 
 class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'app_home')]
+    #[Route('/', name: 'app_home')]
     public function homeIndex(
         CategoryRepository $categoryRepository,
         CategoryController $categoryController,
 
     ): Response {
+        
         // Récupération de toutes les catégories de la table
-
         $request = $categoryController->index($categoryRepository);
         $response = $request->getContent();
         $myData = json_decode($response);

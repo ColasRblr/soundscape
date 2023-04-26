@@ -32,33 +32,27 @@
 #home-song-list {
   height: 40vh;
   margin-right: 1em;
+  overflow-y: scroll;
+  padding-bottom: 1em;
 
 }
 
 .homeSongLi{
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .homeSong {
-  display: flex;
-  width:70%;
-  justify-content: space-between;
   text-decoration: none;
   color:black;
-  align-items:center;
 }
 
 .home-container-btn{
 display: flex;
 align-items: center;
 }
-
-#home-favorite-btn{
-  width:20px;
-}
-
 
 #swiperAndList {
   display: flex;
@@ -94,7 +88,7 @@ align-items: center;
 @media screen and (min-width:1024px){
 
   #homeCategoryImage {
-    width:60%;
+    width:40%;
   }
 
   #homeCategoryName {

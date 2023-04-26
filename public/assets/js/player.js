@@ -136,7 +136,7 @@ window.onload = function () {
     success: function (response) {
       var img = document.createElement("img");
       favoriteBtn.appendChild(img);
-      img.setAttribute("id", "home-favorite-btn");
+      img.setAttribute("id", "favorite-btn");
       if (response == "true") {
         // La chanson est déjà dans les favoris, afficher le cœur rempli
         img.setAttribute("src", "/img/favorite.png");

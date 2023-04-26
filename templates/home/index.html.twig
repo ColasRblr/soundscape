@@ -19,11 +19,9 @@
 
 		<ul id="home-song-list"></ul>
 
-		{% if app.user %}
-			<script>
-				var isAuthenticated = true;
-			</script>
-		{% endif %}
-		
+
+		<div id="authenticated-status" data-authenticated="{{ app.user ? 'true' : 'false' }}"></div>
+
+
 	</section>
 {% endblock %}
