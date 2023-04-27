@@ -18,7 +18,6 @@ header {
   margin-left: 3vw;
 }
 
-
 /* footer {
   background-color: black;
   width: 100vw;
@@ -27,7 +26,6 @@ header {
   bottom: 0;
 } */
 
-
 #logo {
   width: 90px;
   float: right;
@@ -35,7 +33,7 @@ header {
 
 #headerLogo {
   width: 100vw;
-  float:right;
+  float: right;
 }
 
 h1 {
@@ -187,24 +185,21 @@ a {
     display: none !important;
   }
 
-  #favorite-btn{
-    width:40px;
+  #favorite-btn {
+    width: 40px;
   }
-
 
   h4 {
     font-size: 25px;
   }
   h5 {
     font-size: 23px;
-
   }
   #previous-page-btn {
     font-size: 25px;
   }
   h2 {
     font-size: 20px;
-
   }
   #containerh2 {
     margin-top: -100px;
