@@ -7,39 +7,37 @@
 	<div id="containerh2">
 		<h2>Ma playlist</h2>
 	</div>
-	{# <a id="previous-page-btn" href="/app_home">
-											<i class="bi bi-arrow-left"></i>
-										</a> #}
-	<table class="table">
+	<a id="previous-page-btn" href="{{app.request.headers.get('referer')}}">
+		<i class="bi bi-arrow-left"></i>
+	</a>
 
-		<tbody>
+	<div id="favoriteList">
+		<table class="table">
 			{% for favorite in favorites %}
-				<tr id="favoriteList">
-					<td>
+				<tr id="trFavorite">
+					<td class="tdFavoriteList">
 						<img id="favoriteImage" src="{{ asset('img/albums/' ~ favorite.image) }} ">
 					</td>
-					<td>
+					<td class="tdFavoriteList">
 						<h4>{{favorite.artist}}</h4>
 					</td>
-					<td>
+					<td class="tdFavoriteList">
 						<h5>{{favorite.title}}</h5>
 					</td>
-					<td>
-						{# {{ path('/player/' ~ song.id '/' ~ category_id }} #}
-						<a href="{{ path('app_favorite_player', {'id': song.id, 'category_id': category.id}) }}" class="btn">
-							<i class="bi bi-play-fill"></i>
+					<td class="tdFavoriteList">
+						<a href="{{ path('app_player_show', {'id': favorite.id, 'category_id': favorite.category}) }}" class="btn">
+							<i class="bi bi-play-fill" id="btnPlayerFavorite"></i>
 						</a>
 					</td>
-					<td>
-						<form method="post" action="{{ path('app_favorite_delete', {'id': favorite.id}) }}" onsubmit="return confirm('Etes-vous sur de vouloir retirer cette musique de vos favoris ?');">
-							<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ favorite.id) }}">
-							<button class="btn">
-								<i class="bi bi-trash-fill"></i>
+					<td class="tdFavoriteList">
+						<form method="post" id="formDeleteFavorite" action="{{ path('app_favorite_delete', {'id': favorite.id}) }}" onsubmit="return confirm('Etes-vous sur de vouloir retirer cette musique de vos favoris ?');"><input type="hidden" name="_token" value="{{ csrf_token('delete' ~ favorite.id) }}"><button class="btn">
+								<i class="bi bi-trash-fill" id="btnTrashFavorite"></i>
 							</button>
 						</form>
 					</td>
 				</tr>
-			</tbody>
-		{% endfor %}
-	</table>
+			{% endfor %}
+
+		</table>
+	</div>
 {% endblock %}

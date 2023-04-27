@@ -29,7 +29,13 @@ header {
 
 
 #logo {
-  width: 120px;
+  width: 90px;
+  float: right;
+}
+
+#headerLogo {
+  width: 100vw;
+  float:right;
 }
 
 h1 {
@@ -43,7 +49,7 @@ h2 {
   font-family: Asap;
   text-transform: uppercase;
   color: white;
-  font-size: 20px;
+  font-size: 15px;
   position: absolute;
   top: 73%;
   width: 100vw;
@@ -54,12 +60,13 @@ h2 {
 #containerh2 {
   background: url(/img/disc.png) no-repeat center;
   background-size: contain;
-  height: 30vh;
+  height: 25vh;
   padding-bottom: 2vh;
   position: relative;
   display: flex;
   justify-self: center;
   text-align: center;
+  margin-top: -50px;
 }
 h3 {
   font-size: 40px;
@@ -68,17 +75,15 @@ h3 {
 }
 
 h4 {
-  font-size: 20px;
+  font-size: 18px;
   font-family: Asap;
   font-weight: bold;
   text-transform: uppercase;
 }
 h5 {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   font-family: Asap;
-
-  margin: 1em;
 }
 
 h6 {
@@ -88,8 +93,9 @@ h6 {
 }
 
 label {
-  font-size: 25px;
+  font-size: 20px;
   font-family: Asap;
+  font-weight: bold;
 }
 input {
   border-radius: 10px;
@@ -104,10 +110,6 @@ button {
   color: white;
 }
 
-#navbarDesktop {
-  display: none;
-}
-
 td {
   border: none;
 }
@@ -118,7 +120,43 @@ a {
   cursor: pointer;
 }
 
+#favorite-btn {
+  width: 20px;
+}
+#navbarMobile {
+  position: fixed;
+  bottom: 0;
+  z-index: 6;
+}
+
+#navbarDesktop {
+  display: none;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 768px) {
+  #logo {
+    width: 180px;
+  }
+  h4 {
+    font-size: 25px;
+  }
+  h5 {
+    font-size: 25px;
+  }
+  #previous-page-btn {
+    font-size: 40px;
+  }
+  #favorite-btn {
+    width: 30px;
+  }
+}
+
 @media screen and (min-width: 1024px) {
+  #logo {
+    width: 150px;
+  }
+
   #btnNavBar {
     display: none;
   }
@@ -127,11 +165,10 @@ a {
     display: flex;
     justify-content: space-around;
     gap: 20px;
-    color: white;
-    margin-top: 2vh;
-    background-color: black;
     width: 100vw;
-    height: 8vh;
+    height: 5vh;
+    color: white;
+    background-color: black;
     position: fixed;
     bottom: 0;
     align-items: center;
@@ -150,29 +187,27 @@ a {
     display: none !important;
   }
 
-  #logo {
-    width: 200px;
+  #favorite-btn{
+    width:40px;
   }
-  h4 {
-    font-size: 30px;
-  }
-  h5 {
-    font-size: 28px;
-  }
-}
 
-/* MEDIA QUERIES */
-@media only screen and (min-width: 768px) {
-  #logo {
-    width: 180px;
-  }
+
   h4 {
     font-size: 25px;
   }
   h5 {
-    font-size: 25px;
+    font-size: 23px;
+
   }
   #previous-page-btn {
-    font-size: 45px;
+    font-size: 25px;
+  }
+  h2 {
+    font-size: 20px;
+
+  }
+  #containerh2 {
+    margin-top: -100px;
+    height: 35vh;
   }
 }
