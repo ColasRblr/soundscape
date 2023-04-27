@@ -13,7 +13,6 @@ use Doctrine\Migrations\AbstractMigration;
 
 final class Version20230420095232 extends AbstractMigration
 
-final class Version20230421073613 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -61,5 +60,5 @@ final class Version20230421073613 extends AbstractMigration
     }
 }
 
-}
+
 
