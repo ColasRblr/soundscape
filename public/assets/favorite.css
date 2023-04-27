@@ -2,10 +2,6 @@
   width: 60px;
 }
 
-#favoriteList {
-  margin-left: 10vw;
-}
-
 #formDeleteFavorite {
   width: 60%;
   display: flex;
@@ -13,10 +9,12 @@
 }
 .tdFavoriteList {
   text-align: center;
+  width: 5%;
 }
 
 #btnPlayerFavorite {
   font-size: 25px;
+  color: black;
 }
 
 #btnTrashFavorite {
