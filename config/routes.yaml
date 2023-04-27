@@ -60,6 +60,10 @@ admin:
   path: "/admin"
   controller: App\Controller\HomeController::admin_index
 
+addCategory:
+  path: "/category/new"
+  controller: App\Controller\CategoryController::new
+  
 editCategory:
   path: "/category/{id}/edit"
   controller: App\Controller\CategoryController::edit
@@ -69,8 +73,12 @@ deleteCategory:
   controller: App\Controller\CategoryController::delete
 
 adminSong:
-  path: "/home/admin_song"
+  path: "/song/byCategory/{categoryId}"
   controller: App\Controller\SongController::adminSongPage
+
+# addSong:
+#   path: "/song/new"
+#   controller: App\Controller\SongController::new
 
 # editSong:
 #   path: "/song/{id}/edit"

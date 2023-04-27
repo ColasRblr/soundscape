@@ -45,6 +45,17 @@ class CategoryController extends AbstractController
 
             return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
         }
+        
+         // Récupérer l'utilisateur connecté
+        // $name = $categoryRepository->find($name);
+        // $image = $categoryRepository->find($image);
+
+        // // Vérifier si la chanson est déjà dans les favoris de l'utilisateur
+        // $category = $categoryRepository->findOneBy(['name' => $name, 'image' => $image]);
+
+        // // Si la chanson est déjà dans les favoris, la supprimer
+        // if (!$category) {
+        //     $categoryRepository->add($category, true);
 
         return $this->render('category/new.html.twig', [
             'category' => $category,
@@ -88,6 +99,13 @@ class CategoryController extends AbstractController
 
         return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+
+
+
+
+
 
     // SOUNDSCAPE METHODS 
     #[Route('/{id}/getsongs', name: 'get_songs_by_category', methods: ['GET'])]

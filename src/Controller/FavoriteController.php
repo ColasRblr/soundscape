@@ -132,4 +132,6 @@ class FavoriteController extends AbstractController
             return new JsonResponse("false");
         }
     }
+
+    // show 3 plus grands favorites + count(favorite)
 }

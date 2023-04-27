@@ -3,7 +3,7 @@
 {% block title %}Song index{% endblock %}
 
 {% block body %}
-    <h1>Song index</h1>
+    <h1 id=""> {{category.name}}</h1>
 
     <table class="table">
         <thead>
@@ -23,8 +23,8 @@
                 <td>{{ song.artist }}</td>
                 <td>{{ song.url }}</td>
                 <td>
-                    <a href="{{ path('app_song_show', {'id': song.id}) }}">show</a>
-                    <a href="{{ path('app_song_edit', {'id': song.id}) }}">edit</a>
+                    <a href="{{ path('app_song_show', {'id': song.id}) }}"><strong>show</strong></a>
+                    <a href="{{ path('app_song_edit', {'id': song.id}) }}"><strong>edit</strong></a>
                     
                 </td>
             </tr>
@@ -36,5 +36,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_song_new') }}">Create new</a>
+    <a href="{{ path('app_song_new') }}"><strong>Create new</strong></a>
 {% endblock %}
