@@ -25,14 +25,14 @@
 						<h5>{{favorite.title}}</h5>
 					</td>
 					<td class="tdFavoriteList">
-						<a href="{{ path('app_player_show', {'id': favorite.id, 'category_id': favorite.category}) }}" class="btn">
+						<a href="{{ path('app_player_show', {'id': favorite.id, 'category_id': favorite.category}) }}">
 							<i class="bi bi-play-fill" id="btnPlayerFavorite"></i>
 						</a>
 					</td>
 					<td class="tdFavoriteList">
-						<form method="post" id="formDeleteFavorite" action="{{ path('app_favorite_delete', {'id': favorite.id}) }}" onsubmit="return confirm('Etes-vous sur de vouloir retirer cette musique de vos favoris ?');"><input type="hidden" name="_token" value="{{ csrf_token('delete' ~ favorite.id) }}"><button class="btn">
-								<i class="bi bi-trash-fill" id="btnTrashFavorite"></i>
-							</button>
+						<form method="post" id="formDeleteFavorite" action="{{ path('app_favorite_delete', {'id': favorite.id}) }}" onsubmit="return confirm('Etes-vous sur de vouloir retirer cette musique de vos favoris ?');">
+							<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ favorite.id) }}">
+							<i class="bi bi-trash-fill" id="btnTrashFavorite"></i>
 						</form>
 					</td>
 				</tr>

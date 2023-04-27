@@ -21,22 +21,41 @@ class HomeController extends AbstractController
         Security $security
     ): Response {
 
-        $isUserConnected = true;
-        //($security->getUser() === null) ? false : true;
-        // var_dump($isUserConnected);
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
+        }
+
+        // $isUserConnected = ($security->getUser() === null) ? false : true;
+
+        // if ($isUserConnected) {
+        //     $roleUser = ($security->getUser()->getRoles() == "ROLE_USER") ? true : false;
+        // } else {
+        //     $roleUser = "";
+        // }
+        var_dump($roleUser);
         // Récupération de toutes les catégories de la table
         $request = $categoryController->index($categoryRepository);
         $response = $request->getContent();
         $myData = json_decode($response);
-        // var_dump($cate);
+
 
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController', 'myData' => $myData, 'isUserConnected' => $isUserConnected
+            'controller_name' => 'HomeController', 'myData' => $myData, 'isUserConnected' => $isUserConnected, 'roleUser' => $roleUser
         ]);
     }
     #[Route('/admin', name: 'app_admin')]
-    public function admin_index(CategoryRepository $categoryRepository): Response
+    public function admin_index(CategoryRepository $categoryRepository, Security $security): Response
     {
+
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
+        }
         // Récupération de toutes les catégories de la table
         $categories = $categoryRepository->findAll();
 
@@ -53,7 +72,7 @@ class HomeController extends AbstractController
         }
 
         return $this->render('home/admin.html.twig', [
-            'controller_name' => 'HomeController', 'myData' => $myData
+            'controller_name' => 'HomeController', 'myData' => $myData, 'isUserConnected' => $isUserConnected, 'roleUser' => $roleUser
         ]);
     }
 

@@ -91,7 +91,7 @@ class CategoryController extends AbstractController
 
     // SOUNDSCAPE METHODS 
     #[Route('/{id}/getsongs', name: 'get_songs_by_category', methods: ['GET'])]
-    public function getSongsByCategory(Category $category,CategoryController $categoryController,CategoryRepository $categoryRepository,): Response
+    public function getSongsByCategory(Category $category, CategoryController $categoryController, CategoryRepository $categoryRepository,): Response
     {
         $songs = $category->getSongs();
         $data = array();
@@ -106,5 +106,4 @@ class CategoryController extends AbstractController
         dump($songs); // Vérifiez si la liste de chansons est vide ou non
         return $this->json($data);
     }
-
 }

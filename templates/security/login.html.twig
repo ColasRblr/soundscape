@@ -1,39 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
-{% block styles %}
-
-{% block body %}
- 
-
-<a id="previous-page-btn" href="/">
-    <i class="bi bi-arrow-left"></i>
-</a>
-<div class="container disc-image">
-    <img src="/img/disc.png" alt="disque vinyle">
-    <div class="h2">CONNEXION</div>
-  </div>
-<form class="form-inline">
-    <div class="d-flex flex-column justify-content-center align-items-center">
-    <div class="form-group mx-sm-3 mb-2">
-        <label for="adresse" class="sr-only">Adresse mail :</label>
-        <input type="email" class="form-control" id="adresse" placeholder="Adresse mail">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <label for="password" class="sr-only">Mot de passe :</label>
-        <input type="password" class="form-control" id="password" placeholder="">
-    </div>
-    <div class="d-flex justify-content-between">
-        <div class="form-group mx-sm-3 mb-2">
-          <button type="submit" class="btn"  id="valider" btn-primary>Valider</button>
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
-          <button type="submit" class="btn" id="annuler" btn-primary ml-auto>Annuler</button>
-        </div>
-      </div>
-</div>
-</form>    
-
+{% block title %}Log in!
 {% endblock %}
 
+{% block body %}
+	<form method="post">
+		{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+
+		{% if app.user %}
+			<div class="mb-3">
+				You are logged in as
+				{{ app.user.userIdentifier }},
+				<a href="{{ path('app_logout') }}">Logout</a>
+			</div>
+		{% endif %}
+
+		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+		<label for="inputEmail">Email</label>
+		<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+		<label for="inputPassword">Password</label>
+		<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+		<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+		<button class="btn btn-lg btn-primary" type="submit">
+			Sign in
+		</button>
+	</form>
 {% endblock %}
