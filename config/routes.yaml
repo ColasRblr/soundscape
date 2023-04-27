@@ -49,12 +49,6 @@ player:
     id: \d+
     category_id: \d+
 
-# app_favorite_player:
-#   path: /favorite/{id}/{category_id}
-#   controller: App\Controller\FavoriteController::show
-#   methods: ["GET"]
-
-
 admin:
   path: "/admin"
   controller: App\Controller\HomeController::admin_index
@@ -70,7 +64,6 @@ deleteCategory:
 adminSong:
   path: "/home/admin_song"
   controller: App\Controller\SongController::adminSongPage
-
 # editSong:
 #   path: "/song/{id}/edit"
 #   controller: App\Controller\SongController::edit
@@ -78,5 +71,4 @@ adminSong:
 #  deleteSong:
 #    path: "/song/{id}/delete"
 #    controller: App\Controller\SongController::delete
-
 

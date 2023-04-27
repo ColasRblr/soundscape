@@ -14,6 +14,8 @@ use Symfony\Component\Security\Core\Security;
 #[Route('/user')]
 class UserController extends AbstractController
 {
+
+
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository, Security $security): Response
     {
@@ -76,6 +78,6 @@ class UserController extends AbstractController
             $userRepository->remove($user, true);
         }
 
-        return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
     }
 }

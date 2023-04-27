@@ -30,7 +30,7 @@ function slideChange() {
   var category_id = this.slides[this.activeIndex].getAttribute("data-id");
   var songList = document.querySelector("#home-song-list");
   const authenticatedStatus = document.getElementById("authenticated-status");
-  const isAuthenticated = authenticatedStatus.dataset.authenticated === "true";
+  const isAuthenticated = authenticatedStatus.dataset.authenticated;
 
   $.ajax({
     url: "/category/" + category_id + "/getsongs",
@@ -60,6 +60,7 @@ function slideChange() {
         td2.appendChild(h5);
         td3.appendChild(player);
 
+        console.log(isAuthenticated);
         if (isAuthenticated) {
           var td4 = document.createElement("td");
           tr.appendChild(td4);

@@ -18,7 +18,7 @@
 }
 
 .elementsProfil {
-  margin-top: 10vh;
+  margin-top: 8vh;
 }
 
 .formProfilInformations {
@@ -41,11 +41,12 @@
 
 #btnValidateEditProfil {
   text-align: center;
-  margin-bottom: 5px;
+  margin-bottom: 2vh;
 }
 
 #btnUpdateProfil {
   text-align: center;
+  margin-bottom: 2vh;
 }
 
 #btnDeleteProfil {
@@ -59,13 +60,19 @@
   z-index: 8;
   position: relative;
 }
-
+#iconDeleteProfil {
+  font-size: 20px;
+}
 #formDelete {
   text-align: center;
 }
 @media only screen and (min-width: 768px) {
   #btnDeleteProfil {
     width: 30vw;
+  }
+
+  #btnDeleteProfil {
+    font-size: 15px;
   }
 }
 
@@ -78,8 +85,9 @@
   }
   #btnDeleteProfil {
     font-size: 20px;
+    margin-bottom: 1vh;
   }
   .elementsProfil {
-    margin-top: 8vh;
+    margin-top: 1vh;
   }
 }

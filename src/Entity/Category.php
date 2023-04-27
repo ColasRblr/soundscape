@@ -20,7 +20,7 @@ class Category
 
     #[ORM\ManyToOne(inversedBy: 'categories')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user = null;
+    private ?User $user = null;
 
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Song::class, orphanRemoval: true)]
     private Collection $songs;
@@ -50,12 +50,12 @@ class Category
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
