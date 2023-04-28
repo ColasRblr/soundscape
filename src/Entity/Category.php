@@ -32,7 +32,9 @@ class Category
     {
         $this->songs = new ArrayCollection();
     }
-
+    public function __toString() {
+        return $this->id;
+    }
     public function getId(): ?int
     {
         return $this->id;

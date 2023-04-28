@@ -20,7 +20,7 @@
   display: flex;
   padding: 7%;
 }
-.swiper-container{
+.swiper-container, .swiper-category-show{
   display: flex;
   flex-wrap: wrap;
 }

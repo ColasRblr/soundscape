@@ -24,8 +24,7 @@ class SongController extends AbstractController
             // 'category' => $categoryRepository->findCategoryId(),
         ]);
     }
-
-    #[Route('/category/{categoryId}', name: 'app_song_by_category_index', methods: ['GET'])]
+    #[Route('/byCategory/{categoryId}', name: 'app_song_by_category_index', methods: ['GET'])]
     public function songByCategory(int $categoryId, SongRepository $songRepository, CategoryRepository $categoryRepository): Response
     {
         $category = $categoryRepository->find($categoryId);
@@ -36,7 +35,6 @@ class SongController extends AbstractController
             'category' => $category,
         ]);
     }
-    
 
     #[Route('/new', name: 'app_song_new', methods: ['GET', 'POST'])]
     public function new(Request $request, SongRepository $songRepository): Response
