@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Register
+{% endblock %}
 
 {% block body %}
+
 <a id="previous-page-btn" href="/">
     <i class="bi bi-arrow-left"></i>
   </a>
@@ -44,48 +46,3 @@
 
 
 
-{# 
-{% extends 'base.html.twig' %}
-
-{% block title %}Register{% endblock %}
-
-{% block body %}
-<a id="previous-page-btn" href="/">
-  <i class="bi bi-arrow-left"></i>
-</a>
-<div class="vinyledisc-container d-flex justify-content-center">
-  <img src="/img/disc.png" alt="disque vinyle">
-  <h2 class="text-center">INSCRIPTION</h2>
-</div>
-<form method="POST">
-<class class="container">
-  <div class="row">
-    <div class="col-md-6 offset-md-2">
-      {{ form_start(registrationForm) }}
-      <div class="form-group">
-        {{ form_row(registrationForm.last_name, {
-          'label': 'Nom',
-          'attr': {'class': 'form-control'}}) }}
-      </div>
-      <div class="form-group">
-        {{ form_row(registrationForm.first_name, {
-          'label': 'Prenom',
-          'attr': {'class': 'form-control'}}) }}
-      </div>
-      <div class="form-group">
-        {{ form_row(registrationForm.email, {
-          'label': 'Adresse mail',
-          'attr': {'class': 'form-control'}}) }}
-      </div>
-      <div class="form-group">
-        {{ form_row(registrationForm.plainPassword, {
-          'label': 'Mot de passe',
-          'attr': {'class': 'form-control'}
-        }) }}
-      </div>
-     
-  </div>
-</div>
-</class>
-</form>
-{% endblock %} #}

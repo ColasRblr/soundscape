@@ -27,6 +27,13 @@ class FavoriteController extends AbstractController
     {
         $userConnected = $security->getUser();
 
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
+        }
+
         $favorites = [];
 
         if ($userConnected instanceof User) {
@@ -46,8 +53,9 @@ class FavoriteController extends AbstractController
         }
         return $this->render('favorite/index.html.twig', [
             'favorites' => $favorites,
+            'isUserConnected' => $isUserConnected,
+            'roleUser' => $roleUser
         ]);
-        // var_dump($favorites);
     }
 
     #[Route('/{id}', name: 'app_favorite_show', methods: ['GET'])]

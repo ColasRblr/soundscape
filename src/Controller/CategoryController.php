@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 #[Route('/category')]
 class CategoryController extends AbstractController
@@ -32,8 +33,14 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/new', name: 'app_category_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CategoryRepository $categoryRepository): Response
+    public function new(Request $request, CategoryRepository $categoryRepository, Security $security): Response
     {
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
+        }
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
@@ -43,55 +50,71 @@ class CategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $categoryRepository->save($category, true);
 
-            return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_admin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('category/new.html.twig', [
             'category' => $category,
             'form' => $form,
-            'id_category' => $idCategory,
+            'id_category' => $idCategory, 'isUserConnected' => $isUserConnected, 'roleUser' => $roleUser
         ]);
     }
 
-    // #[Route('/admin', name: 'app_category_show', methods: ['GET'])]
-    // public function show(Category $category): Response
-    // {
-    //     return $this->render('category/show.html.twig', [
-    //         'category' => $category,
-    //     ]);
-    // }
-
     #[Route('/{id}/edit', name: 'app_category_edit', methods: ['GET'])]
-    public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
+    public function edit(Request $request, Category $category, CategoryRepository $categoryRepository, Security $security): Response
     {
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
+        }
+
         if ($form->isSubmitted() && $form->isValid()) {
             $categoryRepository->save($category, true);
 
-            return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_admin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('category/edit.html.twig', [
             'category' => $category,
             'form' => $form,
+            'isUserConnected' => $isUserConnected, 'roleUser' => $roleUser
         ]);
     }
 
     #[Route('/{id}/delete', name: 'app_category_delete', methods: ['POST'])]
-    public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
+    public function delete(Request $request, Category $category, CategoryRepository $categoryRepository, Security $security): Response
     {
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
+        }
+
         if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->request->get('_token'))) {
             $categoryRepository->remove($category, true);
         }
 
-        return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_admin', [
+        'isUserConnected' => $isUserConnected, 'roleUser' => $roleUser
+        ], Response::HTTP_SEE_OTHER);
     }
+
+
+
+
+
+
+
 
     // SOUNDSCAPE METHODS 
     #[Route('/{id}/getsongs', name: 'get_songs_by_category', methods: ['GET'])]
-    public function getSongsByCategory(Category $category,CategoryController $categoryController,CategoryRepository $categoryRepository,): Response
+    public function getSongsByCategory(Category $category, CategoryController $categoryController, CategoryRepository $categoryRepository,): Response
     {
         $songs = $category->getSongs();
         $data = array();
@@ -106,5 +129,4 @@ class CategoryController extends AbstractController
         dump($songs); // Vérifiez si la liste de chansons est vide ou non
         return $this->json($data);
     }
-
 }

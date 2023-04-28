@@ -8,6 +8,24 @@
       margin: 0;
       padding: 0;
     }
+
+        .titleForm {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-weight: bold;
+    }
+
+    #previous-page-btn{
+        position: absolute;
+    top: 10%;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+    }
       .col-md-6 .offset-md-0 {
         width: 30%;
         justify-content: center;
@@ -66,8 +84,8 @@
         width: 105%; 
          line-height: 10px;
       }
-      
-    }
+    
+  }
     
 
         @media only screen and (max-width: 1023px){
@@ -78,7 +96,9 @@
 }
         
 /* MEDIA QUERIES */
+
  @media only screen and (min-width: 1023px){
+
 
   label {
     font-size: 21px;
@@ -140,4 +160,5 @@ form{
 
 
  
+
 
