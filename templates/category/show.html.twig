@@ -6,7 +6,7 @@
 
 {% block body %}
 
-	<div class="swiper-container" data-mydata="{{ myData|json_encode|raw }}" >     
+	<div class="swiper-category-show" data-mydata="{{ myData|json_encode|raw }}" >     
 			 {% for data in myData %} 
 				<div class="show_category">                    
 					<div class="swiper-slide" data-id="{{ data.categoryId }}">

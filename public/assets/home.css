@@ -2,7 +2,7 @@
   height: 80vh;
 }
 
-.swiper-container {
+.swiper-container, .swiper-category-show {
   width: auto;
   overflow-x: hidden;
   height: 40vh;
@@ -70,7 +70,7 @@ align-items: center;
 @media screen and (min-width:760px){
 
 
-  .swiper-container {
+  .swiper-container, .swiper-category-show {
     height: 50%;
     margin-bottom: 2em;
   }
