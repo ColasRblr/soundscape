@@ -3,44 +3,89 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-{% block styles %}
-
-    
 <a id="previous-page-btn" href="/">
     <i class="bi bi-arrow-left"></i>
-</a>
-
- <div class="titleForm">INSCRIPTION</div>
-
-<div class="container disc-image">
+  </a>
+  <div class="vinyledisc-container d-flex justify-content-center">
     <img src="/img/disc.png" alt="disque vinyle">
-    <div class="h2">INSCRIPTION</div>
+    <h2 class="text-center">INSCRIPTION</h2>
   </div>
-<form class="form-inline">
-    <div class="d-flex flex-column justify-content-center align-items-center">
-        
-    <div class="form-group mx-sm-3 mb-2">
-        <label for="nom" class="sr-only">Nom :</label>
-        <input type="text" class="form-control" id="nom" placeholder="Nom">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <label for="prenom" class="sr-only">Prénom :</label>
-        <input type="text" class="form-control" id="prenom" placeholder="Prénom">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <label for="adresse" class="sr-only">Adresse mail :</label>
-        <input type="text" class="form-control" id="adresse" placeholder="Adresse mail">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <label for="password" class="sr-only">Mot de passe :</label>
-        <input type="password" class="form-control" id="password" placeholder="">
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <button type="submit" class="btn id="valider"  btn-primary">Valider</button>
-        <button type="button" class="btn  id="annuler" btn-secondary">Annuler</button>
-    </div>
-</div>
-</form>    
+    {{ form_start(registrationForm) }}
+    <div class="col-md-6 offset-md-0">
+        <div class="form-group">
+          {{ form_row(registrationForm.last_name, {
+            'label': 'Nom',
+            'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(registrationForm.first_name, {
+              'label': 'Prénom',
+              'attr': {'class': 'form-control'}}) }}
+          </div>
+          <div class="form-group">
+            {{ form_row(registrationForm.email, {
+              'label': 'Adresse mail',
+              'attr': {'class': 'form-control'}}) }}
+          </div>
+          <div class="form-group">
+            {{ form_row(registrationForm.plainPassword, {
+              'label': 'Mot de passe',
+              'attr': {'class': 'form-control'}
+            }) }}
+          </div>
+         <div class="button-container">
+        <button type="submit" class="btn btn-costum" id="valider">Valider</button>
+        <button type="reset" class="btn btn-costum" id="annuler">Annuler</button>
+      </div>
+    {{ form_end(registrationForm) }}
+{% endblock %} 
 
-  {% endblock %}
-{% endblock %}
+
+
+
+
+{# 
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<a id="previous-page-btn" href="/">
+  <i class="bi bi-arrow-left"></i>
+</a>
+<div class="vinyledisc-container d-flex justify-content-center">
+  <img src="/img/disc.png" alt="disque vinyle">
+  <h2 class="text-center">INSCRIPTION</h2>
+</div>
+<form method="POST">
+<class class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-2">
+      {{ form_start(registrationForm) }}
+      <div class="form-group">
+        {{ form_row(registrationForm.last_name, {
+          'label': 'Nom',
+          'attr': {'class': 'form-control'}}) }}
+      </div>
+      <div class="form-group">
+        {{ form_row(registrationForm.first_name, {
+          'label': 'Prenom',
+          'attr': {'class': 'form-control'}}) }}
+      </div>
+      <div class="form-group">
+        {{ form_row(registrationForm.email, {
+          'label': 'Adresse mail',
+          'attr': {'class': 'form-control'}}) }}
+      </div>
+      <div class="form-group">
+        {{ form_row(registrationForm.plainPassword, {
+          'label': 'Mot de passe',
+          'attr': {'class': 'form-control'}
+        }) }}
+      </div>
+     
+  </div>
+</div>
+</class>
+</form>
+{% endblock %} #}
