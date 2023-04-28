@@ -4,16 +4,45 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Register</h1>
 
-	{{ form_start(registrationForm) }}
-	{{ form_row(registrationForm.first_name) }}
-	{{ form_row(registrationForm.last_name) }}
-	{{ form_row(registrationForm.email) }}
-	{{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
+<a id="previous-page-btn" href="/">
+    <i class="bi bi-arrow-left"></i>
+  </a>
+  <div class="vinyledisc-container d-flex justify-content-center">
+    <img src="/img/disc.png" alt="disque vinyle">
+    <h2 class="text-center">INSCRIPTION</h2>
+  </div>
+    {{ form_start(registrationForm) }}
+    <div class="col-md-6 offset-md-0">
+        <div class="form-group">
+          {{ form_row(registrationForm.last_name, {
+            'label': 'Nom',
+            'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(registrationForm.first_name, {
+              'label': 'Prénom',
+              'attr': {'class': 'form-control'}}) }}
+          </div>
+          <div class="form-group">
+            {{ form_row(registrationForm.email, {
+              'label': 'Adresse mail',
+              'attr': {'class': 'form-control'}}) }}
+          </div>
+          <div class="form-group">
+            {{ form_row(registrationForm.plainPassword, {
+              'label': 'Mot de passe',
+              'attr': {'class': 'form-control'}
+            }) }}
+          </div>
+         <div class="button-container">
+        <button type="submit" class="btn btn-costum" id="valider">Valider</button>
+        <button type="reset" class="btn btn-costum" id="annuler">Annuler</button>
+      </div>
+    {{ form_end(registrationForm) }}
+{% endblock %} 
 
-	<button type="submit" class="btn">Register</button>
-	{{ form_end(registrationForm) }}
-{% endblock %}
+
+
+
+

@@ -1,32 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!
-{% endblock %}
+{% block title %}Register{% endblock %}
 
 {% block body %}
-	<form method="post">
-		{% if error %}
-			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-		{% endif %}
-
-		{% if app.user %}
-			<div class="mb-3">
-				You are logged in as
-				{{ app.user.userIdentifier }},
-				<a href="{{ path('app_logout') }}">Logout</a>
-			</div>
-		{% endif %}
-
-		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-		<label for="inputEmail">Email</label>
-		<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-		<label for="inputPassword">Password</label>
-		<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
-		<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-		<button class="btn btn-lg btn-primary" type="submit">
-			Sign in
-		</button>
-	</form>
+    {% if app.user %}
+        <div class="mb-3">
+            {{ app.user.userIdentifier }},
+            <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+    <a id="previous-page-btn" href="/">
+        <i class="bi bi-arrow-left"></i>
+      </a>
+      <div class="vinyledisc-container d-flex justify-content-center">
+        <img src="/img/disc.png" alt="disque vinyle">
+        <h2 class="text-center">CONNEXION</h2>
+      </div>
+      <form method="post">
+        <h1 class="h3 mb-3 font-weight-normal"></h1>
+        <div class="form-group">
+          <label for="inputEmail">Adresse email</label>
+          <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword">Mot de passe</label>
+          <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+        </div>
+      
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        
+        <div class="form-group mt-4">
+          <button class="btn btn-lg btn-button" type="submit">
+            Sign in
+          </button>
+        </div>
+      </form>
 {% endblock %}

@@ -14,15 +14,18 @@
 				<div class="offcanvas-body d-block">
 					<ul class="navbar-nav flex-grow-1 pe-3" style="text-align:right">
 
-
-						{% if isUserConnected is same as(false) %}
+						{% if isUserConnected %}
+						<p>Bienvenue, {{ app.user.username }} !</p>
+					{% else %}
+						<p>Veuillez vous connecter pour accéder à cette page.</p>
+					{% endif %}
 							<li class="nav-item">
 								<a class="nav-link active text-light" aria-current="page" href="{{ path('app_register') }}">Inscription</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link active text-light" aria-current="page" href="{{ path('app_login') }}">Connexion</a>
 							</li>
-						{% else %}
+						
 							<li class="nav-item">
 								<a class="nav-link active text-light" aria-current="page" href="{{ path('app_logout') }}">Déconnexion</a>
 							</li>
@@ -42,7 +45,7 @@
 								<li class="nav-item">
 									<a class="nav-link active text-light" aria-current="page" href="{{ path('app_admin') }}">Accueil</a>
 								</li>
-							{% endif %}
+						
 						{% endif %}
 
 

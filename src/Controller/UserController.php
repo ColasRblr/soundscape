@@ -31,6 +31,7 @@ class UserController extends AbstractController
 
         return $this->render('user/index.html.twig', [
             'user' => $user, 'isUserConnected' => $isUserConnected, 'roleUser' => $roleUser
+            
         ]);
     }
 
