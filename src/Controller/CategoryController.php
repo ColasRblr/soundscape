@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 #[Route('/category')]
 class CategoryController extends AbstractController
@@ -32,8 +33,14 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/new', name: 'app_category_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CategoryRepository $categoryRepository): Response
+    public function new(Request $request, CategoryRepository $categoryRepository, Security $security): Response
     {
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
+        }
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
@@ -43,10 +50,14 @@ class CategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $categoryRepository->save($category, true);
 
-            return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute(
+                'app_category_index',
+                [],
+                Response::HTTP_SEE_OTHER
+            );
         }
-        
-         // Récupérer l'utilisateur connecté
+
+        // Récupérer l'utilisateur connecté
         // $name = $categoryRepository->find($name);
         // $image = $categoryRepository->find($image);
 
@@ -60,7 +71,7 @@ class CategoryController extends AbstractController
         return $this->render('category/new.html.twig', [
             'category' => $category,
             'form' => $form,
-            'id_category' => $idCategory,
+            'id_category' => $idCategory, 'isUserConnected' => $isUserConnected, 'roleUser' => $roleUser
         ]);
     }
 
