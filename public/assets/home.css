@@ -5,8 +5,12 @@
   height: 80vh;
 }
 
+
+.swiper-container, .swiper-category-show {
+
 /* Swiper elements */
 .swiper-container {
+
   width: auto;
   overflow-x: hidden;
   height: 40vh;
@@ -25,7 +29,6 @@
 /* Image of each category of the slider */
 #homeCategoryImage {
   width: 100%;
-  height: 80%;
 }
 
 /* Title of each category of the slider */
@@ -61,7 +64,11 @@
 
 @media screen and (min-width:760px){
 
+
+  .swiper-container, .swiper-category-show {
+
   .swiper-container {
+
     height: 50%;
     margin-bottom: 2em;
   }
@@ -84,10 +91,6 @@
 
   #homeCategoryImage {
     width:40%;
-  }
-
-  #homeCategoryName {
-    left: 33%;
   }
 
   #home-play-btn{

@@ -14,6 +14,8 @@ class CategoryType extends AbstractType
         $builder
             ->add('name')
             ->add('user')
+            
+            //display none + get id
             ->add('image')
         ;
     }

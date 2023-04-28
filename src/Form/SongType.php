@@ -15,7 +15,10 @@ class SongType extends AbstractType
             ->add('title')
             ->add('artist')
             ->add('url')
-            ->add('category')
+            ->add('category') 
+            // , CategoryRepository,[])
+            // {{ category.name }}
+            // get name de category
             ->add('user')
             ->add('image');
     }
