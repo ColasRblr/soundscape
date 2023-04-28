@@ -2,6 +2,8 @@
 
 namespace App\Form;
 
+use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -9,11 +11,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CategoryType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void
+    public function buildForm(FormBuilderInterface $builder, array $options, Security $security): void
     {
         $builder
             ->add('name')
-            ->add('user')
+            ->add('user', TextType::class, [
+                'data' => $security->getUser()->getId(),
+             ],
+            )
 
             //display none + get id
             ->add('image')

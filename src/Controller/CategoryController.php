@@ -53,17 +53,6 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('app_admin', [], Response::HTTP_SEE_OTHER);
         }
 
-        // Récupérer l'utilisateur connecté
-        // $name = $categoryRepository->find($name);
-        // $image = $categoryRepository->find($image);
-
-        // // Vérifier si la chanson est déjà dans les favoris de l'utilisateur
-        // $category = $categoryRepository->findOneBy(['name' => $name, 'image' => $image]);
-
-        // // Si la chanson est déjà dans les favoris, la supprimer
-        // if (!$category) {
-        //     $categoryRepository->add($category, true);
-
         return $this->render('category/new.html.twig', [
             'category' => $category,
             'form' => $form,
@@ -71,19 +60,18 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    // #[Route('/admin', name: 'app_category_show', methods: ['GET'])]
-    // public function show(Category $category): Response
-    // {
-    //     return $this->render('category/show.html.twig', [
-    //         'category' => $category,
-    //     ]);
-    // }
-
     #[Route('/{id}/edit', name: 'app_category_edit', methods: ['GET'])]
-    public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
+    public function edit(Request $request, Category $category, CategoryRepository $categoryRepository, Security $security): Response
     {
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
+
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $categoryRepository->save($category, true);
@@ -94,17 +82,27 @@ class CategoryController extends AbstractController
         return $this->render('category/edit.html.twig', [
             'category' => $category,
             'form' => $form,
+            'isUserConnected' => $isUserConnected, 'roleUser' => $roleUser
         ]);
     }
 
     #[Route('/{id}/delete', name: 'app_category_delete', methods: ['POST'])]
-    public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
+    public function delete(Request $request, Category $category, CategoryRepository $categoryRepository, Security $security): Response
     {
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
+        }
+
         if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->request->get('_token'))) {
             $categoryRepository->remove($category, true);
         }
 
-        return $this->redirectToRoute('app_admin', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_admin', [
+        'isUserConnected' => $isUserConnected, 'roleUser' => $roleUser
+        ], Response::HTTP_SEE_OTHER);
     }
 
 
