@@ -1,0 +1,124 @@
+/* 
+        .titleForm {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-weight: bold;
+    }
+
+    #previous-page-btn{
+        position: absolute;
+    top: 10%;
+    }
+    
+    h2{
+      text-align: center;
+    margin-top: 50px;
+    }
+      
+        form {
+            margin-bottom: 2px; 
+            margin: 0 auto;
+        }
+        
+        label {
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+       
+        .form-group input {
+            width: 300px;
+            height: 50px;
+        }
+        
+
+        .btn {
+            background: black;
+            color: white;
+            margin: 15px;
+            width: 130px;
+            border-radius: 50px;
+            height: 30px;
+            margin-bottom: 10px;
+        }
+       
+        @media only screen and (max-width: 1023px){
+    .disc-image {
+        display: none;
+    }
+    .left-link a{
+        display: none;
+    }
+
+    .right-link a{
+        display: none;
+    }
+} */
+
+/* MEDIA QUERIES */
+/* @media only screen and (min-width: 1023px){
+
+    .container {
+  position: relative;
+  text-align: center; 
+}
+
+.disc-image img {
+  width: 20%; 
+}
+
+.h2 {
+  position: absolute;
+  top: 83%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+.form-group input {
+            width: 850px;
+            height: 55px;
+        }
+        
+        .btn {
+            background: black;
+            color: white;
+            margin: 15px;
+            width: 410px;
+            border-radius: 50px;
+            height: 33px;
+            padding: 2px;
+            margin-top: 25px;
+           line-height:center;
+        } 
+
+ 
+
+
+  
+  .left-link a {
+    color: white;
+    text-decoration: none;
+    margin: 100px;
+    font-weight: bold;
+    line-height:center;
+    margin-left: 100px;
+    
+  }
+  
+  .right-link a {
+    color: white;
+    text-decoration: none;
+    margin: 250px;
+    font-weight: bold;
+    line-height:center;
+    margin-right: 100px;
+} 
+}
+ */

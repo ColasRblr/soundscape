@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use Random\Engine\Secure;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,13 +15,22 @@ use Symfony\Component\Security\Core\Security;
 #[Route('/user')]
 class UserController extends AbstractController
 {
+
+
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository, Security $security): Response
+    public function index(Security $security): Response
     {
+        $isUserConnected = ($security->getUser() === null) ? false : true;
+
+        if ($isUserConnected) {
+            $roleUser = ($security->getUser()->getRoles() === "ROLE_USER") ? "user" : "admin";
+        } else {
+            $roleUser = "";
+        }
         $user = $security->getUser(); // Obtient l'utilisateur connecté
 
         return $this->render('user/index.html.twig', [
-            'user' => $user,
+            'user' => $user, 'isUserConnected' => $isUserConnected, 'roleUser' => $roleUser
         ]);
     }
 
@@ -37,7 +47,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('user/new.html.twig', [
+        return $this->render('user/new.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
@@ -52,7 +62,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user, UserRepository $userRepository): Response
+    public function edit(Request $request, User $user, UserRepository $userRepository, Security $security): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -63,9 +73,18 @@ class UserController extends AbstractController
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('user/edit.html.twig', [
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
+        }
+
+        return $this->render('user/edit.html.twig', [
             'user' => $user,
             'form' => $form,
+            'isUserConnected' => $isUserConnected,
+            'roleUser' => $roleUser
         ]);
     }
 
