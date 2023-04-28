@@ -11,7 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CategoryType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options, Security $security): void
+    public function buildForm(FormBuilderInterface $builder, array $options, ): void
     {
         $builder
             ->add('name')
