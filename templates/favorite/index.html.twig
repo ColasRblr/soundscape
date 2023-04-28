@@ -30,10 +30,7 @@
 						</a>
 					</td>
 					<td class="tdFavoriteList">
-						<form method="post" id="formDeleteFavorite" action="{{ path('app_favorite_delete', {'id': favorite.id}) }}" onsubmit="return confirm('Etes-vous sur de vouloir retirer cette musique de vos favoris ?');">
-							<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ favorite.id) }}">
-							<i class="bi bi-trash-fill" id="btnTrashFavorite"></i>
-						</form>
+						{{ include('favorite/_delete_form.html.twig') }}
 					</td>
 				</tr>
 			{% endfor %}

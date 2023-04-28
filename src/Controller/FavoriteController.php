@@ -56,7 +56,6 @@ class FavoriteController extends AbstractController
             'isUserConnected' => $isUserConnected,
             'roleUser' => $roleUser
         ]);
-        // var_dump($favorites);
     }
 
     #[Route('/{id}', name: 'app_favorite_show', methods: ['GET'])]

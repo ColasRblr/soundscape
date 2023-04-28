@@ -20,13 +20,13 @@ class UserController extends AbstractController
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
     public function index(Security $security): Response
     {
-        $isUserConnected = ($security->getUser() === null) ? false : true;
-
-        if ($isUserConnected) {
-            $roleUser = ($security->getUser()->getRoles() === "ROLE_USER") ? "user" : "admin";
-        } else {
-            $roleUser = "";
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
         }
+
         $user = $security->getUser(); // Obtient l'utilisateur connecté
 
         return $this->render('user/index.html.twig', [

@@ -72,7 +72,7 @@
   }
 
   #btnDeleteProfil {
-    font-size: 15px;
+    font-size: 13px;
   }
 }
 
@@ -89,5 +89,8 @@
   }
   .elementsProfil {
     margin-top: 1vh;
+  }
+  #btnModifyUser {
+    width: 15%;
   }
 }

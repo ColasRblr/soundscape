@@ -28,14 +28,7 @@ class HomeController extends AbstractController
             $roleUser = $security->getUser()->getRoles();
         }
 
-        // $isUserConnected = ($security->getUser() === null) ? false : true;
 
-        // if ($isUserConnected) {
-        //     $roleUser = ($security->getUser()->getRoles() == "ROLE_USER") ? true : false;
-        // } else {
-        //     $roleUser = "";
-        // }
-        var_dump($roleUser);
         // Récupération de toutes les catégories de la table
         $request = $categoryController->index($categoryRepository);
         $response = $request->getContent();
