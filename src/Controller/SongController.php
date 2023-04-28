@@ -61,12 +61,18 @@ class SongController extends AbstractController
         $form = $this->createForm(SongType::class, $song);
         $form->handleRequest($request);
 
+         // Récupérer l'utilisateur connecté
+         $user = $security->getUser();
+
+         // Définir l'ID de l'utilisateur connecté pour la relation 'user' de la catégorie
+         $song->setUser($user);
+
+         
         if ($form->isSubmitted() && $form->isValid()) {
             $songRepository->save($song, true);
 
             return $this->redirectToRoute('app_admin', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->render('song/new.html.twig', [
             'song' => $song,
             'form' => $form,
