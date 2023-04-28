@@ -1,0 +1,124 @@
+/*    
+        form {
+            margin-bottom: 10px;
+            margin: 0 auto;
+        }
+        
+        label {
+            font-size: 25px;
+            font-weight: bold;
+        }
+        
+        .form-group input {
+            width: 150px;
+            height: 55px;
+            margin-top: 20px;
+        }
+        
+        .form-group .btn {
+            background: black;
+            color: white;
+            margin: 15px;
+            width: 80px;
+            border-radius: 50px;
+            height: 22px;
+            margin-top: 50px;
+            font-weight: bold;
+            line-height:2px;
+        }
+        
+
+        @media only screen and (min-width: 780px){
+            .form-group input {
+                width: 600px;
+                height: 55px;
+                margin-top: 20px;
+            }
+            .form-group .btn {
+                background: black;
+                color: white;
+                margin: 15px;
+                width: 270px;
+                border-radius: 50px;
+                height: 35px;
+                margin-top: 50px;
+                font-weight: bold;
+                line-height:2px;
+            }
+
+        }
+
+        @media only screen and (max-width: 1023px) {
+            .disc-image {
+                display: none;
+            }
+        }
+
+        
+        @media only screen and (max-width: 768px) {
+            .container {
+                position: relative;
+                text-align: center;
+            }
+        
+            .disc-image img {
+                width: 20%;
+            }
+        
+            .h2 {
+                position: absolute;
+                top: 83%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-weight: bold;
+                color: white;
+                font-size: 18px;
+                text-align: center;
+            }
+        
+           .d-flex input{
+            width: 200px;
+
+           }
+        
+            .btn {
+                background: black;
+                color: white;
+                margin: 15px;
+                width: 410px;
+                border-radius: 50px;
+                height: 33px;
+                padding: 2px;
+                margin-top: 25px;
+            }
+        }
+        
+/* 
+footer {
+background-color: black;
+height: 50px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 20px;
+}
+
+.left-link a {
+color: white;
+text-decoration: none;
+margin: 600px;
+font-weight: bold;
+line-height:center;
+margin-left: 600px;
+}
+
+.right-link a {
+color: white;
+text-decoration: none;
+margin: 250px;
+font-weight: bold;
+line-height:center;
+margin-right: 300px;
+padding: 5px;
+
+} */

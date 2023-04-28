@@ -1,8 +1,16 @@
+/* All pages element */
 #swiperAndList {
+  display: flex;
+  flex-direction: column;
   height: 80vh;
 }
 
+
 .swiper-container, .swiper-category-show {
+
+/* Swiper elements */
+.swiper-container {
+
   width: auto;
   overflow-x: hidden;
   height: 40vh;
@@ -12,58 +20,45 @@
 .swiper-slide {
   display: flex;
   height: 100%;
+  width:fit-content;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+/* Image of each category of the slider */
 #homeCategoryImage {
   width: 100%;
-  height: 80%;
-  position: relative;
 }
 
+/* Title of each category of the slider */
 #homeCategoryName {
-  position: absolute;
-  top: 72%;
-  left: 20%;
+  margin-top: -2em;
 }
 
-#home-song-list {
+/* List of songs */
+.songListContainer {
   height: 40vh;
-  margin-right: 1em;
+  width:95%;
   overflow-y: scroll;
-  padding-bottom: 1em;
-
+  padding-bottom: 2em;
 }
 
-.homeSongLi{
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+/* Actual table of songs */
+#home-song-list{
+  width:100%;
+  margin: 0 1em;
 }
 
+/* Link towards player */
 .homeSong {
   text-decoration: none;
   color:black;
 }
 
-.home-container-btn{
-display: flex;
-align-items: center;
+#home-play-btn{
+  font-size:20px;
 }
-
-#swiperAndList {
-  display: flex;
-  flex-direction: column;
-  height: 80vh;
-}
-
-.hidden {
-  display: none;
-}
-
 
 /* MEDIA QUERIES */
 
@@ -71,8 +66,15 @@ align-items: center;
 
 
   .swiper-container, .swiper-category-show {
+
+  .swiper-container {
+
     height: 50%;
     margin-bottom: 2em;
+  }
+
+  #home-play-btn{
+    font-size:30px;
   }
   
 }
@@ -91,16 +93,8 @@ align-items: center;
     width:40%;
   }
 
-  #homeCategoryName {
-    left: 33%;
-  }
-
-  #home-song-artist {
-    font-size:26px;
-  }
-
-  #home-song-title {
-    font-size:23px;
+  #home-play-btn{
+    font-size:40px;
   }
 
 }

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Favorite;
 use App\Entity\Song;
+use App\Entity\User;
 use App\Entity\Category;
 use App\Form\FavoriteType;
 use App\Repository\SongRepository;
@@ -22,14 +23,40 @@ class FavoriteController extends AbstractController
 {
 
     #[Route('/', name: 'app_favorite_index', methods: ['GET'])]
-    public function index(FavoriteRepository $favoriteRepository, Security $security): Response
+    public function index(Security $security, FavoriteRepository $favoriteRepository): Response
     {
+        $userConnected = $security->getUser();
 
-        $user = $security->getUser();
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
+        }
 
+        $favorites = [];
+
+        if ($userConnected instanceof User) {
+            $userId = $userConnected->getId();
+            $favoriteSongs = $favoriteRepository->findBy(['user' => $userId]);
+
+            foreach ($favoriteSongs as $favorite) {
+                $song = $favorite->getSong();
+                $favorites[] = [
+                    "id" => $song->getId(),
+                    "title" => $song->getTitle(),
+                    "artist" => $song->getArtist(),
+                    "image" => $song->getImage(),
+                    "category" => $song->getCategory()->getId(),
+                ];
+            }
+        }
         return $this->render('favorite/index.html.twig', [
-            'favorites' => $favoriteRepository->findByFavoriteUserId($user),
+            'favorites' => $favorites,
+            'isUserConnected' => $isUserConnected,
+            'roleUser' => $roleUser
         ]);
+        // var_dump($favorites);
     }
 
     #[Route('/{id}', name: 'app_favorite_show', methods: ['GET'])]
@@ -68,31 +95,9 @@ class FavoriteController extends AbstractController
         return $this->redirectToRoute('app_favorite_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    // #[Route('/{id}/{category_id}', name: 'app_favorite_player', methods: ['POST'])]
-    // public function favoritePlayer(int $id, int $category_id, FavoriteRepository $favoriteRepository, Security $security): Response
-    // {
-    //     $user = $security->getUser();
-
-    //     $song = $this->entityManager->getRepository(Song::class)->find($id);
-    //     $category = $this->entityManager->getRepository(Category::class)->find($category_id);
-    //     // Vérifier si la chanson et la catégorie existent
-    //     if (!$song || !$category) {
-    //         throw $this->createNotFoundException('La chanson ou la catégorie n\'existe pas.');
-    //     }
-
-    //     // Récupérer les favoris associés à la chanson et la catégorie
-    //     $favorites = $favoriteRepository->findBySongAndCategory($song, $category, $user);
-
-    //     return $this->render('player/player.html.twig', [
-    //         'song' => $song,
-    //         'category_id' => $category_id
-    //     ]);
-
-    //     // return $this->redirectToRoute('app_favorite_index', [], Response::HTTP_SEE_OTHER);
-    // }
 
 
-// SOUNDSCAPE METHODS
+    // SOUNDSCAPE METHODS
 
     #[Route('/newFavorite/{id}', name: 'app_new_favorite')]
     public function newFavorite(Security $security, FavoriteRepository $favoriteRepository, SongRepository $songRepository, $id, Request $request): Response
@@ -132,6 +137,4 @@ class FavoriteController extends AbstractController
             return new JsonResponse("false");
         }
     }
-
-    // show 3 plus grands favorites + count(favorite)
 }

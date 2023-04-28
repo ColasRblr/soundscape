@@ -17,16 +17,22 @@
   margin-left: 50px;
 }
 
+.elementsProfil {
+  margin-top: 8vh;
+}
+
 .formProfilInformations {
   background-color: white;
   padding: 5px;
-  /* font-size: 30px; */
   width: 50vw;
 }
 #containerProfil {
   margin-left: 25vw;
-  /* margin-top: 5vh; */
-  margin-bottom: 4vh;
+  margin-bottom: 3vh;
+}
+
+#containerPageProfil {
+  padding-bottom: 5vh;
 }
 
 .form-control {
@@ -35,48 +41,53 @@
 
 #btnValidateEditProfil {
   text-align: center;
-  margin-bottom: 5px;
-}
-
-#btnDeleteProfil {
-  text-align: center;
+  margin-bottom: 2vh;
 }
 
 #btnUpdateProfil {
   text-align: center;
+  margin-bottom: 2vh;
 }
 
 #btnDeleteProfil {
   width: 50vw;
+  text-align: center;
+  background-color: transparent;
+  color: black;
+  font-style: italic;
+  font-size: 13px;
+  margin-bottom: 10vh;
+  z-index: 8;
+  position: relative;
 }
-
+#iconDeleteProfil {
+  font-size: 20px;
+}
 #formDelete {
   text-align: center;
 }
-/* @media only screen and (max-width: 768px) {
-  footer {
-    background-color: black;
-    width: 100vw;
-    height: 10vh;
-    position: fixed;
-    bottom: 0;
-  }
-} */
-
-/* @media only screen and (min-width: 1024px) {
-  footer {
-    background-color: black;
-    width: 100vw;
-    height: 8vh;
-    position: fixed;
-    bottom: 0;
-    margin-top: 10vh;
-   
+@media only screen and (min-width: 768px) {
+  #btnDeleteProfil {
+    width: 30vw;
   }
 
+  #btnDeleteProfil {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
   .offcanvas-body {
     align-self: center;
   }
   .nav-item {
+    font-size: 15px;
+  }
+  #btnDeleteProfil {
     font-size: 20px;
-  } */
+    margin-bottom: 1vh;
+  }
+  .elementsProfil {
+    margin-top: 1vh;
+  }
+}

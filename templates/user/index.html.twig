@@ -8,30 +8,26 @@
 		<h2>Mon profil</h2>
 	</div>
 
+	<div id="containerPageProfil">
+		<div id="containerProfil">
 
-	<div id="containerProfil">
+			<div class="elementsProfil">
+				<label>Nom</label>
+				<p class="formProfilInformations">{{ user.firstName }}</p>
 
-		<div class="elementsProfil">
-			<label>Nom</label>
-			<p class="formProfilInformations">{{ user.firstName }}</p>
+				<label>Prénom</label>
+				<p class=" formProfilInformations">{{ user.lastName }}</p>
+
+				<label>Email</label>
+				<p class="formProfilInformations">{{ user.email }}</p>
+			</div>
 		</div>
-		<div class="elementsProfil">
-			<label>Prénom</label>
-			<p class=" formProfilInformations">{{ user.lastName }}</p>
-		</div>
-		<div class="elementsProfil">
-			<label>Email</label>
-			<p class="formProfilInformations">{{ user.email }}</p>
-		</div>
-		<div class="elementsProfil">
-			<label>Mot de passe</label>
-			<p class="formProfilInformations">{{ user.password }}</p>
-		</div>
-	</div>
 
-	<div id="btnUpdateProfil">
-
-		<a href="{{ path('app_user_edit', {'id': user.id}) }}" id="btnValidateModifyProfil">Modifier</a>
-
+		<div id="btnUpdateProfil">
+			<button>
+				<a href="{{ path('app_user_edit', {'id': user.id}) }}" id="btnValidateModifyProfil">Modifier</a>
+			</button>
+		</div>
+		{{ include('user/_delete_form.html.twig') }}
 	</div>
 {% endblock %}
