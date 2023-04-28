@@ -10,7 +10,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Controller\CategoryController;
+use App\Repository\FavoriteRepository;
 use Symfony\Component\Security\Core\Security;
+
 
 class HomeController extends AbstractController
 {
@@ -36,6 +38,7 @@ class HomeController extends AbstractController
         //     $roleUser = "";
         // }
         var_dump($roleUser);
+
         // Récupération de toutes les catégories de la table
         $request = $categoryController->index($categoryRepository);
         $response = $request->getContent();
@@ -47,7 +50,8 @@ class HomeController extends AbstractController
         ]);
     }
     #[Route('/admin', name: 'app_admin')]
-    public function admin_index(CategoryRepository $categoryRepository, Security $security): Response
+    public function admin_index(CategoryRepository $categoryRepository, FavoriteController $favoriteController, FavoriteRepository $favoriteRepositor, Security $security): Response
+
     {
 
         $isUserConnected = false;
@@ -58,7 +62,6 @@ class HomeController extends AbstractController
         }
         // Récupération de toutes les catégories de la table
         $categories = $categoryRepository->findAll();
-
 
         // Construction de la liste d'objets à partir des données récupérées
         $myData = [];
@@ -71,8 +74,11 @@ class HomeController extends AbstractController
             ];
         }
 
+        $topFavorites = $favoriteRepository->mostFavorites();
+        var_dump($topFavorites);
         return $this->render('home/admin.html.twig', [
-            'controller_name' => 'HomeController', 'myData' => $myData, 'isUserConnected' => $isUserConnected, 'roleUser' => $roleUser
+            'controller_name' => 'HomeController', 'myData' => $myData, 'topFavorites' => $topFavorites
+
         ]);
     }
 

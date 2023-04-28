@@ -25,7 +25,6 @@
 /* Image of each category of the slider */
 #homeCategoryImage {
   width: 100%;
-  height: 80%;
 }
 
 /* Title of each category of the slider */
@@ -84,10 +83,6 @@
 
   #homeCategoryImage {
     width:40%;
-  }
-
-  #homeCategoryName {
-    left: 33%;
   }
 
   #home-play-btn{

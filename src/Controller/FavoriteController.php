@@ -137,4 +137,5 @@ class FavoriteController extends AbstractController
             return new JsonResponse("false");
         }
     }
+
 }
