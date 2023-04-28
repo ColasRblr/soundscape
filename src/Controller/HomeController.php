@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Controller\CategoryController;
-
+use App\Repository\FavoriteRepository;
 
 class HomeController extends AbstractController
 {
@@ -20,7 +20,7 @@ class HomeController extends AbstractController
         CategoryController $categoryController,
 
     ): Response {
-        
+
         // Récupération de toutes les catégories de la table
         $request = $categoryController->index($categoryRepository);
         $response = $request->getContent();
@@ -32,7 +32,7 @@ class HomeController extends AbstractController
         ]);
     }
     #[Route('/admin', name: 'app_admin')]
-    public function admin_index(CategoryRepository $categoryRepository): Response
+    public function admin_index(CategoryRepository $categoryRepository, FavoriteController $favoriteController, FavoriteRepository $favoriteRepository): Response
     {
         // Récupération de toutes les catégories de la table
         $categories = $categoryRepository->findAll();
@@ -48,26 +48,28 @@ class HomeController extends AbstractController
                 "categoryAlt" => $category->getName(),
             ];
         }
-        
+
+        $topFavorites = $favoriteRepository->mostFavorites();
+        var_dump($topFavorites);
         return $this->render('home/admin.html.twig', [
-            'controller_name' => 'HomeController', 'myData' => $myData
+            'controller_name' => 'HomeController', 'myData' => $myData, 'topFavorites' => $topFavorites
         ]);
     }
 
 
-// #[Route('/admin', name: 'app_admin')]
-// public function index_admin(): Response
-// {
-//     return $this->render('home/admin.html.twig', [
-//         'controller_name' => 'HomeController',
-//     ]);
-// }
+    // #[Route('/admin', name: 'app_admin')]
+    // public function index_admin(): Response
+    // {
+    //     return $this->render('home/admin.html.twig', [
+    //         'controller_name' => 'HomeController',
+    //     ]);
+    // }
 
-#[Route('/admin_song', name: 'app_admin_song')]
-public function index_admin_song(): Response
-{
-    return $this->render('home/admin_song.html.twig', [
-        'controller_name' => 'HomeController',
-    ]);
-}
+    #[Route('/admin_song', name: 'app_admin_song')]
+    public function index_admin_song(): Response
+    {
+        return $this->render('home/admin_song.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
 }

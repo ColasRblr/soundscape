@@ -64,6 +64,31 @@ class FavoriteRepository extends ServiceEntityRepository
 
         return $qb->getResult();
     }
+
+    public function mostFavorites()
+    {
+        // $mostFavorites = $this->createQueryBuilder('f')
+        //     ->select('f.song', 'COUNT(f.song)')
+        //     ->groupBy('f.song')
+        //     ->having('COUNT(f.song) > 1')
+        //     ->orderBy('COUNT(f.song)')
+        //     ->setMaxResults(3)
+        //     ->getQuery();
+
+        $mostFavorites = $this->createQueryBuilder('f')
+            ->select('s.id, s.title as title, s.artist as artist, s.image as image, COUNT(f.song) as count')
+            ->join('f.song', 's')
+            ->groupBy('s.id')
+            ->having('COUNT(f.song) > 1')
+            ->orderBy('count')
+            ->setMaxResults(3)
+            ->getQuery();
+
+        return $mostFavorites->getResult();
+       
+    }
+}
+    
     //    /**
     //     * @return Favorite[] Returns an array of Favorite objects
     //     */
@@ -88,4 +113,3 @@ class FavoriteRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
-}
