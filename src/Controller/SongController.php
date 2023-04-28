@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
+use Symfony\Component\Security\Core\Security;
 
 #[Route('/song')]
 class SongController extends AbstractController
@@ -25,21 +25,38 @@ class SongController extends AbstractController
         ]);
     }
     #[Route('/byCategory/{categoryId}', name: 'app_song_by_category_index', methods: ['GET'])]
-    public function songByCategory(int $categoryId, SongRepository $songRepository, CategoryRepository $categoryRepository): Response
+    public function songByCategory(int $categoryId, SongRepository $songRepository, CategoryRepository $categoryRepository, Security $security): Response
     {
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
+        }
+
         $category = $categoryRepository->find($categoryId);
         $songs = $songRepository->findBy(['category' => $category]);
 
         return $this->render('song/index.html.twig', [
             'songs' => $songs,
             'category' => $category,
+            'isUserConnected' => $isUserConnected,
+            'roleUser' => $roleUser
         ]);
     }
 
 
     #[Route('/new', name: 'app_song_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, SongRepository $songRepository): Response
+    public function new(Request $request, SongRepository $songRepository, Security $security): Response
     {
+
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
+        }
+
         $song = new Song();
         $form = $this->createForm(SongType::class, $song);
         $form->handleRequest($request);
@@ -53,6 +70,8 @@ class SongController extends AbstractController
         return $this->render('song/new.html.twig', [
             'song' => $song,
             'form' => $form,
+            'isUserConnected' => $isUserConnected,
+            'roleUser' => $roleUser
         ]);
     }
 
@@ -65,8 +84,16 @@ class SongController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_song_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Song $song, SongRepository $songRepository): Response
+    public function edit(Request $request, Song $song, SongRepository $songRepository, Security $security): Response
     {
+
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
+        }
+
         $form = $this->createForm(SongType::class, $song);
         $form->handleRequest($request);
 
@@ -79,6 +106,8 @@ class SongController extends AbstractController
         return $this->render('song/edit.html.twig', [
             'song' => $song,
             'form' => $form,
+            'isUserConnected' => $isUserConnected,
+            'roleUser' => $roleUser
         ]);
     }
 

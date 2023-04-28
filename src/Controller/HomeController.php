@@ -41,7 +41,7 @@ class HomeController extends AbstractController
         ]);
     }
     #[Route('/admin', name: 'app_admin')]
-    public function admin_index(CategoryRepository $categoryRepository, FavoriteController $favoriteController, FavoriteRepository $favoriteRepositor, Security $security): Response
+    public function admin_index(CategoryRepository $categoryRepository, FavoriteController $favoriteController, FavoriteRepository $favoriteRepository, Security $security): Response
 
     {
 
@@ -66,10 +66,9 @@ class HomeController extends AbstractController
         }
 
         $topFavorites = $favoriteRepository->mostFavorites();
-        var_dump($topFavorites);
+        // var_dump($topFavorites);
         return $this->render('home/admin.html.twig', [
-            'controller_name' => 'HomeController', 'myData' => $myData, 'topFavorites' => $topFavorites
-
+            'controller_name' => 'HomeController', 'myData' => $myData, 'topFavorites' => $topFavorites, 'isUserConnected' => $isUserConnected, 'roleUser' => $roleUser
         ]);
     }
 
