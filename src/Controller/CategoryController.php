@@ -37,6 +37,8 @@ class CategoryController extends AbstractController
     {
         $isUserConnected = false;
         $roleUser = '';
+
+    
         if ($security->getUser() != null) {
             $isUserConnected = true;
             $roleUser = $security->getUser()->getRoles();
@@ -46,6 +48,12 @@ class CategoryController extends AbstractController
         $form->handleRequest($request);
 
         $idCategory = $request->get('id_category');
+
+        // Récupérer l'utilisateur connecté
+        $user = $security->getUser();
+
+        // Définir l'ID de l'utilisateur connecté pour la relation 'user' de la catégorie
+        $category->setUser($user);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $categoryRepository->save($category, true);
