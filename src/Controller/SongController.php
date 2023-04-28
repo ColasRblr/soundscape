@@ -64,7 +64,7 @@ class SongController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $songRepository->save($song, true);
 
-            return $this->redirectToRoute('app_song_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_admin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('song/new.html.twig', [
@@ -76,10 +76,19 @@ class SongController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_song_show', methods: ['GET'])]
-    public function show(Song $song): Response
+    public function show(Song $song, Security $security): Response
     {
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
+        }
+
         return $this->render('song/show.html.twig', [
             'song' => $song,
+            'isUserConnected' => $isUserConnected,
+            'roleUser' => $roleUser
         ]);
     }
 
@@ -100,7 +109,7 @@ class SongController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $songRepository->save($song, true);
 
-            return $this->redirectToRoute('app_song_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_admin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('song/edit.html.twig', [
@@ -112,13 +121,22 @@ class SongController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_song_delete', methods: ['POST'])]
-    public function delete(Request $request, Song $song, SongRepository $songRepository): Response
+    public function delete(Request $request, Song $song, SongRepository $songRepository, Security $security): Response
     {
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
+        }
         if ($this->isCsrfTokenValid('delete' . $song->getId(), $request->request->get('_token'))) {
             $songRepository->remove($song, true);
         }
 
-        return $this->redirectToRoute('app_song_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_admin', [
+            'isUserConnected' => $isUserConnected,
+            'roleUser' => $roleUser
+        ], Response::HTTP_SEE_OTHER);
     }
 
     // SOUNDSCAPE METHODS 
