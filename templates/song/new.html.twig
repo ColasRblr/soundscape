@@ -3,9 +3,9 @@
 {% block title %}New Song{% endblock %}
 
 {% block body %}
-    <h1>Create new Song</h1>
+<a href="{{ path('app_admin') }}">Retour à la liste</a>
+
+    <h1>Créer une nouvelle chanson</h1>
 
     {{ include('song/_form.html.twig') }}
-
-    <a href="{{ path('app_song_index') }}">back to list</a>
 {% endblock %}

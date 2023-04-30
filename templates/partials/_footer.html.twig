@@ -14,56 +14,64 @@
 				<div class="offcanvas-body d-block">
 					<ul class="navbar-nav flex-grow-1 pe-3" style="text-align:right">
 
-						{% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
-							<li class="nav-item">
-								<a class="nav-link active  text-light" aria-current="page" href="{{ path('app_logout') }}">Déconnexion</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link active text-light" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link active text-light" aria-current="page" href="{{ path('app_user_index') }}">
-									Profil</a>
-							</li>
-
-						{% else %}
+						{% if isUserConnected %}
+						<p>Bienvenue, {{ app.user.username }} !</p>
+					{% else %}
+						<p>Veuillez vous connecter pour accéder à cette page.</p>
+					{% endif %}
 							<li class="nav-item">
 								<a class="nav-link active text-light" aria-current="page" href="{{ path('app_register') }}">Inscription</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link active text-light" aria-current="page" href="{{ path('app_login') }}">Connexion</a>
 							</li>
-						{% endif %}
-						{% if is_granted('ROLE_USER') %}
+						
 							<li class="nav-item">
-								<a class="nav-link active text-light" aria-current="page" href="{{ path('app_favorite_index') }}">Favoris</a>
+								<a class="nav-link active text-light" aria-current="page" href="{{ path('app_logout') }}">Déconnexion</a>
 							</li>
+
+							<li class="nav-item">
+								<a class="nav-link active text-light" aria-current="page" href="{{ path('app_user_index') }}">Profil</a>
+							</li>
+							{% if roleUser[0] is same as ("ROLE_USER") %}
+								<li class="nav-item">
+									<a class="nav-link active text-light" aria-current="page" href="{{ path('app_favorite_index') }}">Favoris</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link active text-light" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
+								</li>
+
+							{% else %}
+								<li class="nav-item">
+									<a class="nav-link active text-light" aria-current="page" href="{{ path('app_admin') }}">Accueil</a>
+								</li>
+						
 						{% endif %}
+
+
 					</ul>
 				</div>
 			</div>
 		</nav>
 
 		<div id="navbarDesktop">
-			{% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
 
-				<a class="linkNavbarDesktop" aria-current="page" href="{{ path('app_logout') }}">Déconnexion</a>
-
-				<a class="linkNavbarDesktopt" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
-
-				<a class="linkNavbarDesktopt" aria-current="page" href="{{ path('app_user_index') }}">
-					Profil</a>
-			{% else %}
-
+			{% if isUserConnected is same as(false) %}
 				<a class="linkNavbarDesktopt" aria-current="page" href="{{ path('app_register') }}">Inscription</a>
-
 				<a class="linkNavbarDesktopt" aria-current="page" href="{{ path('app_login') }}">Connexion</a>
 
-			{% endif %}
-			{% if is_granted('ROLE_USER') %}
+			{% else %}
+				<a class="linkNavbarDesktop" aria-current="page" href="{{ path('app_logout') }}">Déconnexion</a>
+				<a class="linkNavbarDesktopt" aria-current="page" href="{{ path('app_user_index') }}">Profil</a>
 
-				<a class="linkNavbarDesktopt" aria-current="page" href="{{ path('app_favorite_index') }}">Favoris</a>
+				{% if roleUser[0] is same as ("ROLE_USER") %}
+					<a class="linkNavbarDesktopt" aria-current="page" href="{{ path('app_favorite_index') }}">Favoris</a>
+					<a class="linkNavbarDesktopt" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
+				{% else %}
+					<a class="linkNavbarDesktopt" aria-current="page" href="{{ path('app_admin') }}">Accueil</a>
+				{% endif %}
 			{% endif %}
+
 		</div>
 
 	</footer>

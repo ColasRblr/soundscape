@@ -3,11 +3,11 @@
 {% block title %}Edit Song{% endblock %}
 
 {% block body %}
-    <h1>Edit Song</h1>
+    <a href="{{ path('app_admin') }}">Retour à la liste</a>
+    
+    <h1>Modifer une Chanson</h1>
 
     {{ include('song/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_song_index') }}">back to list</a>
 
     {{ include('song/_delete_form.html.twig') }}
 {% endblock %}

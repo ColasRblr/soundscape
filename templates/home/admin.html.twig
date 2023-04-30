@@ -5,36 +5,32 @@
 
 {% block body %}
 
-	<div class="example-wrapper">
-		<div class="admin_title">
-			<h3>Titres les plus likés</h3>
-		</div>
-		<div
-			class="admin_show_liked">
-
-			{# {{ include('favorite/index.html.twig') }} #}
-			{% for topFavorite in topFavorites %}
-				<div>
-					<img src="{{ asset('/img/albums/' ~ topFavorite.image) }}" alt="{{ topFavorite.artist }}">
-					<h4>{{ topFavorite.artist }}</h4>
-					<h5>{{ topFavorite.title }}</h5>
-					<h5>{{ topFavorite.count }}</h5>
-
-				</div>
-			{% endfor %}
-			<h4>Artiste</h4>
-			<h5>Titre</h5>
-			<i class="fa fa-heart" style="font-size:36px"></i>
-		</div>
-		<div
-			class="admin_category">
-			{# <h3>CATEGORIES</h3> #}
-			<a href="{{ path('app_category_new') }}">
-				<i class="fa fa-plus" id="admin_plus_icon" style="font-size:36px"></i>
-			</a>
-		</div>
-
-		{{ include('category/show.html.twig') }}
-
+	<div class="admin_title">
+		<h3>Titres les plus likés</h3>
 	</div>
-{% endblock %}
+
+	class="admin_show_liked">
+
+	{# {{ include('favorite/index.html.twig') }} #}
+	{% for topFavorite in topFavorites %}
+		<div>
+			<img src="{{ asset('/img/albums/' ~ topFavorite.image) }}" alt="{{ topFavorite.artist }}">
+			<h4>{{ topFavorite.artist }}</h4>
+			<h5>{{ topFavorite.title }}</h5>
+			<h5>{{ topFavorite.count }}</h5>
+
+		</div>
+	{% endfor %}
+	<h4>Artiste</h4>
+	<h5>Titre</h5>
+	<i class="fa fa-heart" style="font-size:36px"></i>
+</div>
+<div
+	class="admin_category">
+	{# <h3>CATEGORIES</h3> #}
+	<a href="{{ path('app_category_new') }}">
+		<i class="fa fa-plus" id="admin_plus_icon" style="font-size:36px"></i>
+	</a>
+</div>
+
+{{ include('category/show.html.twig') }}</div>{% endblock %}
