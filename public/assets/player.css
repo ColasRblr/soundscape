@@ -1,5 +1,5 @@
 /* All page elements but previous arrow */
-#playerSection {
+#playerPage{
 display: flex;
 flex-direction: column ;
 justify-content: space-between;
@@ -11,12 +11,11 @@ height:70vh;
     display: flex;
     justify-content: center;
     margin: 0 1em;
-    overflow-x: hidden;
 }
 
 .disc {
-    width: 250px;
-    height: 250px;
+    width: 240px;
+    height: 240px;
 }
 
 .rotate {
@@ -161,6 +160,7 @@ height:70vh;
    
 }
 
+
 @media screen and (min-width:630px){
 
     .headshell { 
@@ -170,18 +170,24 @@ height:70vh;
 
 }
 
-
-@media screen and (min-width:820px){
-
-    .headshell { 
-        margin-left: -4em;
-    }
+@media screen and (min-width:760px){
     
+    .disc {
+        width: 350px;
+        height: 350px;
+    }
+
+    #album-image{
+        width:180px;
+        height:180px;
+
+    }
+
 }
 
 @media screen and (min-width:1024px){
 
-    #playerSection {
+    #playerPage {
         flex-direction: row;
         justify-content: center;
     }
@@ -191,8 +197,6 @@ height:70vh;
         height : 45vh;
         display: flex;
         align-items: center;
-        overflow-x: auto;
-
     }
 
     .disc {
@@ -251,10 +255,6 @@ height:70vh;
         height : 70vh;
     }
     
-    #album-image {
-        width: 180px;
-        height: 180px;
-    }
     #song-artist {
         font-size: 30px ;  
      }
