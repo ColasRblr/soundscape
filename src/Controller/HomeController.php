@@ -5,13 +5,14 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Category;
 use App\Form\CategoryType;
-use App\Repository\CategoryRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use App\Controller\CategoryController;
+use App\Repository\CategoryRepository;
 use App\Repository\FavoriteRepository;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 class HomeController extends AbstractController
@@ -40,7 +41,9 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController', 'myData' => $myData, 'isUserConnected' => $isUserConnected, 'roleUser' => $roleUser
         ]);
     }
+
     #[Route('/admin', name: 'app_admin')]
+    #[IsGranted("ROLE_ADMIN")]
     public function admin_index(CategoryRepository $categoryRepository, FavoriteController $favoriteController, FavoriteRepository $favoriteRepository, Security $security): Response
 
     {
@@ -72,20 +75,4 @@ class HomeController extends AbstractController
         ]);
     }
 
-
-    // #[Route('/admin', name: 'app_admin')]
-    // public function index_admin(): Response
-    // {
-    //     return $this->render('home/admin.html.twig', [
-    //         'controller_name' => 'HomeController',
-    //     ]);
-    // }
-
-    #[Route('/admin_song', name: 'app_admin_song')]
-    public function index_admin_song(): Response
-    {
-        return $this->render('home/admin_song.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
 }

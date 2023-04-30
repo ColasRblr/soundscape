@@ -6,26 +6,22 @@ use App\Entity\Song;
 use App\Form\SongType;
 use App\Repository\SongRepository;
 use App\Repository\CategoryRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/song')]
 class SongController extends AbstractController
 {
-    #[Route('/', name: 'app_song_index', methods: ['GET'])]
-    public function index(SongRepository $songRepository): Response
-    {
-        return $this->render('song/index.html.twig', [
-            'songs' => $songRepository->findAll(),
-            // 'category' => $categoryRepository->findCategoryId(),
-        ]);
-    }
+
     #[Route('/byCategory/{categoryId}', name: 'app_song_by_category_index', methods: ['GET'])]
-    public function songByCategory(int $categoryId, SongRepository $songRepository, CategoryRepository $categoryRepository, Security $security): Response
+    #[IsGranted("ROLE_ADMIN")]
+    public function adminSongPage(int $categoryId, SongRepository $songRepository, CategoryRepository $categoryRepository, Security $security): Response
+
     {
         $isUserConnected = false;
         $roleUser = '';
@@ -33,7 +29,6 @@ class SongController extends AbstractController
             $isUserConnected = true;
             $roleUser = $security->getUser()->getRoles();
         }
-
         $category = $categoryRepository->find($categoryId);
         $songs = $songRepository->findBy(['category' => $category]);
 
@@ -45,8 +40,8 @@ class SongController extends AbstractController
         ]);
     }
 
-
     #[Route('/new', name: 'app_song_new', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function new(Request $request, SongRepository $songRepository, Security $security): Response
     {
 
@@ -61,17 +56,18 @@ class SongController extends AbstractController
         $form = $this->createForm(SongType::class, $song);
         $form->handleRequest($request);
 
-         // Récupérer l'utilisateur connecté
-         $user = $security->getUser();
+        // Récupérer l'utilisateur connecté
+        $user = $security->getUser();
 
-         // Définir l'ID de l'utilisateur connecté pour la relation 'user' de la catégorie
-         $song->setUser($user);
+        // Définir l'ID de l'utilisateur connecté pour la relation 'user' de la catégorie
+        $song->setUser($user);
 
-         
+
         if ($form->isSubmitted() && $form->isValid()) {
             $songRepository->save($song, true);
 
-            return $this->redirectToRoute('app_admin', [], Response::HTTP_SEE_OTHER);
+            $categoryId = $song->getCategory()->getId();
+            return $this->redirectToRoute('app_song_by_category_index', ['categoryId' => $categoryId], Response::HTTP_SEE_OTHER);
         }
         return $this->render('song/new.html.twig', [
             'song' => $song,
@@ -81,27 +77,10 @@ class SongController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_song_show', methods: ['GET'])]
-    public function show(Song $song, Security $security): Response
-    {
-        $isUserConnected = false;
-        $roleUser = '';
-        if ($security->getUser() != null) {
-            $isUserConnected = true;
-            $roleUser = $security->getUser()->getRoles();
-        }
-
-        return $this->render('song/show.html.twig', [
-            'song' => $song,
-            'isUserConnected' => $isUserConnected,
-            'roleUser' => $roleUser
-        ]);
-    }
-
     #[Route('/{id}/edit', name: 'app_song_edit', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function edit(Request $request, Song $song, SongRepository $songRepository, Security $security): Response
     {
-
         $isUserConnected = false;
         $roleUser = '';
         if ($security->getUser() != null) {
@@ -114,8 +93,8 @@ class SongController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $songRepository->save($song, true);
-
-            return $this->redirectToRoute('app_admin', [], Response::HTTP_SEE_OTHER);
+            $categoryId = $song->getCategory()->getId();
+            return $this->redirectToRoute('app_song_by_category_index', ['categoryId' => $categoryId], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('song/edit.html.twig', [
@@ -127,6 +106,7 @@ class SongController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_song_delete', methods: ['POST'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function delete(Request $request, Song $song, SongRepository $songRepository, Security $security): Response
     {
         $isUserConnected = false;
@@ -139,10 +119,8 @@ class SongController extends AbstractController
             $songRepository->remove($song, true);
         }
 
-        return $this->redirectToRoute('app_admin', [
-            'isUserConnected' => $isUserConnected,
-            'roleUser' => $roleUser
-        ], Response::HTTP_SEE_OTHER);
+        $categoryId = $song->getCategory()->getId();
+        return $this->redirectToRoute('app_song_by_category_index', ['categoryId' => $categoryId], Response::HTTP_SEE_OTHER);
     }
 
     // SOUNDSCAPE METHODS 

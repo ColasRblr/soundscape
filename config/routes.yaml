@@ -10,24 +10,16 @@ home:
 
 register:
   path: "/app_register"
-  controller: App\Controller\RegisterController::register
+  controller: App\Controller\RegistrationController::register
 
 login:
   path: "/app_login"
   controller: App\Controller\SecurityController::login
 
-category:
-  path: "/category"
-  controller: App\Controller\CategoryController::index
-
 get_songs_by_category:
   path: /category/{id}/getsongs
   controller: App\Controller\CategoryController::getSongsByCategory
   methods: ["GET"]
-
-song:
-  path: "/song"
-  controller: App\Controller\SongController::index
 
 favorite:
   path: "/favorite"
@@ -44,7 +36,7 @@ user:
 
 player:
   path: /player/{id}/{category_id}
-  controller: App\Controller\PlayerController::showSong
+  controller: App\Controller\PlayerController::player
   requirements:
     id: \d+
     category_id: \d+
@@ -56,7 +48,7 @@ admin:
 addCategory:
   path: "/category/new"
   controller: App\Controller\CategoryController::new
-  
+
 editCategory:
   path: "/category/{id}/edit"
   controller: App\Controller\CategoryController::edit
@@ -68,6 +60,7 @@ deleteCategory:
 adminSong:
   path: "/song/byCategory/{categoryId}"
   controller: App\Controller\SongController::adminSongPage
+
 
 # addSong:
 #   path: "/song/new"

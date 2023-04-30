@@ -2,18 +2,18 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CategoryRepository;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route("/player")]
 class PlayerController extends AbstractController
 {
-
     #[Route("/{id}/{category_id}", name: "app_player_show")]
-    public function showSong($id, $category_id, Security $security)
+    public function player($id, $category_id, Security $security)
     {
         // Appeler la méthode showSongById du SongController pour récupérer les données de la chanson
         $response = $this->forward(SongController::class . '::showSongById', [
