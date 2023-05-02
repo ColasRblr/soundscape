@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello !
+{% block title %}Home
 {% endblock %}
 
 {% block body %}
 
-	<section id="swiperAndList">
+	<section id="homePage">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
 				{% for data in myData %}
@@ -20,7 +20,6 @@
 		<div class="songListContainer">
 			<table id="home-song-list"></table>
 		</div>
-
 
 		<div id="authenticated-status" data-authenticated="{{ isUserConnected }}"></div>
 

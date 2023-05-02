@@ -4,19 +4,18 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
-use App\Repository\UserRepository;
 use Random\Engine\Secure;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/user')]
 class UserController extends AbstractController
 {
-
-
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
     public function index(Security $security): Response
     {
@@ -31,33 +30,7 @@ class UserController extends AbstractController
 
         return $this->render('user/index.html.twig', [
             'user' => $user, 'isUserConnected' => $isUserConnected, 'roleUser' => $roleUser
-        ]);
-    }
 
-    #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, UserRepository $userRepository): Response
-    {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $userRepository->save($user, true);
-
-            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('user/new.html.twig', [
-            'user' => $user,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
-    public function show(User $user): Response
-    {
-        return $this->render('user/show.html.twig', [
-            'user' => $user,
         ]);
     }
 

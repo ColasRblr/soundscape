@@ -3,8 +3,8 @@
 {% block title %}Song index{% endblock %}
 
 {% block body %}
-    <h1 id=""> Songs de la categorie
-    {# {{category.name}}  #}
+    <h1 id=""> Chansons de la categorie :
+    {{category.name}} 
     </h1>
 
     <table class="table">
@@ -25,8 +25,7 @@
                 <td>{{ song.artist }}</td>
                 <td>{{ song.url }}</td>
                 <td>
-                    <a href="{{ path('app_song_show', {'id': song.id}) }}"><strong>show</strong></a>
-                    <a href="{{ path('app_song_edit', {'id': song.id}) }}"><strong>edit</strong></a>
+                    <a href="{{ path('app_song_edit', {'id': song.id}) }}"><strong>Modifier</strong></a>
                     
                 </td>
             </tr>
