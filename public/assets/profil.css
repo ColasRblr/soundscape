@@ -25,6 +25,7 @@
   background-color: white;
   padding: 5px;
   width: 50vw;
+  border-radius: 10px;
 }
 #containerProfil {
   margin-left: 25vw;
@@ -66,6 +67,9 @@
 #formDelete {
   text-align: center;
 }
+#form-group-password-user {
+  display: none;
+}
 @media only screen and (min-width: 768px) {
   #btnDeleteProfil {
     width: 30vw;
@@ -91,6 +95,6 @@
     margin-top: 1vh;
   }
   #btnModifyUser {
-    width: 15%;
+    width: 13%;
   }
 }
