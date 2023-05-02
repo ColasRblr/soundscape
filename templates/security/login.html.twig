@@ -9,14 +9,17 @@
             <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
-    <a id="previous-page-btn" href="/">
+    {# <a id="previous-page-btn" href="/">
         <i class="bi bi-arrow-left"></i>
       </a>
       <div class="vinyledisc-container d-flex justify-content-center">
         <img src="/img/disc.png" alt="disque vinyle">
         <h2 class="text-center">CONNEXION</h2>
+      </div> #}
+      <div id="containerh2">
+        <h2>CONNEXION</h2>
       </div>
-      <form method="post">
+      <form id="form-login" method="post">
         <h1 class="h3 mb-3 font-weight-normal"></h1>
         <div class="form-group">
           <label for="inputEmail">Adresse email</label>

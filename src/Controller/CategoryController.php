@@ -5,16 +5,16 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/category')]
 class CategoryController extends AbstractController
 {
-    #[Route('/', name: 'app_category_index', methods: ['GET'])]
     public function index(CategoryRepository $categoryRepository): Response
     {
         $cate = $categoryRepository->findAll();
@@ -33,12 +33,13 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/new', name: 'app_category_new', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function new(Request $request, CategoryRepository $categoryRepository, Security $security): Response
     {
         $isUserConnected = false;
         $roleUser = '';
 
-    
+
         if ($security->getUser() != null) {
             $isUserConnected = true;
             $roleUser = $security->getUser()->getRoles();
@@ -69,6 +70,7 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_category_edit', methods: ['GET'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function edit(Request $request, Category $category, CategoryRepository $categoryRepository, Security $security): Response
     {
         $form = $this->createForm(CategoryType::class, $category);
@@ -95,6 +97,7 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/{id}/delete', name: 'app_category_delete', methods: ['POST'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function delete(Request $request, Category $category, CategoryRepository $categoryRepository, Security $security): Response
     {
         $isUserConnected = false;
@@ -109,16 +112,9 @@ class CategoryController extends AbstractController
         }
 
         return $this->redirectToRoute('app_admin', [
-        'isUserConnected' => $isUserConnected, 'roleUser' => $roleUser
+            'isUserConnected' => $isUserConnected, 'roleUser' => $roleUser
         ], Response::HTTP_SEE_OTHER);
     }
-
-
-
-
-
-
-
 
     // SOUNDSCAPE METHODS 
     #[Route('/{id}/getsongs', name: 'get_songs_by_category', methods: ['GET'])]
