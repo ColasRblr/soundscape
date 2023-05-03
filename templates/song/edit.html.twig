@@ -5,8 +5,8 @@
 
 {% block body %}
 
-	<h1>Modifer une Chanson</h1>
-	<a href="{{ path('app_admin') }}">Retour à la liste</a>
+	<h1 class="admin_black" id="admin_display_mid">Modifer une Chanson</h1>
+	<a href="{{ path('app_admin') }}" class="admin_black"><button>Retour à la liste</button></a>
 
 	{{ include('song/_form.html.twig', {'button_label': 'Update'}) }}
 
