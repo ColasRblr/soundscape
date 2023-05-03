@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Login{% endblock %}
 
 {% block body %}
     {% if app.user %}
@@ -9,17 +9,14 @@
             <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
-    <a id="previous-page-btn" href="/">
-        <i class="bi bi-arrow-left"></i>
-      </a>
-      <div class="vinyledisc-container d-flex justify-content-center">
-        <img src="/img/disc.png" alt="disque vinyle">
-        <h2 class="text-center">CONNEXION</h2>
+    
+      <div id="containerh2">
+        <h2>CONNEXION</h2>
       </div>
-      <form method="post">
+      <form id="form-login" method="post">
         <h1 class="h3 mb-3 font-weight-normal"></h1>
         <div class="form-group">
-          <label for="inputEmail">Adresse email</label>
+          <label for="inputEmail">Adresse mail</label>
           <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
         </div>
         <div class="form-group">
