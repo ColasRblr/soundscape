@@ -105,7 +105,7 @@ class SongController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_song_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_song_delete', methods: ['GET', 'POST'])]
     #[IsGranted("ROLE_ADMIN")]
     public function delete(Request $request, Song $song, SongRepository $songRepository, Security $security): Response
     {

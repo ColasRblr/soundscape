@@ -53,6 +53,30 @@
   font-size: 20px;
 }
 
+#show_pen_admin{
+  color: black;
+  margin-right: 15px;
+}
+#name_song_admin{
+  color: black;
+}
+.admin_black{
+  color: black;
+}
+#admin_display_mid{
+  display: flex;
+  justify-content: center;
+}
+#show_trash_admin_id{
+  margin-bottom: 20%;
+  padding: 0px;
+}
+#admin_bottom{
+  margin-bottom: 8% !important;
+}
+#bot_admin{
+  margin-bottom: 5% !important;
+}
 /* / MEDIA QUERIES */
 
 @media screen and (min-width: 760px) {
