@@ -13,6 +13,7 @@
     display: flex;
     justify-content: space-around;
 }
+
 .admin_burger{
     display: none;
 }
@@ -51,3 +52,57 @@
       color: black;
     }
   }
+
+  /* / Admin css / */
+
+#home-play-btn {
+  font-size: 20px;
+}
+
+#show_pen_admin{
+  color: black;
+  margin-right: 15px;
+}
+#name_song_admin{
+  color: black;
+}
+.admin_black{
+  color: black;
+}
+#admin_display_mid{
+  display: flex;
+  justify-content: center;
+}
+
+#show_trash_admin_id{
+  background-color: transparent;
+  margin-bottom: 20%;
+  padding: 0px;
+}
+
+#admin_bottom{
+  margin-bottom: 8% !important;
+}
+#bot_admin{
+  margin-bottom: 5% !important;
+}
+#admin_favori_display{
+  display: flex;
+  justify-content: space-evenly;
+}
+.admin_favori_info, #admin_heart_fa{
+  margin-top: 5%;
+}
+#admin_favori_img{
+  margin: 1%;
+}
+#admin_favori_id{
+  margin-bottom: 10%;
+}
+.btn_admin_song{
+  margin: 12% 0;
+}
+.admin_favori_margin{
+  margin-left: 30%;
+  margin-right: 30%;
+}

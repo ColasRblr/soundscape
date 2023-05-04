@@ -1,47 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Song index{% endblock %}
+{% block title %}Song index
+{% endblock %}
 
 {% block body %}
-    <div class="swiper-category-show">
-        <div class="show_category"> 
-            <div class="swiper-slide">
-                <img src="{{ asset('/img/categories/' ~ category.image) }}"  width="340px" height="270px" id="admin_show_song"></a> 
-                <h1 class="admin_black">{{category.name}}</h1>
-            </div>
-        </div>
-    </div>
-    <table class="table">
-        <thead id="bot_admin">
-            <tr>
-                {# <th>Id</th> #}
-                <th>Titre</th>
-                <th>Artiste</th>
-                <th>Url</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for song in songs %}
-            <tr>
-                {# <td>{{ song.id }}</td> #}
-                <td>{{ song.title }}</td>
-                <td>{{ song.artist }}</td>
-                <td>{{ song.url }}</td>
-                
-                <td>
-                    {{ include('category/_delete_form.html.twig') }}
-                </td>
-                <td>
-                    <a href="{{ path('app_song_edit', {'id': song.id}) }}"><i class="fa fa-pencil" id="show_pen_admin" style="font-size:35px"></i></strong></a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<a id="previous-page-btn" href="/admin">
+		<i class="bi bi-arrow-left"></i>
+	</a>
+	<div class="swiper-category-show">
+		<div class="show_category">
+			<div class="swiper-slide">
+				<img src="{{ asset('/img/categories/' ~ category.image) }}" width="340px" height="270px" id="admin_show_song"></a>
+			<h1 class="admin_black">{{category.name}}</h1>
+		</div>
+	</div>
+</div>
+<table class="table">
+	<thead id="bot_admin">
+		<tr>
+			{# <th>Id</th> #}
+			<th>Titre</th>
+			<th>Artiste</th>
+			<th>Url</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for song in songs %}
+			<tr>
+				{# <td>{{ song.id }}</td> #}
+				<td>{{ song.title }}</td>
+				<td>{{ song.artist }}</td>
+				<td>{{ song.url }}</td>
 
-    <a href="{{ path('app_song_new') }}"><button id="admin_bottom">Ajouter une chanson</button></a>
-{% endblock %}
+				<td>
+					{{ include('song/_delete_form.html.twig') }}
+				</td>
+				<td>
+					<a href="{{ path('app_song_edit', {'id': song.id}) }}">
+						<i class="fa fa-pencil" id="show_pen_admin" style="font-size:35px"></i>
+					</strong>
+				</td>
+			</tr>
+		</a>
+	</tbody>
+</td></tr>{% else %}<tr>
+<td colspan="5">no records found</td></tr>{% endfor %}</tbody></table><a href="{{ path('app_song_new') }}"><button id="admin_bottom">Ajouter une chanson</button></a>{% endblock %}
