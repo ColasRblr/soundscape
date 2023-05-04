@@ -36,6 +36,17 @@
 #admin_show_song:hover{
   scale: 1.05;
 }
+/* / Admin Song css / */
+
+#admin_mid_song{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
+.btn_update_admin_song{
+  margin: 8% 45%;
+}
 /* / Admin css / */
 
 #home-play-btn {
@@ -49,9 +60,6 @@
 #name_song_admin{
   color: black;
 }
-.admin_black{
-  color: black;
-}
 #admin_display_mid{
   display: flex;
   justify-content: center;
@@ -59,9 +67,6 @@
 #show_trash_admin_id{
   margin-bottom: 20%;
   padding: 0px;
-}
-#admin_bottom{
-  margin-bottom: 8% !important;
 }
 #bot_admin{
   margin-bottom: 5% !important;
@@ -87,23 +92,40 @@
   margin-right: 30%;
 }
 
-@media (min-width: 768px) {
-    body {
-      color: black;
+/* admin */
+@media (max-width: 665px) {
+  #admin_show_song{
+      width: 150px !important;
+      height: 110px !important;
     }
-  }
-  @media only screen and (max-width: 700px) {
-    #admin_show_song{
-      width: 320px;
-      height: 200px;
-    }
-  }
-  @media (min-width: 900px) {
-    body {
-      color: black;
-    }
-  }
 
+}
+
+@media (max-width: 600px) {
+  .swiper-category-show{
+    display: flex !important;
+    justify-content:start !important;
+  }
+  #category, #song{
+    margin: 0 35% !important;
+  }
+  }
+  @media (max-width: 1190px) {
+    .swiper-category-show{
+      display: flex;
+      justify-content: center;
+    }
+    #admin_show_song{
+      width: 400px;
+      height: 300px;
+    }
+  }
+  @media (max-width: 1358px) {
+    #admin_show_song{
+      width: 340px;
+      height: 220px;
+    }
+  }
   /* / Admin css / */
 
 #home-play-btn {
@@ -119,6 +141,8 @@
 }
 .admin_black{
   color: black;
+  display: flex;
+  justify-content: center;
 }
 #admin_display_mid{
   display: flex;
@@ -133,6 +157,7 @@
 
 #admin_bottom{
   margin-bottom: 8% !important;
+  margin-left: 8% !important;
 }
 #bot_admin{
   margin-bottom: 5% !important;
@@ -156,4 +181,36 @@
 .admin_favori_margin{
   margin-left: 30%;
   margin-right: 30%;
+}
+
+/* song */
+
+.swiper_song_admin{
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .container_responsive_admin_song{
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: solid 2px black;
+  }
+  #pic_admin_index{
+    width: 250px;
+    height: 210px;
+  }
+  #bot_admin{
+    display: none;
+  }
+  .swiper_song_admin{
+    border-bottom: solid 2px black;
+  }
+}
+/* Form */
+#category, #song{
+  display: flex;
+  flex-direction: column;
+  justify-self: center ;
+  margin: 0 45%;
 }

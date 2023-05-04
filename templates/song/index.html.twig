@@ -7,14 +7,12 @@
 <a id="previous-page-btn" href="/admin">
 		<i class="bi bi-arrow-left"></i>
 	</a>
-	<div class="swiper-category-show">
-		<div class="show_category">
-			<div class="swiper-slide">
-				<img src="{{ asset('/img/categories/' ~ category.image) }}" width="340px" height="270px" id="admin_show_song"></a>
+	<div class="swiper_song_admin">
+		<div id="admin_mid_song">
+				<img src="{{ asset('/img/categories/' ~ category.image) }}" width="340px" height="270px" id="pic_admin_index"></a>
 			<h1 class="admin_black">{{category.name}}</h1>
 		</div>
-	</div>
-</div>
+    </div>
 <table class="table">
 	<thead id="bot_admin">
 		<tr>
@@ -26,20 +24,22 @@
 	</thead>
 	<tbody>
 		{% for song in songs %}
-			<tr>
-				{# <td>{{ song.id }}</td> #}
-				<td>{{ song.title }}</td>
-				<td>{{ song.artist }}</td>
-				<td>{{ song.url }}</td>
-
-				<td>
-					{{ include('song/_delete_form.html.twig') }}
-				</td>
-				<td>
-					<a href="{{ path('app_song_edit', {'id': song.id}) }}">
-						<i class="fa fa-pencil" id="show_pen_admin" style="font-size:35px"></i>
-					</strong>
-				</td>
+			<tr class="container_responsive_admin_song">
+                <div class="responsive_admin_song1">
+                        <td>{{ song.title }}</td>
+                        <td>{{ song.artist }}</td>
+                        <td>{{ song.url }}</td>
+                <div>
+                    <div class="responsive_admin_song2">
+                        <td>
+                            {{ include('song/_delete_form.html.twig') }}
+                        </td>
+                        <td>
+                            <a href="{{ path('app_song_edit', {'id': song.id}) }}">
+                                <i class="fa fa-pencil" id="show_pen_admin" style="font-size:30px"></i>
+                            </strong>
+                        </td>
+                    </div>
 			</tr>
 		</a>
 	</tbody>

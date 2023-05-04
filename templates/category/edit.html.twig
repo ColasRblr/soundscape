@@ -3,10 +3,9 @@
 {% block title %}Edit Category{% endblock %}
 
 {% block body %}
-    <a href="{{ path('app_admin') }}" class="admin_black"><button>Retour à la liste</button></a>
-
     <h1 id="admin_display_mid" class="admin_black">Modifier une catégorie</h1>
 
+    <a id="previous-page-btn" href="/admin"><i class="bi bi-arrow-left"></i></a>
     {{ include('category/_form.html.twig', {'button_label': 'Update'}) }}
 
 
