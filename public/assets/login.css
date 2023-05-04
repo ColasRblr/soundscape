@@ -45,10 +45,13 @@
     font-size: 1.2rem;
     margin-left: auto;
     margin-right: auto;
-  }
 
+  } 
+  
   .btn-button:hover {
     background-color: black;
+  }
+
   }
 }
 
