@@ -1,9 +1,8 @@
-
 /* body {
   overflow-y: hidden;
   height: 100vh;
 } */
- @media (max-width: 768px){
+@media (max-width: 768px) {
   #form-login {
     display: flex;
     flex-direction: column;
@@ -15,7 +14,7 @@
 
   .form-group {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     margin-bottom: 1rem;
   }
   label {
@@ -24,15 +23,15 @@
     margin-bottom: 0.5rem;
     margin-right: 10px;
   }
-  
-  input#inputPassword{
+
+  input#inputPassword {
     width: 200px;
   }
-  
-  input#inputEmail{
+
+  input#inputEmail {
     width: 200px;
   }
-  
+
   .btn-button {
     display: block;
     width: 58%;
@@ -47,67 +46,58 @@
     margin-left: auto;
     margin-right: auto;
   }
-  
-    .btn-button:hover {
-      background-color: black;
-    }
+
+  .btn-button:hover {
+    background-color: black;
   }
-  
-  
-        
+}
+
 /* MEDIA QUERIES */
 @media only screen and (min-width: 1023px) {
-
-    
-    #form-login {
-      display: flex;
-      flex-direction: column;
-      padding: 1rem;
-      border-radius: 0.5rem;
-    }
-  
-    .form-group {
-      display: flex;
-      flex-wrap: wrap; 
-      margin-bottom: 2rem;
-    }
-  
-    label {
-      margin-bottom: 0.5rem;
-      margin-right: 1rem;
-      width: 400%; 
-    }
-  
-   
-    input#inputEmail {
-      width: 700px; 
-    }
-  
-  
-    input#inputPassword {
-      width: 700px; 
-    }
-  
-    .btn-button {
-        display:flex;
-        justify-content: center; 
-        align-items: center;
-        width: 400px;
-        height: 2.5rem;
-        line-height: 10px;
-        border-radius: 2rem;
-        border: none;
-        background-color: black;
-        color: #fff;
-        font-size: 1.2rem;
-        margin-top: 1rem;
-        padding: 10px;
-        margin-right: 150px;
-      }
-    .btn-button:hover {
-      background-color: black;
-    }
+  #form-login {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 0.5rem;
   }
-  
-  
-  
+
+  .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  label {
+    margin-bottom: 0.5rem;
+    margin-right: 1rem;
+    width: 400%;
+  }
+
+  input#inputEmail {
+    width: 700px;
+  }
+
+  input#inputPassword {
+    width: 700px;
+  }
+
+  .btn-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 2.5rem;
+    line-height: 10px;
+    border-radius: 2rem;
+    border: none;
+    background-color: black;
+    color: #fff;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    padding: 10px;
+    margin-right: 150px;
+  }
+  .btn-button:hover {
+    background-color: black;
+  }
+}
