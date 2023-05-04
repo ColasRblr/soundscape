@@ -69,15 +69,4 @@ adminSong:
   path: "/song/byCategory/{categoryId}"
   controller: App\Controller\SongController::adminSongPage
 
-# addSong:
-#   path: "/song/new"
-#   controller: App\Controller\SongController::new
-
-# editSong:
-#   path: "/song/{id}/edit"
-#   controller: App\Controller\SongController::edit
-
-#  deleteSong:
-#    path: "/song/{id}/delete"
-#    controller: App\Controller\SongController::delete
 
