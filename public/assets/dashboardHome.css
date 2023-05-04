@@ -93,6 +93,15 @@
 }
 
 /* admin */
+@media (max-width: 500px) {
+  #admin_favori_img{
+    width: 60px;
+    height: 40px;
+  }
+  #admin_heart_fa{
+    font-size: 20px !important;
+  }
+}
 @media (max-width: 665px) {
   #admin_show_song{
       width: 150px !important;
@@ -156,8 +165,8 @@
 }
 
 #admin_bottom{
-  margin-bottom: 8% !important;
-  margin-left: 8% !important;
+  margin-bottom: 20%;
+  margin-left: 8%;
 }
 #bot_admin{
   margin-bottom: 5% !important;
