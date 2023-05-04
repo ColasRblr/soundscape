@@ -1,12 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Category{% endblock %}
+{% block title %}New Category
+{% endblock %}
 
 {% block body %}
-    <a href="{{ path('app_admin') }}"><button>Retour à la liste</button></a>
+	<a id="previous-page-btn" href="/admin">
+		<i class="bi bi-arrow-left"></i>
+	</a>
 
-    <h1 class="admin_black" id="admin_display_mid">Créer une nouvelle catégorie</h1>
+	<h1 class="admin_black" id="admin_display_mid">Créer une nouvelle catégorie</h1>
 
-    {{ include('category/_form.html.twig') }}
+	{{ include('category/_form.html.twig') }}
 
 {% endblock %}
