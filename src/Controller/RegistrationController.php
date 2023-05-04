@@ -11,17 +11,24 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Security\Core\Security;
 
 #[Route('/register')]
 class RegistrationController extends AbstractController
 {
     #[Route('/', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, Security $security): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
+        $isUserConnected = false;
+        $roleUser = '';
+        if ($security->getUser() != null) {
+            $isUserConnected = true;
+            $roleUser = $security->getUser()->getRoles();
+        }
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
@@ -30,6 +37,7 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+
 
             // Assign the "ROLE_USER" role to newly registered users
             $user->setRoles(['ROLE_USER']);
@@ -44,6 +52,7 @@ class RegistrationController extends AbstractController
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'isUserConnected' => $isUserConnected, 'roleUser' => $roleUser
         ]);
     }
 }

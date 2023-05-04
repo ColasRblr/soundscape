@@ -8,9 +8,8 @@
 <a id="previous-page-btn" href="/">
     <i class="bi bi-arrow-left"></i>
   </a>
-  <div class="vinyledisc-container d-flex justify-content-center">
-    <img src="/img/disc.png" alt="disque vinyle">
-    <h2 class="text-center">INSCRIPTION</h2>
+  <div id="containerh2">
+    <h2>INSCRIPTION</h2>
   </div>
     {{ form_start(registrationForm) }}
     <div class="col-md-6 offset-md-0">
@@ -40,6 +39,7 @@
         <button type="reset" class="btn btn-costum" id="annuler">Annuler</button>
       </div>
     {{ form_end(registrationForm) }}
+  </div>
 {% endblock %} 
 
 

@@ -3,9 +3,9 @@
 {% block title %}Edit Category{% endblock %}
 
 {% block body %}
-    <a href="{{ path('app_admin') }}">Retour à la liste</a>
+    <a href="{{ path('app_admin') }}" class="admin_black"><button>Retour à la liste</button></a>
 
-    <h1>Modifier une catégorie</h1>
+    <h1 id="admin_display_mid" class="admin_black">Modifier une catégorie</h1>
 
     {{ include('category/_form.html.twig', {'button_label': 'Update'}) }}
 

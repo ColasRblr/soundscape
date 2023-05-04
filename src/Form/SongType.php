@@ -12,7 +12,7 @@ use App\Repository\CategoryRepository;
 
 class SongType extends AbstractType
 {
-    private $Repositorysong;
+    private $CategoryRepository;
 
     public function __construct(CategoryRepository $CategoryRepository)
     {

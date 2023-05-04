@@ -40,9 +40,10 @@
       color: black;
     }
   }
-  @media (min-width: 400px) {
-    body {
-      color: black;
+  @media only screen and (max-width: 700px) {
+    #admin_show_song{
+      width: 320px;
+      height: 200px;
     }
   }
   @media (min-width: 900px) {

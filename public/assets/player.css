@@ -1,271 +1,254 @@
 /* All page elements but previous arrow */
-#playerSection {
-display: flex;
-flex-direction: column ;
-justify-content: space-between;
-height:70vh;
+#playerPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 70vh;
 }
 
 /* Disc+headshell */
 #animDisc {
-    display: flex;
-    justify-content: center;
-    margin: 0 1em;
-    overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  margin: 0 1em;
 }
 
 .disc {
-    width: 250px;
-    height: 250px;
+  width: 240px;
+  height: 240px;
 }
 
 .rotate {
-    animation: rotate-disc 2s linear infinite;
-    animation-delay: 1.5s;
+  animation: rotate-disc 2s linear infinite;
+  animation-delay: 1.5s;
 }
 
 @keyframes rotate-disc {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-.headshell { 
-    width: 30%;
-    margin-top : -1em;
-    margin-left : -3em;
+.headshell {
+  width: 30%;
+  margin-top: -1em;
+  margin-left: -3em;
 }
 
 .move {
-    animation: move-headshell 2s forwards;
+  animation: move-headshell 2s forwards;
 }
 
 @keyframes move-headshell {
-    from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(31deg);
-      }
-      }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(31deg);
+  }
+}
 
 .reset {
-    animation: reset-headshell 1.5s forwards;
-    }
+  animation: reset-headshell 1.5s forwards;
+}
 
 @keyframes reset-headshell {
-    from {
-        transform: rotate(31deg);
-    }
-    to {
-        transform: rotate(0deg);
-    }
+  from {
+    transform: rotate(31deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
 }
 
 /* Song infos and player */
 
-#songandPlayer{
+#songandPlayer {
   display: flex;
-  height:45%;
+  height: 45%;
   flex-direction: column;
   justify-content: center;
   margin-bottom: 1em;
 }
 
 /* album image, artist, title and favorite btn */
-#player-song-infos{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 1em 1em;
+#player-song-infos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em 1em;
 }
 
-#album-image{
-    width:110px;
-    height:110px;
-    margin-left : 2em;
+#album-image {
+  width: 110px;
+  height: 110px;
+  margin-left: 2em;
 }
 
 #song-artist {
-    margin: 0 1em;
+  margin: 0 1em;
 }
 
 #song-title {
-    margin-left : 1em;
-    margin-top : 0.5em;
+  margin-left: 1em;
+  margin-top: 0.5em;
 }
 
 .player-wrapper {
-    display: flex;
-    height:5vh;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0.3em;
-    }
-
-#my-player {
-    width: 75%;
+  display: flex;
+  height: 5vh;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0.3em;
 }
 
-#previous-song-btn, #next-song-btn{
-    color: black;
-    font-size: 30px;
+#my-player {
+  width: 75%;
+}
+
+#previous-song-btn,
+#next-song-btn {
+  color: black;
+  font-size: 30px;
+  cursor: pointer;
 }
 
 /* MEDIA QUERIES */
 
-@media screen and (min-width:420px){
-
-    .headshell { 
-        width: 25%;
-        margin-left : -3.6em;
-    }
-
+@media screen and (min-width: 420px) {
+  .headshell {
+    width: 25%;
+    margin-left: -3.6em;
+  }
 }
 
-@media screen and (min-width:580px){
+@media screen and (min-width: 580px) {
+  .disc {
+    width: 280px;
+    height: 280px;
+  }
 
-    .disc {
-        width : 280px;
-        height : 280px;
-    }
+  .headshell {
+    width: 22%;
+    margin-left: -3.8em;
+  }
 
-    .headshell { 
-        width: 22%;
-        margin-left : -3.8em;
-    }
+  #song-artist {
+    font-size: 24px;
+  }
 
-    #song-artist {
-        font-size: 24px ;  
-     }
-    
-    #song-title {
-       font-size:22px;
-    }
+  #song-title {
+    font-size: 22px;
+  }
 
-    #my-player {
-        width: 70%;
-    }
+  #my-player {
+    width: 70%;
+  }
 
-    #previous-song-btn, #next-song-btn{
-        font-size: 35px;
-    }
-    #album-image{
-        width:150px;
-        height:150px;
-
-    }
-   
+  #previous-song-btn,
+  #next-song-btn {
+    font-size: 35px;
+  }
+  #album-image {
+    width: 150px;
+    height: 150px;
+  }
 }
 
-@media screen and (min-width:630px){
-
-    .headshell { 
-        width: 16%;
-        margin-left : -3.4em;
-    }
-
+@media screen and (min-width: 630px) {
+  .headshell {
+    width: 16%;
+    margin-left: -3.4em;
+  }
 }
 
+@media screen and (min-width: 760px) {
+  .disc {
+    width: 350px;
+    height: 350px;
+  }
 
-@media screen and (min-width:820px){
-
-    .headshell { 
-        margin-left: -4em;
-    }
-    
+  #album-image {
+    width: 180px;
+    height: 180px;
+  }
 }
 
-@media screen and (min-width:1024px){
+@media screen and (min-width: 1024px) {
+  #playerPage {
+    flex-direction: row;
+    justify-content: center;
+  }
 
-    #playerSection {
-        flex-direction: row;
-        justify-content: center;
-    }
+  #animDisc {
+    width: 45vw;
+    height: 45vh;
+    display: flex;
+    align-items: center;
+  }
 
-    #animDisc {
-        width:45vw;
-        height : 45vh;
-        display: flex;
-        align-items: center;
-        overflow-x: auto;
+  .disc {
+    width: 350px;
+    height: 350px;
+  }
 
-    }
+  .headshell {
+    width: 30%;
+    margin-left: -3.8em;
+  }
 
-    .disc {
-        width : 350px;
-        height : 350px;
-    }
+  #songandPlayer {
+    display: flex;
+    flex-direction: column;
+    width: 45vw;
+  }
 
-    .headshell { 
-        width: 30%;
-        margin-left : -3.8em;
-    }
+  .headshell {
+    margin-left: -4.2em;
+  }
 
-    #songandPlayer{
-        display:flex;
-        flex-direction: column;
-        width:45vw;
-    }
+  #animDisc,
+  #songandPlayer {
+    height: 60vh;
+  }
+  #song-artist {
+    font-size: 26px;
+  }
 
-    .headshell { 
-        margin-left : -4.2em;
-    }
-
-    #animDisc, #songandPlayer {
-        height : 60vh;
-    }
-    #song-artist {
-        font-size: 26px ;  
-     }
-    
-    #song-title {
-       font-size:24px;
-    }
-
+  #song-title {
+    font-size: 24px;
+  }
 }
 
-@media screen and (min-width:1224px){
-
-.headshell { 
-    width:26%;
+@media screen and (min-width: 1224px) {
+  .headshell {
+    width: 26%;
+  }
 }
 
+@media screen and (min-width: 1440px) {
+  .disc {
+    width: 450px;
+    height: 450px;
+  }
+
+  .headshell {
+    margin-left: -4.6em;
+  }
+
+  #animDisc,
+  #songandPlayer {
+    height: 70vh;
+  }
+
+  #song-artist {
+    font-size: 30px;
+  }
+
+  #song-title {
+    font-size: 28px;
+  }
 }
-
-@media screen and (min-width:1440px){
-
-    .disc {
-        width : 450px;
-        height : 450px;
-    }
-
-    .headshell { 
-        margin-left : -4.6em;
-    }
-
-    #animDisc, #songandPlayer {
-        height : 70vh;
-    }
-    
-    #album-image {
-        width: 180px;
-        height: 180px;
-    }
-    #song-artist {
-        font-size: 30px ;  
-     }
-    
-    #song-title {
-       font-size:28px;
-    }
-     
-}
-
-    
-
-
-
