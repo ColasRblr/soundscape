@@ -112,6 +112,7 @@ height:70vh;
 #previous-song-btn, #next-song-btn{
     color: black;
     font-size: 30px;
+    cursor:pointer;
 }
 
 /* MEDIA QUERIES */

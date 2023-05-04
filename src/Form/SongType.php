@@ -12,17 +12,17 @@ use App\Repository\CategoryRepository;
 
 class SongType extends AbstractType
 {
-    private $Repositorysong;
+    private $categoryRepository;
 
-    public function __construct(CategoryRepository $CategoryRepository)
+    public function __construct(CategoryRepository $categoryRepository)
     {
-        $this->CategoryRepository = $CategoryRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
 
-        $categories = $this->CategoryRepository->findAll();
+        $categories = $this->categoryRepository->findAll();
         $categoryChoices = [];
 
         foreach ($categories as $category) {
