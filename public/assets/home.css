@@ -49,6 +49,8 @@
   color: black;
 }
 
+/* / Admin css / */
+
 #home-play-btn {
   font-size: 20px;
 }
@@ -76,6 +78,26 @@
 }
 #bot_admin{
   margin-bottom: 5% !important;
+}
+#admin_favori_display{
+  display: flex;
+  justify-content: space-evenly;
+}
+.admin_favori_info, #admin_heart_fa{
+  margin-top: 5%;
+}
+#admin_favori_img{
+  margin: 1%;
+}
+#admin_favori_id{
+  margin-bottom: 10%;
+}
+.btn_admin_song{
+  margin: 12% 0;
+}
+.admin_favori_margin{
+  margin-left: 30%;
+  margin-right: 30%;
 }
 /* / MEDIA QUERIES */
 
