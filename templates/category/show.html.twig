@@ -1,5 +1,4 @@
 {% block body %}
-
 	<div class="swiper-category-show" data-mydata="{{ myData|json_encode|raw }}">
 		{% for data in myData %}
 			<div class="show_category">
@@ -13,7 +12,6 @@
 
 				</div>
 				<div class="admin_one_category">
-
 					<a href="{{ path('app_category_edit', {'id': data.categoryId}) }}">
 						<i class="fa fa-pencil" id="show_pen" style="font-size:36px"></i>
 					</a>
@@ -24,8 +22,19 @@
 
 				</div>
 			</div>
-		{% endfor %}
-	</div>
+			<div class="admin_one_category">
 
-	{# {{ include('category/edit.html.twig') }} #}
-{% endblock %}
+				<a href="{{ path('app_category_edit', {'id': data.categoryId}) }}">
+					<i class="fa fa-pencil" id="show_pen" style="font-size:36px"></i>
+				</a>
+
+				<a href="{{ path('app_category_edit', {'id': data.categoryId}) }}">
+					<i class="fa fa-trash-o" id="show_trash" style="font-size:36px"></i>
+				</a>
+
+			</div>
+		</div>
+	{% endfor %}
+</div>
+
+{# {{ include('category/edit.html.twig') }} #}{% endblock %}
