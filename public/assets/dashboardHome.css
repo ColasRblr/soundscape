@@ -1,53 +1,60 @@
-.okk{
-    background-color: aquamarine;
-    width: 80px;
+.okk {
+  background-color: aquamarine;
+  width: 80px;
 }
-.admin_show_songs{
-    display: flex;
+.admin_show_songs {
+  display: flex;
 }
-.admin_show_liked{
-    padding-bottom: 6%;
+.admin_show_liked {
+  padding-bottom: 6%;
 }
-.admin_show_liked, .admin_category, .admin_one_category{
-    margin: 5%;
-    display: flex;
-    justify-content: space-around;
+.admin_show_liked,
+.admin_category,
+.admin_one_category {
+  margin: 5%;
+  display: flex;
+  justify-content: space-around;
 }
-.admin_burger{
-    display: none;
+.admin_burger {
+  display: none;
 }
-.show_category{
+.show_category {
   display: flex;
   padding: 7%;
 }
-.swiper-container, .swiper-category-show{
+.swiper-container,
+.swiper-category-show {
   display: flex;
   flex-wrap: wrap;
 }
 
-#show_pen, #show_trash, #admin_plus_icon{
+#show_pen,
+#show_trash,
+#admin_plus_icon {
   margin-right: 15px;
   color: black;
 }
-#show_pen:hover, #show_trash:hover, #admin_plus_icon:hover{
+#show_pen:hover,
+#show_trash:hover,
+#admin_plus_icon:hover {
   scale: 1.15;
 }
-#admin_show_song:hover{
+#admin_show_song:hover {
   scale: 1.05;
 }
 @media (min-width: 768px) {
-    body {
-      color: black;
-    }
+  body {
+    color: black;
   }
-  @media only screen and (max-width: 700px) {
-    #admin_show_song{
-      width: 320px;
-      height: 200px;
-    }
+}
+@media only screen and (max-width: 700px) {
+  #admin_show_song {
+    width: 320px;
+    height: 200px;
   }
-  @media (min-width: 900px) {
-    body {
-      color: black;
-    }
+}
+@media (min-width: 900px) {
+  body {
+    color: black;
   }
+}

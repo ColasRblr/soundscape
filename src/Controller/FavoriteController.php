@@ -31,7 +31,7 @@ class FavoriteController extends AbstractController
 
         $isUserConnected = false;
         $roleUser = '';
-        if ($security->getUser() != null) {
+        if ($userConnected != null) {
             $isUserConnected = true;
             $roleUser = $security->getUser()->getRoles();
         }
