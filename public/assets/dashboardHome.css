@@ -1,7 +1,7 @@
-.okk{
-    background-color: aquamarine;
-    width: 80px;
+.line {
+  width: 100% !important;
 }
+
 .admin_show_songs{
     display: flex;
 }
@@ -72,14 +72,11 @@
   margin-bottom: 5% !important;
 }
 #admin_favori_display{
-  display: flex;
-  justify-content: space-evenly;
+  width: 100%;
 }
-.admin_favori_info, #admin_heart_fa{
-  margin-top: 5%;
-}
+
 #admin_favori_img{
-  margin: 1%;
+  width: 20%;
 }
 #admin_favori_id{
   margin-bottom: 10%;
@@ -173,11 +170,14 @@
 }
 #admin_favori_display{
   display: flex;
-  justify-content: space-evenly;
+  width: 100%;
+  justify-content: center;
 }
 .admin_favori_info, #admin_heart_fa{
   margin-top: 5%;
+  width: 20%;
 }
+
 #admin_favori_img{
   margin: 1%;
 }

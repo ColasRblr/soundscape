@@ -47,7 +47,6 @@ class HomeController extends AbstractController
     public function admin_index(CategoryRepository $categoryRepository, FavoriteController $favoriteController, FavoriteRepository $favoriteRepository, Security $security): Response
 
     {
-
         $isUserConnected = false;
         $roleUser = '';
         if ($security->getUser() != null) {
