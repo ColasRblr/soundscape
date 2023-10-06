@@ -50,6 +50,7 @@ class FavoriteController extends AbstractController
                     "artist" => $song->getArtist(),
                     "image" => $song->getImage(),
                     "category" => $song->getCategory()->getId(),
+                    "favorite_id" => $favorite->getId(),
                 ];
             }
         }

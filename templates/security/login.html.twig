@@ -13,23 +13,25 @@
       <div id="containerh2">
         <h2>CONNEXION</h2>
       </div>
-      <form id="form-login" method="post">
-        <h1 class="h3 mb-3 font-weight-normal"></h1>
-        <div class="form-group">
-          <label for="inputEmail">Adresse mail</label>
-          <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-        </div>
-        <div class="form-group">
-          <label for="inputPassword">Mot de passe</label>
-          <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-        </div>
-      
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+      <div class="d-flex justify-content-center mb-4">
+        <form id="form-login" method="post">
+          <h1 class="h3 mb-3 font-weight-normal"></h1>
+          <div class="form-group">
+            <label for="inputEmail">Adresse mail</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Mot de passe</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+          </div>
         
-        <div class="form-group mt-4">
-          <button class="btn btn-lg btn-button" type="submit">
-            Sign in
-          </button>
-        </div>
-      </form>
+          <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+          
+          <div class="form-group d-flex justify-content-center mt-4">
+            <button class="btn btn-dark" type="submit">
+              Sign in
+            </button>
+          </div>
+        </form>
+      </div>
 {% endblock %}

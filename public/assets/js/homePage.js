@@ -4,7 +4,6 @@ if (currentPage === "homePage") {
   var swiper = new Swiper(".swiper-container", {
     effect: "coverflow",
     grabCursor: true,
-    // width: "100%",
     slidesPerView: 2,
     spaceBetween: 5,
     centeredSlides: true,
@@ -27,8 +26,7 @@ if (currentPage === "homePage") {
 
   slideChange.call(swiper);
 
-  // Définition de la fonction slideChange
-
+  // Définition de la fonction slideChange (appel des chansons de la catégorie au swipe)
   function slideChange() {
     var category_id = this.slides[this.activeIndex].getAttribute("data-id");
     var songList = document.querySelector("#home-song-list");
@@ -39,7 +37,6 @@ if (currentPage === "homePage") {
       url: "/category/" + category_id + "/getsongs",
       success: function (response) {
         songList.innerHTML = "";
-
         response.forEach(function (song) {
           var tr = document.createElement("tr");
           songList.appendChild(tr);
@@ -64,7 +61,7 @@ if (currentPage === "homePage") {
           td2.appendChild(h5);
           td3.appendChild(player);
 
-          console.log(isAuthenticated);
+          // console.log(isAuthenticated);
           if (isAuthenticated) {
             var td4 = document.createElement("td");
             tr.appendChild(td4);

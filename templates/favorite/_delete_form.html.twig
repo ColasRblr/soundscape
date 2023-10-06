@@ -1,5 +1,5 @@
-<form method="post" id="formDeleteFavorite" action="{{ path('app_favorite_delete', {'id': favorite.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ favorite.id) }}">
+<form method="post" id="formDeleteFavorite" action="{{ path('app_favorite_delete', {'id': favorite.favorite_id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ favorite.favorite_id) }}">
 	<button id="btnDeleteFavorite">
 		<i class="bi bi-trash-fill" id="btnTrashFavorite"></i>
 	</button>

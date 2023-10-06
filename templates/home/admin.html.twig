@@ -12,13 +12,12 @@
 	{# {{ include('favorite/index.html.twig') }} #}
 	<table id="admin_favori_display">
 	{% for topFavorite in topFavorites %}
-			<tr>
+			<tr class="line">
 				<td><img src="{{ asset('/img/albums/' ~ topFavorite.image) }}" width="140px" height="120px" id="admin_favori_img" class="admin_favori_margin" alt="{{ topFavorite.artist }}"></td>
-				<td><h5 class="admin_favori_info admin_favori_margin">{{ topFavorite.artist }}</h5></td>
-				<td><h5 class="admin_favori_info admin_favori_margin">{{ topFavorite.title }}</h5></td>
-				<td><h5 class="admin_favori_info admin_favori_margin">{{ topFavorite.count }}</h5></td>
-				<td><h5 class="admin_favori_margin"><i class="fa fa-heart" id="admin_heart_fa" style="font-size:36px"></i></h5></td>
-
+				<td><h5 class="p-2">{{ topFavorite.artist }}</h5></td>
+				<td><h5 class="p-2">{{ topFavorite.title }}</h5></td>
+				<td><h5 class="p-2">{{ topFavorite.count }}</h5></td>
+				<td><h5 class="p-2"><i class="fa fa-heart" id="admin_heart_fa" style="font-size:36px"></i></h5></td>
 			</tr>
 	{% endfor %}
 	</table>

@@ -67,13 +67,6 @@ class FavoriteRepository extends ServiceEntityRepository
 
     public function mostFavorites()
     {
-        // $mostFavorites = $this->createQueryBuilder('f')
-        //     ->select('f.song', 'COUNT(f.song)')
-        //     ->groupBy('f.song')
-        //     ->having('COUNT(f.song) > 1')
-        //     ->orderBy('COUNT(f.song)')
-        //     ->setMaxResults(3)
-        //     ->getQuery();
 
         $mostFavorites = $this->createQueryBuilder('f')
             ->select('s.id, s.title as title, s.artist as artist, s.image as image, COUNT(f.song) as count')
@@ -85,7 +78,6 @@ class FavoriteRepository extends ServiceEntityRepository
             ->getQuery();
 
         return $mostFavorites->getResult();
-       
     }
 }
     
