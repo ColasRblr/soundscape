@@ -34,6 +34,7 @@ class CategoryController extends AbstractController
 
     #[Route('/new', name: 'app_category_new', methods: ['GET', 'POST'])]
     #[IsGranted("ROLE_ADMIN")]
+    
     public function new(Request $request, CategoryRepository $categoryRepository, Security $security): Response
     {
         $isUserConnected = false;

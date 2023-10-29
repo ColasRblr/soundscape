@@ -14,10 +14,15 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/song')]
-class SongController extends AbstractController
-{
 
+
+
+
+#[Route('/song')]
+class SongController extends AbstractController {
+
+
+    
     #[Route('/byCategory/{categoryId}', name: 'app_song_by_category_index', methods: ['GET'])]
     #[IsGranted("ROLE_ADMIN")]
     public function adminSongPage(int $categoryId, SongRepository $songRepository, CategoryRepository $categoryRepository, Security $security): Response
